@@ -3,7 +3,7 @@
 <div class="product-card">
     <a asp-area="Store" asp-controller="Product" asp-action="Detail" asp-route-slug="@Model.Slug" class="text-decoration-none">
         <div class="product-img-wrapper">
-            <img src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "https://placehold.co/300x300?text=No+Image" : Model.ThumbnailUrl)" 
+            <img src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "/images/no-image.png" : Model.ThumbnailUrl)" 
                  class="product-img" alt="@Model.Name" loading="lazy">
             
             @if (Model.DiscountPrice.HasValue)

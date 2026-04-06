@@ -40,7 +40,9 @@ namespace PowerTech.Data.Seeders
                 new() { Name = "Dell", Slug = "dell", Description = "Dell Inc." },
                 new() { Name = "Kingston", Slug = "kingston", Description = "Kingston Technology" },
                 new() { Name = "Corsair", Slug = "corsair", Description = "Corsair Gaming" },
-                new() { Name = "Samsung", Slug = "samsung", Description = "Samsung Electronics" }
+                new() { Name = "Samsung", Slug = "samsung", Description = "Samsung Electronics" },
+                new() { Name = "AMD", Slug = "amd", Description = "Advanced Micro Devices" },
+                new() { Name = "Nvidia", Slug = "nvidia", Description = "Nvidia Corporation" }
             };
 
             foreach (var b in brands)
@@ -79,8 +81,29 @@ namespace PowerTech.Data.Seeders
                 { 
                     SKU = "CPU-INTEL-I9-14900K", Name = "Intel Core i9-14900K", Slug = "intel-core-i9-14900k",
                     CategoryId = catCpu.Id, BrandId = brandIntel.Id, Price = 15000000, StockQuantity = 15,
-                    ShortDescription = "CPU Intel thế hệ 14 nhất", Description = "Thông số kỹ thuật CPU Intel Core i9-14900K...",
+                    ShortDescription = "CPU Intel thế hệ 14 mới nhất", Description = "Thông số kỹ thuật CPU Intel Core i9-14900K...",
                     WarrantyMonths = 36, IsFeatured = true, IsActive = true, CreatedAt = DateTime.UtcNow
+                },
+                new() 
+                { 
+                    SKU = "CPU-AMD-R9-7950X", Name = "AMD Ryzen 9 7950X", Slug = "amd-ryzen-9-7950x",
+                    CategoryId = catCpu.Id, BrandId = (await context.Brands.FirstAsync(b => b.Slug == "amd")).Id, Price = 14500000, StockQuantity = 8,
+                    ShortDescription = "CPU AMD hiệu năng cực đỉnh", Description = "Thông số kỹ thuật AMD Ryzen 9 7950X...",
+                    WarrantyMonths = 36, IsFeatured = true, IsActive = true, CreatedAt = DateTime.UtcNow
+                },
+                new() 
+                { 
+                    SKU = "GPU-ASUS-RTX4090", Name = "ASUS ROG RTX 4090 OC", Slug = "asus-rog-rtx-4090-oc",
+                    CategoryId = (await context.Categories.FirstAsync(c => c.Slug == "gpu")).Id, BrandId = brandAsus.Id, Price = 55000000, StockQuantity = 5,
+                    ShortDescription = "Card đồ họa mạnh nhất thế giới", Description = "Sức mạnh đồ họa không đối thủ...",
+                    WarrantyMonths = 36, IsFeatured = true, IsActive = true, CreatedAt = DateTime.UtcNow
+                },
+                new() 
+                { 
+                    SKU = "MON-SAMSUNG-G9-001", Name = "Samsung Odyssey G9 49\" 240Hz", Slug = "samsung-odyssey-g9-49",
+                    CategoryId = (await context.Categories.FirstAsync(c => c.Slug == "monitor")).Id, BrandId = (await context.Brands.FirstAsync(b => b.Slug == "samsung")).Id, Price = 32000000, StockQuantity = 3,
+                    ShortDescription = "Màn hình cong siêu rộng G9", Description = "Trải nghiệm gaming đỉnh cao...",
+                    WarrantyMonths = 24, IsFeatured = true, IsActive = true, CreatedAt = DateTime.UtcNow
                 }
             };
 

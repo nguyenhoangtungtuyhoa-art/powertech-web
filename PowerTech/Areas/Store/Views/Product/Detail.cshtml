@@ -22,7 +22,7 @@
             <div class="col-lg-5">
                 <div class="product-gallery">
                     <div class="main-img-container">
-                        <img id="mainImage" src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "https://placehold.co/600x600?text=No+Image" : Model.ThumbnailUrl)" class="main-img" />
+                        <img id="mainImage" src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "/images/no-image.png" : Model.ThumbnailUrl)" class="main-img" />
                     </div>
                 
                 @if (Model.ProductImages != null && Model.ProductImages.Any())

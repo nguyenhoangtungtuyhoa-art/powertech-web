@@ -1,0 +1,97 @@
+@{
+    ViewData["Title"] = "Từ chối truy cập";
+}
+
+<div class="access-denied-container">
+    <div class="error-content">
+        <div class="error-icon">403</div>
+        <h1 class="error-title text-danger">⚠️ Quyền truy cập bị từ chối!</h1>
+        <p class="error-message">
+            Tài khoản của bạn không có đủ thẩm quyền để vào khu vực này. 
+            Vui lòng liên hệ quản trị viên nếu bạn tin rằng đây là một sự nhầm lẫn.
+        </p>
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary btn-lg">
+                <i class="fas fa-home"></i> Quay về Trang chủ
+            </a>
+            <a href="javascript:history.back()" class="btn btn-outline-secondary btn-lg">
+                <i class="fas fa-arrow-left"></i> Quay lại trang trước
+            </a>
+        </div>
+        <div class="error-meta mt-4 p-3 bg-light rounded text-muted small">
+            Vai trò hiện tại: @(User.Identity.IsAuthenticated ? string.Join(", ", User.Claims.Where(c => c.Type == System.Security.Claims.ClaimTypes.Role).Select(c => c.Value)) : "Khách")
+        </div>
+    </div>
+</div>
+
+<style>
+    .access-denied-container {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+    }
+
+    .error-content {
+        text-align: center;
+        max-width: 600px;
+    }
+
+    .error-icon {
+        font-size: 15rem;
+        font-weight: 900;
+        color: #f1f1f1;
+        line-height: 1;
+        margin-bottom: -40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .error-title {
+        font-size: 2rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 15px;
+    }
+
+    .error-message {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .error-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .error-actions .btn {
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-red);
+        border-color: var(--primary-red);
+    }
+
+    .btn-primary:hover {
+        background-color: #b01e25;
+        border-color: #b01e25;
+    }
+
+    @@media (max-width: 768px) {
+        .error-icon {
+            font-size: 10rem;
+        }
+        .error-actions {
+            flex-direction: column;
+        }
+    }
+</style>

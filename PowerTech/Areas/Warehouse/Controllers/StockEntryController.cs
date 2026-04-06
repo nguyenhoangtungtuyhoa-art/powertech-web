@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using PowerTech.Data;
 using PowerTech.Constants;
 using PowerTech.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace PowerTech.Areas.Warehouse.Controllers
 {
@@ -12,15 +13,16 @@ namespace PowerTech.Areas.Warehouse.Controllers
     public class StockEntryController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public StockEntryController(ApplicationDbContext context)
+        public StockEntryController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
         {
-            // Just listing all products for stock entry reference
             var products = await _context.Products
                 .Include(p => p.Category)
                 .OrderBy(p => p.Name)
@@ -58,10 +60,28 @@ namespace PowerTech.Areas.Warehouse.Controllers
                 return View();
             }
 
+            // Log Audit Trail
+            var user = await _userManager.GetUserAsync(User);
+            var beforeQty = product.StockQuantity;
+            
             // Update Stock
             product.StockQuantity += quantity;
             product.UpdatedAt = DateTime.UtcNow;
 
+            var transaction = new StockTransaction
+            {
+                ProductId = product.Id,
+                PerformedByUserId = user?.Id ?? "Unknown",
+                TransactionType = "IMPORT",
+                Quantity = quantity,
+                ReferenceType = "PurchaseReceipt",
+                BeforeQuantity = beforeQty,
+                AfterQuantity = product.StockQuantity,
+                Note = note ?? "Nhập kho thủ công",
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.StockTransactions.Add(transaction);
             await _context.SaveChangesAsync();
             
             TempData["SuccessMessage"] = $"Đăng ký nhập kho thành công: {product.Name} (+{quantity})";

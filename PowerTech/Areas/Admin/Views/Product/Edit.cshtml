@@ -141,7 +141,7 @@
                 <div class="card-body p-4 text-center">
                     <label class="fw-bold mb-2 d-block">Ảnh đại diện (Thumbnail) <span class="text-danger">*</span></label>
                     <div class="mb-3">
-                        <img id="thumbPreview" src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "https://placehold.co/200x200?text=Preview" : Model.ThumbnailUrl)" 
+                        <img id="thumbPreview" src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "/images/no-image.png" : Model.ThumbnailUrl)" 
                              class="img-fluid rounded border mb-2 shadow-sm" style="max-height: 200px;"/>
                         <input asp-for="ThumbnailImage" class="form-control" type="file" onchange="previewImage(this, 'thumbPreview')"/>
                         <p class="text-muted small mt-1">Hoặc nhập URL ảnh:</p>

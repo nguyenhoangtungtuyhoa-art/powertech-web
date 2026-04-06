@@ -50,7 +50,16 @@ namespace PowerTech.Areas.Store.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Error(int? statusCode = null)
+        {
+            if (statusCode == 404)
+            {
+                return View("NotFound");
+            }
+            return View();
+        }
+
+        public IActionResult AccessDenied()
         {
             return View();
         }

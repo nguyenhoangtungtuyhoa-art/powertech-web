@@ -1,0 +1,95 @@
+@{
+    ViewData["Title"] = "Không tìm thấy trang";
+}
+
+<div class="error-page-container">
+    <div class="error-content">
+        <div class="error-icon">404</div>
+        <h1 class="error-title">Rất tiếc, trang bạn tìm không tồn tại!</h1>
+        <p class="error-message">
+            Đường dẫn có thể đã bị thay đổi, xóa bỏ hoặc không bao giờ tồn tại. 
+            Cửa hàng PowerTech xin lỗi vì sự bất tiện này.
+        </p>
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary btn-lg">
+                <i class="fas fa-home"></i> Quay về Trang chủ
+            </a>
+            <a href="/Store/Product" class="btn btn-outline-secondary btn-lg">
+                <i class="fas fa-search"></i> Xem sản phẩm khác
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .error-page-container {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+    }
+
+    .error-content {
+        text-align: center;
+        max-width: 600px;
+    }
+
+    .error-icon {
+        font-size: 15rem;
+        font-weight: 900;
+        color: #f1f1f1;
+        line-height: 1;
+        margin-bottom: -40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .error-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--bs-dark);
+        position: relative;
+        z-index: 2;
+        margin-bottom: 15px;
+    }
+
+    .error-message {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .error-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .error-actions .btn {
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-red);
+        border-color: var(--primary-red);
+    }
+
+    .btn-primary:hover {
+        background-color: #b01e25;
+        border-color: #b01e25;
+    }
+
+    @@media (max-width: 768px) {
+        .error-icon {
+            font-size: 10rem;
+        }
+        .error-actions {
+            flex-direction: column;
+        }
+    }
+</style>

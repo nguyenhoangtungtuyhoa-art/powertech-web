@@ -57,5 +57,17 @@ namespace PowerTech.Areas.Warehouse.Controllers
             ViewBag.LowStockThreshold = LowStockThreshold;
             return View("Index", products);
         }
+
+        public async Task<IActionResult> History()
+        {
+            var transactions = await _context.StockTransactions
+                .Include(st => st.Product)
+                .Include(st => st.PerformedByUser)
+                .OrderByDescending(st => st.CreatedAt)
+                .Take(100)
+                .ToListAsync();
+
+            return View(transactions);
+        }
     }
 }

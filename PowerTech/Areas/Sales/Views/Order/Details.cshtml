@@ -17,8 +17,8 @@
                     <span class="badge rounded-pill bg-@(Model.OrderStatus switch {
                         "Pending" => "warning text-dark",
                         "Processing" => "primary",
-                        "Shipped" => "info",
-                        "Delivered" => "success",
+                        "Shipping" => "info",
+                        "Completed" => "success",
                         _ => "danger"
                     }) px-3 py-2 fs-6">@Model.OrderStatus</span>
                 </div>
@@ -31,20 +31,20 @@
                         </div>
                         <div class="small fw-bold">Đặt hàng</div>
                     </div>
-                    <div class="step text-center position-relative flex-fill @(new[] {"Processing", "Shipped", "Delivered"}.Contains(Model.OrderStatus) ? "active" : "")">
+                    <div class="step text-center position-relative flex-fill @(new[] {"Processing", "Shipping", "Completed"}.Contains(Model.OrderStatus) ? "active" : "")">
                         <div class="step-icon mx-auto rounded-circle @(new[] {"Processing", "Shipped", "Delivered"}.Contains(Model.OrderStatus) ? "bg-primary text-white" : "bg-light text-muted") mb-2" style="width: 40px; height: 40px; line-height: 40px;">
                             <i class="bi bi-gear"></i>
                         </div>
                         <div class="small fw-bold">Đang xử lý</div>
                     </div>
-                    <div class="step text-center position-relative flex-fill @(new[] {"Shipped", "Delivered"}.Contains(Model.OrderStatus) ? "active" : "")">
-                        <div class="step-icon mx-auto rounded-circle @(new[] {"Shipped", "Delivered"}.Contains(Model.OrderStatus) ? "bg-primary text-white" : "bg-light text-muted") mb-2" style="width: 40px; height: 40px; line-height: 40px;">
+                    <div class="step text-center position-relative flex-fill @(new[] {"Shipping", "Completed"}.Contains(Model.OrderStatus) ? "active" : "")">
+                        <div class="step-icon mx-auto rounded-circle @(new[] {"Shipping", "Completed"}.Contains(Model.OrderStatus) ? "bg-primary text-white" : "bg-light text-muted") mb-2" style="width: 40px; height: 40px; line-height: 40px;">
                             <i class="bi bi-truck"></i>
                         </div>
                         <div class="small fw-bold">Đang giao</div>
                     </div>
-                    <div class="step text-center position-relative flex-fill @(Model.OrderStatus == "Delivered" ? "active" : "")">
-                        <div class="step-icon mx-auto rounded-circle @(Model.OrderStatus == "Delivered" ? "bg-primary text-white" : "bg-light text-muted") mb-2" style="width: 40px; height: 40px; line-height: 40px;">
+                    <div class="step text-center position-relative flex-fill @(Model.OrderStatus == "Completed" ? "active" : "")">
+                        <div class="step-icon mx-auto rounded-circle @(Model.OrderStatus == "Completed" ? "bg-primary text-white" : "bg-light text-muted") mb-2" style="width: 40px; height: 40px; line-height: 40px;">
                             <i class="bi bi-check2-circle"></i>
                         </div>
                         <div class="small fw-bold">Đã nhận hàng</div>
@@ -114,18 +114,18 @@
                     <input type="hidden" name="orderId" value="@Model.Id" />
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-muted text-uppercase mb-3">Cập nhật trạng thái</label>
-                        <select name="status" class="form-select form-select-lg rounded-3 mb-3" @(Model.OrderStatus == "Delivered" || Model.OrderStatus == "Cancelled" ? "disabled" : "")>
+                        <select name="status" class="form-select form-select-lg rounded-3 mb-3" @(Model.OrderStatus == "Completed" || Model.OrderStatus == "Cancelled" ? "disabled" : "")>
                             <option value="Pending" selected=@(Model.OrderStatus == "Pending")>Chờ xử lý</option>
                             <option value="Processing" selected=@(Model.OrderStatus == "Processing")>Đang xử lý</option>
-                            <option value="Shipped" selected=@(Model.OrderStatus == "Shipped")>Đang giao hàng</option>
-                            <option value="Delivered" selected=@(Model.OrderStatus == "Delivered")>Hoàn tất đơn hàng</option>
+                            <option value="Shipping" selected=@(Model.OrderStatus == "Shipping")>Đang giao hàng</option>
+                            <option value="Completed" selected=@(Model.OrderStatus == "Completed")>Hoàn tất đơn hàng</option>
                             <option value="Cancelled" selected=@(Model.OrderStatus == "Cancelled")>Hủy đơn hàng</option>
                         </select>
                         
                         <label class="form-label small fw-bold text-muted text-uppercase mb-2">Ghi chú nội bộ</label>
                         <textarea name="internalNote" class="form-control rounded-3 mb-3" rows="3" placeholder="Nhập ghi chú chỉ nhân viên thấy...">@Model.InternalNote</textarea>
-
-                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 @(Model.OrderStatus == "Delivered" || Model.OrderStatus == "Cancelled" ? "disabled" : "")">
+|
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 @(Model.OrderStatus == "Completed" || Model.OrderStatus == "Cancelled" ? "disabled" : "")">
                             Cập nhật đơn hàng
                         </button>
                     </div>

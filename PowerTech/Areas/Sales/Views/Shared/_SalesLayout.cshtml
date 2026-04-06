@@ -21,9 +21,9 @@
                            class="list-group-item list-group-item-action py-3 border-0 @(ViewContext.RouteData.Values["controller"]?.ToString() == "Order" ? "bg-primary text-white active fw-bold" : "")">
                             <i class="bi bi-cart-check me-2"></i> Đơn hàng
                         </a>
-                        <a asp-area="Sales" asp-controller="Order" asp-action="Pending" 
-                           class="list-group-item list-group-item-action py-3 border-0">
-                            <i class="bi bi-clock-history me-2"></i> Đơn mới
+                        <a asp-area="Sales" asp-controller="Order" asp-action="Create" 
+                           class="list-group-item list-group-item-action py-3 border-0 @(ViewContext.RouteData.Values["action"]?.ToString() == "Create" ? "bg-primary text-white active fw-bold" : "")">
+                            <i class="bi bi-plus-circle me-2"></i> Tạo đơn tại quầy
                         </a>
                     </div>
                     <div class="p-3 bg-light rounded-bottom-4">

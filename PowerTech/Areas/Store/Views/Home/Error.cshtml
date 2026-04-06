@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Lỗi hệ thống";
+}
+
+<div class="error-page-container">
+    <div class="error-content">
+        <div class="error-icon"><i class="fas fa-exclamation-triangle text-warning"></i></div>
+        <h1 class="error-title">Có lỗi xảy ra trên hệ thống!</h1>
+        <p class="error-message">
+            Máy chủ đang gặp sự cố hoặc xảy ra lỗi ngoài ý muốn. 
+            Vui lòng thử lại sau hoặc liên hệ bộ phận kỹ thuật PowerTech.
+        </p>
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary btn-lg">
+                <i class="fas fa-home"></i> Quay về Trang chủ
+            </a>
+            <a href="mailto:support@powertech.com" class="btn btn-outline-secondary btn-lg">
+                <i class="fas fa-envelope"></i> Báo cáo lỗi
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Reuse styles from NotFound/AccessDenied */
+    .error-page-container {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+    }
+    .error-content { text-align: center; max-width: 600px; }
+    .error-icon { font-size: 8rem; margin-bottom: 20px; }
+    .error-title { font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
+    .error-message { font-size: 1.1rem; color: #666; margin-bottom: 30px; }
+    .error-actions { display: flex; gap: 15px; justify-content: center; }
+    .error-actions .btn { padding: 12px 30px; border-radius: 8px; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
+    .btn-primary { background-color: var(--primary-red); border-color: var(--primary-red); }
+</style>

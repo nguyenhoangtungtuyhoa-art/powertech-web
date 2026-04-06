@@ -25,9 +25,9 @@
                            class="list-group-item list-group-item-action py-3 border-0 text-dark">
                             <i class="bi bi-exclamation-triangle me-2 text-danger"></i> Sắp hết hàng
                         </a>
-                        <a asp-area="Warehouse" asp-controller="StockEntry" asp-action="Index" 
-                           class="list-group-item list-group-item-action py-3 border-0 text-dark">
-                            <i class="bi bi-box-arrow-in-down me-2"></i> Nhập kho
+                        <a asp-area="Warehouse" asp-controller="Inventory" asp-action="History" 
+                           class="list-group-item list-group-item-action py-3 border-0 @(ViewContext.RouteData.Values["action"]?.ToString() == "History" ? "bg-dark text-white active fw-bold border-start border-primary border-4" : "") text-dark">
+                            <i class="bi bi-clock-history me-2"></i> Lịch sử biến động
                         </a>
                     </div>
                     <div class="p-3 bg-light rounded-bottom-4">

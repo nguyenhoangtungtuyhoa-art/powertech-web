@@ -35,6 +35,13 @@ builder.Services.AddRazorPages();
 // Register Custom Services
 builder.Services.AddScoped<ICartService, CartService>();
 
+// Configure Access Denied Path
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Store/Home/AccessDenied";
+    options.LoginPath = "/Identity/Account/Login";
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -53,8 +60,8 @@ using (var scope = app.Services.CreateScope())
         await DbFixer.FixSchemaAsync(context);
 
         await DbSeeder.SeedRolesAndAdminAsync(services);
-        // await CatalogSeeder.SeedCatalogAsync(context);
-        // await OrderSeeder.SeedAsync(context);
+        // await CatalogSeeder.SeedCatalogAsync(context); // Tắt do DB thật đã có đủ dữ liệu Catalog
+        // await OrderSeeder.SeedAsync(context); // Tắt do không muốn tạo thêm order ảo liên tục
     }
     catch (Exception ex)
     {
@@ -78,6 +85,9 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Handle 404 and other non-success status codes
+app.UseStatusCodePagesWithReExecute("/Store/Home/Error/{0}");
 
 app.MapStaticAssets();
 

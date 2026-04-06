@@ -1,0 +1,288 @@
+@{
+    ViewData["Title"] = "Tạo đơn hàng tại quầy";
+    Layout = "_SalesLayout";
+}
+
+<div class="container-fluid py-4">
+    <div class="row g-4">
+        <!-- Main: Product Selection -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white p-4 border-bottom">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-cart-plus me-2 text-primary"></i>Chọn sản phẩm</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="position-relative mb-4">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-light border-end-0 rounded-start-4">
+                                <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" id="productSearch" class="form-control bg-light border-start-0 rounded-end-4" placeholder="Nhập tên hoặc SKU sản phẩm..." autocomplete="off">
+                        </div>
+                        <div id="searchResult" class="dropdown-menu w-100 shadow-lg border-0 rounded-4 mt-1 overflow-hidden" style="display: none; max-height: 400px; overflow-y: auto;">
+                            <!-- Search results will appear here -->
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle" id="orderItemsTable">
+                            <thead class="text-muted small text-uppercase">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th style="width: 150px;">Số lượng</th>
+                                    <th class="text-end">Đơn giá</th>
+                                    <th class="text-end">Thành tiền</th>
+                                    <th style="width: 50px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartBody">
+                                <!-- Cart items will appear here -->
+                                <tr id="emptyCartRow">
+                                    <td colspan="5" class="text-center py-5">
+                                        <div class="text-muted">
+                                            <i class="bi bi-inbox fs-1 d-block mb-3 opacity-25"></i>
+                                            Chưa có sản phẩm nào được chọn
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar: Customer & Summary -->
+        <div class="col-lg-4">
+            <!-- Customer Info -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white p-4 border-bottom">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-person me-2 text-primary"></i>Thông tin khách hàng</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tìm kiếm khách hàng (Email/SĐT)</label>
+                        <input type="text" id="userSearch" class="form-control rounded-3" placeholder="Nhập để tìm...">
+                        <div id="userSearchResult" class="dropdown-menu w-100 shadow border-0 rounded-3 mt-1" style="display: none;"></div>
+                    </div>
+                    <hr class="my-3 opacity-10">
+                    <form id="orderForm" asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="userId" id="selectedUserId" value="">
+                        <input type="hidden" name="orderItemsJson" id="orderItemsJson">
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Tên người nhận</label>
+                            <input type="text" name="receiverName" id="receiverName" class="form-control rounded-3" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Số điện thoại</label>
+                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control rounded-3" placeholder="090..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Ghi chú khách hàng</label>
+                            <textarea name="note" class="form-control rounded-3" rows="2" placeholder="Yêu cầu thêm..."></textarea>
+                        </div>
+
+                        <hr class="my-4 opacity-10">
+
+                        <!-- Summary -->
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Tạm tính</span>
+                            <span class="fw-bold" id="subtotalDisplay">0₫</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="fw-bold">Tổng cộng</h5>
+                            <h5 class="fw-bold text-primary" id="totalDisplay">0₫</h5>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Phương thức thanh toán</label>
+                            <select name="paymentMethod" class="form-select rounded-3">
+                                <option value="Cash">Tiền mặt</option>
+                                <option value="BankTransfer">Chuyển khoản</option>
+                                <option value="Card">Thanh toán thẻ</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-3 fw-bold shadow-sm">
+                            <i class="bi bi-check-circle me-2"></i>HOÀN TẤT ĐƠN HÀNG
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let cart = [];
+
+        // --- Product Search ---
+        const $productSearch = $('#productSearch');
+        const $searchResult = $('#searchResult');
+
+        $productSearch.on('input', function() {
+            const term = $(this).val();
+            if (term.length < 2) {
+                $searchResult.hide();
+                return;
+            }
+
+            $.get('@Url.Action("SearchProducts", "Order")', { term: term }, function(data) {
+                let html = '';
+                if (data.length === 0) {
+                    html = '<div class="p-3 text-center text-muted">Không tìm thấy sản phẩm</div>';
+                } else {
+                    data.forEach(p => {
+                        html += `
+                            <a href="javascript:void(0)" class="dropdown-item p-3 border-bottom d-flex align-items-center" onclick='addToCart(${JSON.stringify(p)})'>
+                                <img src="${p.thumbnailUrl || '/images/no-image.png'}" class="rounded-2 me-3" style="width: 48px; height: 48px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-dark">${p.name}</div>
+                                    <div class="small text-muted">SKU: ${p.sku} | Tồn kho: <span class="text-${p.stockQuantity > 0 ? 'success' : 'danger'}">${p.stockQuantity}</span></div>
+                                </div>
+                                <div class="text-primary fw-bold">${new Intl.NumberFormat('vi-VN').format(p.price)}₫</div>
+                            </a>
+                        `;
+                    });
+                }
+                $searchResult.html(html).show();
+            });
+        });
+
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.position-relative').length) {
+                $searchResult.hide();
+            }
+        });
+
+        // --- User Search ---
+        const $userSearch = $('#userSearch');
+        const $userSearchResult = $('#userSearchResult');
+
+        $userSearch.on('input', function() {
+            const term = $(this).val();
+            if (term.length < 2) {
+                $userSearchResult.hide();
+                return;
+            }
+
+            $.get('@Url.Action("SearchUsers", "Order")', { term: term }, function(data) {
+                let html = '';
+                data.forEach(u => {
+                    html += `
+                        <a href="javascript:void(0)" class="dropdown-item p-3 border-bottom" onclick='selectUser(${JSON.stringify(u)})'>
+                            <div class="fw-bold">${u.fullName}</div>
+                            <div class="small text-muted">${u.email} | ${u.phoneNumber}</div>
+                        </a>
+                    `;
+                });
+                $userSearchResult.html(html).show();
+            });
+        });
+
+        function selectUser(user) {
+            $('#selectedUserId').val(user.id);
+            $('#receiverName').val(user.fullName);
+            $('#phoneNumber').val(user.phoneNumber);
+            $userSearchResult.hide();
+            $userSearch.val('');
+        }
+
+        // --- Cart Logic ---
+        function addToCart(product) {
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    sku: product.sku,
+                    price: product.price,
+                    quantity: 1,
+                    thumbnail: product.thumbnailUrl
+                });
+            }
+            $searchResult.hide();
+            $productSearch.val('');
+            renderCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            renderCart();
+        }
+
+        function updateQuantity(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) removeFromCart(id);
+                else renderCart();
+            }
+        }
+
+        function renderCart() {
+            const $body = $('#cartBody');
+            const $empty = $('#emptyCartRow');
+            
+            if (cart.length === 0) {
+                $body.html($empty);
+                $('#subtotalDisplay, #totalDisplay').text('0₫');
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach(item => {
+                const sub = item.price * item.quantity;
+                total += sub;
+                html += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${item.thumbnail || '/images/no-image.png'}" class="rounded-2 me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                <div>
+                                    <div class="fw-medium text-dark lh-sm">${item.name}</div>
+                                    <small class="text-muted">SKU: ${item.sku}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group input-group-sm" style="width: 100px;">
+                                <button class="btn btn-outline-secondary border-opacity-25" type="button" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <input type="text" class="form-control text-center border-opacity-25" value="${item.quantity}" readonly>
+                                <button class="btn btn-outline-secondary border-opacity-25" type="button" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </td>
+                        <td class="text-end fw-medium">${new Intl.NumberFormat('vi-VN').format(item.price)}₫</td>
+                        <td class="text-end fw-bold text-dark">${new Intl.NumberFormat('vi-VN').format(sub)}₫</td>
+                        <td class="text-end">
+                            <button class="btn btn-link text-danger p-0" onclick="removeFromCart(${item.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            $body.html(html);
+            
+            const totalText = new Intl.NumberFormat('vi-VN').format(total) + '₫';
+            $('#subtotalDisplay, #totalDisplay').text(totalText);
+            
+            // Prepare hidden input for form submission
+            const submitItems = cart.map(i => ({ ProductId: i.id, Quantity: i.quantity }));
+            $('#orderItemsJson').val(JSON.stringify(submitItems));
+        }
+
+        $('#orderForm').on('submit', function() {
+            if (cart.length === 0) {
+                alert('Vui lòng chọn ít nhất một sản phẩm!');
+                return false;
+            }
+        });
+    </script>
+}

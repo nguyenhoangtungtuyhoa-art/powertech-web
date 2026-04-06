@@ -34,7 +34,13 @@
                         }
                         @if (Model.CategoryId.HasValue)
                         {
-                            <a asp-action="Index" asp-route-q="@Model.Query" asp-route-brandId="@Model.BrandId" class="small text-primary mt-2 d-block">
+                            <a asp-action="Index" 
+                               asp-route-q="@Model.Query" 
+                               asp-route-brandId="@Model.BrandId" 
+                               asp-route-minPrice="@Model.MinPrice" 
+                               asp-route-maxPrice="@Model.MaxPrice" 
+                               asp-route-sortOrder="@Model.SortOrder" 
+                               class="small text-primary mt-2 d-block">
                                 <i class="fa-solid fa-xmark"></i> Bỏ chọn danh mục
                             </a>
                         }
@@ -56,7 +62,13 @@
                         }
                         @if (Model.BrandId.HasValue)
                         {
-                            <a asp-action="Index" asp-route-q="@Model.Query" asp-route-categoryId="@Model.CategoryId" class="small text-primary mt-2 d-block">
+                            <a asp-action="Index" 
+                               asp-route-q="@Model.Query" 
+                               asp-route-categoryId="@Model.CategoryId" 
+                               asp-route-minPrice="@Model.MinPrice" 
+                               asp-route-maxPrice="@Model.MaxPrice" 
+                               asp-route-sortOrder="@Model.SortOrder" 
+                               class="small text-primary mt-2 d-block">
                                 <i class="fa-solid fa-xmark"></i> Bỏ chọn thương hiệu
                             </a>
                         }
@@ -140,7 +152,7 @@
             else
             {
                 <div class="text-center py-5">
-                    <img src="https://placehold.co/200x200?text=Empty" class="mb-3" />
+                    <img src="/images/no-image.png" class="mb-3" />
                     <h5>Rất tiếc, không tìm thấy sản phẩm phù hợp</h5>
                     <p class="text-muted">Vui lòng thử lại với bộ lọc khác hoặc từ khóa khác.</p>
                     <a asp-action="Index" class="btn btn-outline-primary mt-3">Xóa tất cả bộ lọc</a>

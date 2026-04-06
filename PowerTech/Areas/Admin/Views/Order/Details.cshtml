@@ -38,7 +38,7 @@
                                 <tr>
                                     <td class="ps-4">
                                         <div class="d-flex align-items-center gap-3 py-2">
-                                            <img src="@(string.IsNullOrEmpty(item.Product?.ThumbnailUrl) ? "https://placehold.co/50x50?text=No+Image" : item.Product.ThumbnailUrl)" 
+                                            <img src="@(string.IsNullOrEmpty(item.Product?.ThumbnailUrl) ? "/images/no-image.png" : item.Product.ThumbnailUrl)" 
                                                  class="rounded border" style="width: 50px; height: 50px; object-fit: contain;"/>
                                             <div>
                                                 <div class="fw-bold text-dark">@item.Product?.Name</div>

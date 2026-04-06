@@ -20,6 +20,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<SupportTicket> SupportTickets { get; set; }
+    public DbSet<StockTransaction> StockTransactions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -303,6 +304,25 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 .WithMany(o => o.SupportTickets)
                 .HasForeignKey(e => e.OrderId)
                 .OnDelete(DeleteBehavior.SetNull);
+        });
+
+        // 15. StockTransaction Configuration
+        builder.Entity<StockTransaction>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.TransactionType).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.ReferenceType).HasMaxLength(50);
+            entity.Property(e => e.Note).HasMaxLength(500);
+
+            entity.HasOne(e => e.Product)
+                .WithMany()
+                .HasForeignKey(e => e.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.PerformedByUser)
+                .WithMany()
+                .HasForeignKey(e => e.PerformedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }

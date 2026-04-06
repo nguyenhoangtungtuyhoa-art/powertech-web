@@ -23,7 +23,17 @@ Tài khoản: admin@powertech.com
 Mật khẩu: Admin@123
 
 
-
+Mật khẩu: Admin@123
+Admin@123
+👤 Danh sách tài khoản mẫu
+Vai trò	Email / Tài khoản	Tên người dùng
+Quản trị viên (Admin)	admin@powertech.com	System Administrator
+Quản trị viên (Admin)	admin@powertech.vn	PowerTech Admin
+Nhân viên Bán hàng (Sales)	sales1@powertech.vn	Nguyễn Thị Sales
+Nhân viên Kho (Warehouse)	warehouse1@powertech.vn	Lê Văn Kho
+Nhân viên Kho (Warehouse)	warehouse2@powertech.vn	Phạm Thị Nhập Kho
+Nhân viên Hỗ trợ (Support)	support1@powertech.vn	Trần Thị Support
+Khách hàng (Customer)	customer1@powertech.vn	Nguyễn Văn A
 
 Nếu máy bạn chưa có tree thì:
 

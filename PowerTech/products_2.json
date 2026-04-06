@@ -1,0 +1,309 @@
+{
+  "entity": "dbo_Products",
+  "result": {
+    "value": [
+      {
+        "Id": 101,
+        "Name": "B\u1ED9 \u0111\u1ECBnh tuy\u1EBFn ASUS RT-AC59U Mobile Gaming AC1500 MU-MIMO 2 b\u0103ng t\u1EA7n",
+        "ThumbnailUrl": "/uploads/products/network/asus-rt-ac59u-mobile-gaming-ac1500/thumb.jpg",
+        "SKU": "NET-ASUS-RT-AC59U-AC1500"
+      },
+      {
+        "Id": 102,
+        "Name": "Apple Smart Keyboard Folio for iPad Pro 12.9 inch (4th generation) - US English",
+        "ThumbnailUrl": "/uploads/products/accessories/apple-smart-keyboard-folio-ipad-pro-129-4th-gen/thumb.jpg",
+        "SKU": "ACC-APPLE-SMARTKEYBOARD-IPAD129-4GEN"
+      },
+      {
+        "Id": 103,
+        "Name": "B\u1ED9 s\u1EA1c nhanh GaN Nexode 200W Ugreen CD271 40913",
+        "ThumbnailUrl": "/uploads/products/accessories/ugreen-nexode-200w-cd271-40913/thumb.jpg",
+        "SKU": "ACC-UGREEN-NEXODE-200W-CD271"
+      },
+      {
+        "Id": 104,
+        "Name": "C\u1ED5ng chuy\u1EC3n \u0111\u1ED5i USB C Ugreen 5 in 1 CM136 50209",
+        "ThumbnailUrl": "/uploads/products/accessories/ugreen-usb-c-hub-5-in-1-cm136-50209/thumb.jpg",
+        "SKU": "ACC-UGREEN-HUB-5IN1-CM136"
+      },
+      {
+        "Id": 105,
+        "Name": "C\u1EE7 s\u1EA1c Ugreen GaN 100W CD226 40747",
+        "ThumbnailUrl": "/uploads/products/accessories/ugreen-gan-100w-cd226-40747/thumb.jpg",
+        "SKU": "ACC-UGREEN-GAN-100W-CD226"
+      },
+      {
+        "Id": 106,
+        "Name": "B\u1ED9 chuy\u1EC3n \u0111\u1ED5i Mazer ALU USB-C to VGA 1080P Adapter M-USBCAL351-GY",
+        "ThumbnailUrl": "/uploads/products/accessories/mazer-alu-usb-c-to-vga-1080p-adapter-m-usbcal351-gy/thumb.jpg",
+        "SKU": "ACC-MAZER-USBC-VGA-MUSBCAL351"
+      },
+      {
+        "Id": 107,
+        "Name": "Ph\u1EA7n m\u1EC1m Microsoft Windows 11 Home ESD KW9-00664",
+        "ThumbnailUrl": "/uploads/products/software/windows-11-home-esd-kw9-00664/thumb.jpg",
+        "SKU": "SW-MICROSOFT-WIN11-HOME-KW900664"
+      },
+      {
+        "Id": 108,
+        "Name": "Ph\u1EA7n m\u1EC1m Microsoft Windows 11 Pro ESD FQC-10572",
+        "ThumbnailUrl": "/uploads/products/software/windows-11-pro-esd-fqc-10572/thumb.jpg",
+        "SKU": "SW-MICROSOFT-WIN11-PRO-FQC10572"
+      },
+      {
+        "Id": 109,
+        "Name": "Ph\u1EA7n m\u1EC1m Microsoft Office Home 2024 EP2-06796",
+        "ThumbnailUrl": "/uploads/products/software/office-home-2024-ep2-06796/thumb.jpg",
+        "SKU": "SW-MICROSOFT-OFFICEHOME2024-EP206796"
+      },
+      {
+        "Id": 110,
+        "Name": "Ph\u1EA7n m\u1EC1m Microsoft 365 Personal 1 n\u0103m EP2-32313",
+        "ThumbnailUrl": "/uploads/products/software/microsoft-365-personal-ep2-32313/thumb.jpg",
+        "SKU": "SW-MICROSOFT-365PERSONAL-EP232313"
+      },
+      {
+        "Id": 111,
+        "Name": "Ph\u1EA7n m\u1EC1m Microsoft 365 Family 1 n\u0103m EP2-36890",
+        "ThumbnailUrl": "/uploads/products/software/microsoft-365-family-ep2-36890/thumb.jpg",
+        "SKU": "SW-MICROSOFT-365FAMILY-EP236890"
+      },
+      {
+        "Id": 112,
+        "Name": "Laptop gaming ASUS TUF F16 FX608JMR RV048W",
+        "ThumbnailUrl": "/uploads/products/laptop/asus-tuf-gaming-f16-fx608jmr-rv048w/thumb.jpg",
+        "SKU": "LAP-ASUS-TUF-F16-FX608JMR-RV048W"
+      },
+      {
+        "Id": 113,
+        "Name": "Laptop gaming Lenovo Legion Pro 7 16IAX10H 83F500JGVN",
+        "ThumbnailUrl": "/uploads/products/laptop/lenovo-legion-pro-7-16iax10h-83f500jgvn/thumb.jpg",
+        "SKU": "LAP-LENOVO-LEGION-PRO7-16IAX10H-83F500JGVN"
+      },
+      {
+        "Id": 114,
+        "Name": "Laptop gaming Gigabyte A16 CMHI2VN893SH",
+        "ThumbnailUrl": "/uploads/products/laptop/gigabyte-a16-cmhi2vn893sh/thumb.jpg",
+        "SKU": "LAP-GIGABYTE-A16-CMHI2VN893SH"
+      },
+      {
+        "Id": 115,
+        "Name": "Laptop LG Gram 2022 17ZD90Q-G.AX52A5",
+        "ThumbnailUrl": "/uploads/products/laptop/lg-gram-2022-17zd90q-g-ax52a5/thumb.jpg",
+        "SKU": "LAP-LG-GRAM-17ZD90Q-GAX52A5"
+      },
+      {
+        "Id": 116,
+        "Name": "Laptop HP Envy 13 BA1534TU 4U6M3PA",
+        "ThumbnailUrl": "/uploads/products/laptop/hp-envy-13-ba1534tu-4u6m3pa/thumb.jpg",
+        "SKU": "LAP-HP-ENVY13-BA1534TU-4U6M3PA"
+      },
+      {
+        "Id": 117,
+        "Name": "Laptop Dell 15 DC15250 i7U161W11SLU",
+        "ThumbnailUrl": "/uploads/products/laptop/dell-15-dc15250-i7u161w11slu/thumb.jpg",
+        "SKU": "LAP-DELL-15-DC15250-I7U161W11SLU"
+      },
+      {
+        "Id": 118,
+        "Name": "Laptop Lenovo ThinkPad X9-15 Gen 1 21Q60055VN",
+        "ThumbnailUrl": "/uploads/products/laptop/lenovo-thinkpad-x9-15-gen-1-21q60055vn/thumb.jpg",
+        "SKU": "LAP-LENOVO-THINKPAD-X9-15GEN1-21Q60055VN"
+      },
+      {
+        "Id": 119,
+        "Name": "Laptop MSI Prestige 16 AI\u002B Mercedes AMG B2VMG 088VN",
+        "ThumbnailUrl": "/uploads/products/laptop/msi-prestige-16-ai-mercedes-amg-b2vmg-088vn/thumb.jpg",
+        "SKU": "LAP-MSI-PRESTIGE16-AI-B2VMG-088VN"
+      },
+      {
+        "Id": 120,
+        "Name": "Laptop Acer Swift Go SFG14 74T 55HD",
+        "ThumbnailUrl": "/uploads/products/laptop/acer-swift-go-sfg14-74t-55hd/thumb.jpg",
+        "SKU": "LAP-ACER-SWIFTGO-SFG14-74T-55HD"
+      },
+      {
+        "Id": 121,
+        "Name": "Laptop ASUS Zenbook 14 UM3406KA PP555WS",
+        "ThumbnailUrl": "/uploads/products/laptop/asus-zenbook-14-um3406ka-pp555ws/thumb.jpg",
+        "SKU": "LAP-ASUS-ZENBOOK14-UM3406KA-PP555WS"
+      },
+      {
+        "Id": 122,
+        "Name": "Loa Logitech G560",
+        "ThumbnailUrl": "/uploads/products/speaker/logitech-g560/thumb.jpg",
+        "SKU": "SPK-LOGITECH-G560"
+      },
+      {
+        "Id": 123,
+        "Name": "Loa Razer Nommo V2",
+        "ThumbnailUrl": "/uploads/products/speaker/razer-nommo-v2/thumb.jpg",
+        "SKU": "SPK-RAZER-NOMMO-V2"
+      },
+      {
+        "Id": 124,
+        "Name": "Loa Thonet \u0026 Vander Kumpel 2.0 Black",
+        "ThumbnailUrl": "/uploads/products/speaker/thonet-vander-kumpel-2-0-black/thumb.jpg",
+        "SKU": "SPK-THONETVANDER-KUMPEL20-BLACK"
+      },
+      {
+        "Id": 125,
+        "Name": "Loa Razer Leviathan V2 X",
+        "ThumbnailUrl": "/uploads/products/speaker/razer-leviathan-v2-x/thumb.jpg",
+        "SKU": "SPK-RAZER-LEVIATHAN-V2X"
+      },
+      {
+        "Id": 126,
+        "Name": "Loa Razer Leviathan V2",
+        "ThumbnailUrl": "/uploads/products/speaker/razer-leviathan-v2/thumb.jpg",
+        "SKU": "SPK-RAZER-LEVIATHAN-V2"
+      },
+      {
+        "Id": 127,
+        "Name": "PC GVN X ASUS ROG HATSUNE MIKU EDITION (AMD Ryzen 7 9800X3D/VGA RTX 5080)",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-rog-hatsune-miku-9800x3d-rtx5080/thumb.jpg",
+        "SKU": "PCB-GVN-ROG-MIKU-9800X3D-5080"
+      },
+      {
+        "Id": 128,
+        "Name": "PC GVN Intel i7-14700F/VGA RTX 3050",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-i7-14700f-rtx3050/thumb.jpg",
+        "SKU": "PCB-GVN-I7-14700F-RTX3050"
+      },
+      {
+        "Id": 129,
+        "Name": "PC GVN Intel i5-14400F/VGA RTX 5060 Ti",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-i5-14400f-rtx5060ti/thumb.jpg",
+        "SKU": "PCB-GVN-I5-14400F-RTX5060TI"
+      },
+      {
+        "Id": 130,
+        "Name": "PC GVN AMD R5-5600X/VGA RX 7600",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-r5-5600x-rx7600/thumb.jpg",
+        "SKU": "PCB-GVN-R5-5600X-RX7600"
+      },
+      {
+        "Id": 131,
+        "Name": "PC GVN Intel Ultra 5 225F/VGA ARC B580 (DDR5)",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-ultra5-225f-arc-b580-ddr5/thumb.jpg",
+        "SKU": "PCB-GVN-U5-225F-ARCB580"
+      },
+      {
+        "Id": 132,
+        "Name": "PC GVN Intel Core Ultra 7 265F/VGA RTX 5080",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-ultra7-265f-rtx5080/thumb.jpg",
+        "SKU": "PCB-GVN-U7-265F-RTX5080"
+      },
+      {
+        "Id": 133,
+        "Name": "PC GVN Intel Core Ultra 7 265F/VGA RTX 5070",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-ultra7-265f-rtx5070/thumb.jpg",
+        "SKU": "PCB-GVN-U7-265F-RTX5070"
+      },
+      {
+        "Id": 134,
+        "Name": "PC GVN AMD R7-9800X3D/VGA RTX 5080 (Powered by MSI)",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-r7-9800x3d-rtx5080-powered-by-msi/thumb.jpg",
+        "SKU": "PCB-GVN-R7-9800X3D-RTX5080-MSI"
+      },
+      {
+        "Id": 135,
+        "Name": "PC GVN Intel i7-14700F/VGA RTX 5080",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-i7-14700f-rtx5080/thumb.jpg",
+        "SKU": "PCB-GVN-I7-14700F-RTX5080"
+      },
+      {
+        "Id": 136,
+        "Name": "Intel Core Ultra 9 285K",
+        "ThumbnailUrl": "/uploads/products/cpu/intel-core-ultra-9-285k/thumb.jpg",
+        "SKU": "CPU-INTEL-U9-285K"
+      },
+      {
+        "Id": 137,
+        "Name": "ASUS TUF Gaming GeForce RTX 5090 32G",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-tuf-rtx-5090-32g/thumb.jpg",
+        "SKU": "GPU-ASUS-RTX-5090-32G"
+      },
+      {
+        "Id": 138,
+        "Name": "ASUS ROG Strix GeForce RTX 5080 16G",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-rog-rtx-5080-16g/thumb.jpg",
+        "SKU": "GPU-ASUS-RTX-5080-16G"
+      },
+      {
+        "Id": 139,
+        "Name": "Corsair Dominator Titanium Black 32GB 6000MHz",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-dominator-titanium-black-32gb-6000-cmp32gx5m2b6000c30/thumb.jpg",
+        "SKU": "RAM-CORSAIR-TITAN-32-6000"
+      },
+      {
+        "Id": 140,
+        "Name": "G.Skill Trident Z5 RGB 32GB 5600MHz",
+        "ThumbnailUrl": "/uploads/products/ram/gskill-trident-z5-rgb-32gb-5600-f5-5600j4040c16gx2-tz5rs/thumb.jpg",
+        "SKU": "RAM-GSKILL-TRIDENT-32-5600"
+      },
+      {
+        "Id": 141,
+        "Name": "Samsung 27\u0022 QHD 180Hz IPS Gaming",
+        "ThumbnailUrl": "/uploads/products/monitor/samsung-27q180-ips-gaming/thumb.jpg",
+        "SKU": "MON-SAMSUNG-27Q180"
+      },
+      {
+        "Id": 142,
+        "Name": "GVN ROG HATSUNE MIKU 9800X3D RTX 5080",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-rog-hatsune-miku-9800x3d-rtx5080/thumb.jpg",
+        "SKU": "PC-GVN-ROG-HATSUNE-MIKU"
+      },
+      {
+        "Id": 143,
+        "Name": "GVN G-Soldier 14700F RTX 5080",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-i7-14700f-rtx5080/thumb.jpg",
+        "SKU": "PC-GVN-I7-RTX5080"
+      },
+      {
+        "Id": 144,
+        "Name": "GVN Ultra 7 265F RTX 5070",
+        "ThumbnailUrl": "/uploads/products/pc-build/gvn-ultra7-265f-rtx5070/thumb.jpg",
+        "SKU": "PC-GVN-ULTRA7-RTX5070"
+      },
+      {
+        "Id": 145,
+        "Name": "Logitech G913 TKL Lightspeed Wireless",
+        "ThumbnailUrl": "/uploads/products/keyboard/ban-phim-logitech-g913-tkl-lightspeed-wireless-clicky/thumb.jpg",
+        "SKU": "KB-LOGITECH-G913-TKL"
+      },
+      {
+        "Id": 146,
+        "Name": "Razer BlackWidow V4 Pro Green Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/ban-phim-co-razer-blackwidow-v4-pro-green-switch/thumb.jpg",
+        "SKU": "KB-RAZER-BW-V4-PRO"
+      },
+      {
+        "Id": 147,
+        "Name": "Logitech G502X Plus Wireless White",
+        "ThumbnailUrl": "/uploads/products/mouse/logitech-g502x-plus-white/thumb.jpg",
+        "SKU": "MS-LOGITECH-G502X-PLUS"
+      },
+      {
+        "Id": 148,
+        "Name": "Razer DeathAdder V3 Pro Wireless Black",
+        "ThumbnailUrl": "/uploads/products/mouse/razer-wireless-black/thumb.jpg",
+        "SKU": "MS-RAZER-WIRELESS"
+      },
+      {
+        "Id": 149,
+        "Name": "MSI Prestige 16 AI Mercedes AMG B2VMG",
+        "ThumbnailUrl": "/uploads/products/laptop/msi-prestige-16-ai-mercedes-amg-b2vmg-088vn/thumb.jpg",
+        "SKU": "LAP-MSI-PRESTIGE-AMG"
+      },
+      {
+        "Id": 150,
+        "Name": "Lenovo Legion Pro 7 16IAX10H",
+        "ThumbnailUrl": "/uploads/products/laptop/lenovo-legion-pro-7-16iax10h-83f500jgvn/thumb.jpg",
+        "SKU": "LAP-LENOVO-LEGION-PRO-7"
+      }
+    ]
+  },
+  "message": "Successfully read records for entity \u0027dbo_Products\u0027",
+  "status": "success"
+}

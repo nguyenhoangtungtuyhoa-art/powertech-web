@@ -10,7 +10,7 @@
     @if (Model.CartItems == null || !Model.CartItems.Any())
     {
         <div class="text-center py-5 shadow-sm rounded-4 bg-white border border-soft">
-            <img src="https://placehold.co/200x200?text=Empty+Cart" alt="Empty Cart" class="mb-4 opacity-75">
+            <img src="/images/no-image.png" alt="Empty Cart" class="mb-4 opacity-75">
             <h3 class="h4">Giỏ hàng đang trống</h3>
             <p class="text-muted mb-4">Hãy thêm một vài linh kiện để tiếp tục mua sắm nhé!</p>
             <a asp-area="Store" asp-controller="Home" asp-action="Index" class="btn btn-primary px-5 py-3 rounded-pill fw-bold">TIẾP TỤC MUA SẮM</a>
@@ -39,7 +39,7 @@
                                     <td class="ps-4">
                                         <div class="d-flex align-items-center">
                                             <div class="rounded-3 border border-soft p-1 me-3 shadow-sm" style="width: 70px; height: 70px;">
-                                                <img src="@(string.IsNullOrEmpty(item.Product.ThumbnailUrl) ? "https://placehold.co/60x60" : item.Product.ThumbnailUrl)" 
+                                                <img src="@(string.IsNullOrEmpty(item.Product.ThumbnailUrl) ? "/images/no-image.png" : item.Product.ThumbnailUrl)" 
                                                      class="w-100 h-100 object-fit-contain" alt="@item.Product.Name">
                                             </div>
                                             <div>
