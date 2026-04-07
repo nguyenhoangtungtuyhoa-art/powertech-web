@@ -24,26 +24,71 @@ namespace PowerTech.Areas.Store.Controllers
                 FeaturedCategories = await _context.Categories
                     .Where(c => c.IsActive && c.ParentCategoryId == null)
                     .OrderBy(c => c.DisplayOrder)
-                    .Take(8)
                     .ToListAsync(),
 
                 FeaturedProducts = await _context.Products
+                    .Include(p => p.ProductSpecifications)
                     .Where(p => p.IsActive)
-                    .OrderByDescending(p => p.IsFeatured)
-                    .ThenByDescending(p => p.CreatedAt)
-                    .Take(10)
+                    .OrderBy(p => Guid.NewGuid()) 
+                    .Take(15) 
                     .ToListAsync(),
 
                 NewProducts = await _context.Products
+                    .Include(p => p.ProductSpecifications)
                     .Where(p => p.IsActive)
                     .OrderByDescending(p => p.CreatedAt)
-                    .Take(10)
+                    .Take(20)
+                    .OrderBy(p => Guid.NewGuid()) 
+                    .Take(15)
                     .ToListAsync(),
 
                 DiscountProducts = await _context.Products
+                    .Include(p => p.ProductSpecifications)
                     .Where(p => p.IsActive && p.DiscountPrice.HasValue)
                     .OrderByDescending(p => (p.Price - p.DiscountPrice) / p.Price)
-                    .Take(10)
+                    .Take(20)
+                    .OrderBy(p => Guid.NewGuid()) 
+                    .Take(15)
+                    .ToListAsync(),
+
+                TopBrands = await _context.Brands
+                    .OrderBy(b => Guid.NewGuid())
+                    .Take(12)
+                    .ToListAsync(),
+
+                CategorySections = await _context.Categories
+                    .Where(c => c.IsActive && c.ParentCategoryId == null)
+                    .OrderBy(c => c.DisplayOrder)
+                    .Select(c => new CategorySection
+                    {
+                        Category = c,
+                        Products = _context.Products
+                            .Include(p => p.ProductSpecifications)
+                            .Where(p => p.IsActive && (p.CategoryId == c.Id || p.Category.ParentCategoryId == c.Id))
+                            .OrderBy(p => Guid.NewGuid()) 
+                            .Take(10)
+                            .ToList()
+                    })
+                    .Where(cs => cs.Products.Any())
+                    .ToListAsync(),
+
+                MenuCategories = await _context.Categories
+                    .Where(c => c.IsActive && c.ParentCategoryId == null)
+                    .OrderBy(c => c.DisplayOrder)
+                    .Select(c => new MenuCategory
+                    {
+                        Category = c,
+                        Children = _context.Categories
+                            .Where(child => child.ParentCategoryId == c.Id && child.IsActive)
+                            .OrderBy(child => child.DisplayOrder)
+                            .ToList(),
+                        Brands = _context.Products
+                            .Where(p => p.IsActive && (p.CategoryId == c.Id || p.Category.ParentCategoryId == c.Id))
+                            .Select(p => p.Brand)
+                            .Distinct()
+                            .Take(8)
+                            .ToList()
+                    })
                     .ToListAsync()
             };
 
@@ -56,11 +101,6 @@ namespace PowerTech.Areas.Store.Controllers
             {
                 return View("NotFound");
             }
-            return View();
-        }
-
-        public IActionResult AccessDenied()
-        {
             return View();
         }
     }

@@ -11,6 +11,7 @@ namespace PowerTech.Areas.Store.Controllers
     {
         private readonly ICartService _cartService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private const string ANONYMOUS_CART_COOKIE = "PT_GuestCartId";
 
         public CartController(ICartService cartService, UserManager<ApplicationUser> userManager)
         {
@@ -18,39 +19,52 @@ namespace PowerTech.Areas.Store.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        private async Task<string> GetCartOwnerIdAsync()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+            if (user != null)
             {
-                return RedirectToPage("/Account/Login", new { area = "Identity", returnUrl = "/Store/Cart" });
+                return user.Id;
             }
 
-            var cart = await _cartService.GetCartAsync(user.Id);
+            // Dùng AnonymousId từ Cookie
+            if (Request.Cookies.ContainsKey(ANONYMOUS_CART_COOKIE))
+            {
+                return Request.Cookies[ANONYMOUS_CART_COOKIE]!;
+            }
+
+            // Tạo mới nếu chưa có
+            var guestId = Guid.NewGuid().ToString();
+            var options = new CookieOptions { 
+                Expires = DateTime.Now.AddDays(30), 
+                HttpOnly = true, 
+                IsEssential = true 
+            };
+            Response.Cookies.Append(ANONYMOUS_CART_COOKIE, guestId, options);
+            return guestId;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var cartOwnerId = await GetCartOwnerIdAsync();
+            var cart = await _cartService.GetCartAsync(cartOwnerId);
             return View(cart);
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(int productId, int quantity = 1)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Json(new { success = false, message = "Vui lòng đăng nhập để thêm vào giỏ hàng." });
-            }
-
-            var count = await _cartService.AddToCartAsync(user.Id, productId, quantity);
+            var cartOwnerId = await GetCartOwnerIdAsync();
+            var count = await _cartService.AddToCartAsync(cartOwnerId, productId, quantity);
             return Json(new { success = true, count = count, message = "Đã thêm vào giỏ hàng thành công!" });
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateQuantity(int productId, int quantity)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Unauthorized();
-
-            var success = await _cartService.UpdateQuantityAsync(user.Id, productId, quantity);
-            var cart = await _cartService.GetCartAsync(user.Id);
+            var cartOwnerId = await GetCartOwnerIdAsync();
+            var success = await _cartService.UpdateQuantityAsync(cartOwnerId, productId, quantity);
+            var cart = await _cartService.GetCartAsync(cartOwnerId);
             
             return Json(new { 
                 success = success, 
@@ -62,20 +76,16 @@ namespace PowerTech.Areas.Store.Controllers
         [HttpPost]
         public async Task<IActionResult> Remove(int productId)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Unauthorized();
-
-            var success = await _cartService.RemoveFromCartAsync(user.Id, productId);
+            var cartOwnerId = await GetCartOwnerIdAsync();
+            var success = await _cartService.RemoveFromCartAsync(cartOwnerId, productId);
             return Json(new { success = success });
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCartCount()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Json(0);
-
-            var count = await _cartService.GetCartItemCountAsync(user.Id);
+            var cartOwnerId = await GetCartOwnerIdAsync();
+            var count = await _cartService.GetCartItemCountAsync(cartOwnerId);
             return Json(count);
         }
     }

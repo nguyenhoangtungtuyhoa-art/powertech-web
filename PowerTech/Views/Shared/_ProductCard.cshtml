@@ -1,7 +1,7 @@
 @model PowerTech.Models.Entities.Product
 
-<div class="product-card">
-    <a asp-area="Store" asp-controller="Product" asp-action="Detail" asp-route-slug="@Model.Slug" class="text-decoration-none">
+<div class="product-card h-100">
+    <a asp-area="Store" asp-controller="Product" asp-action="Detail" asp-route-slug="@Model.Slug" class="text-decoration-none h-100 d-flex flex-column">
         <div class="product-img-wrapper">
             <img src="@(string.IsNullOrEmpty(Model.ThumbnailUrl) ? "/images/no-image.png" : Model.ThumbnailUrl)" 
                  class="product-img" alt="@Model.Name" loading="lazy">
@@ -17,40 +17,52 @@
             {
                 <div class="product-badge featured">HOT</div>
             }
+
         </div>
         
-        <div class="product-info">
+        <div class="product-info d-flex flex-column flex-grow-1">
             <h3 class="product-name" title="@Model.Name">@Model.Name</h3>
             
-            <div class="product-pricing">
-                @if (Model.DiscountPrice.HasValue)
-                {
-                    <div class="price-new">@Model.DiscountPrice.Value.ToString("N0")₫</div>
-                    <div class="price-old">@Model.Price.ToString("N0")₫</div>
-                }
-                else
-                {
-                    <div class="price-new">@Model.Price.ToString("N0")₫</div>
-                }
-            </div>
+            @if (Model.ProductSpecifications != null && Model.ProductSpecifications.Any())
+            {
+                <div class="product-specs mb-3">
+                    @foreach (var spec in Model.ProductSpecifications.Where(s => !string.IsNullOrEmpty(s.DisplayValue)).Take(4))
+                    {
+                        <div class="spec-item text-truncate" title="@spec.DisplayValue">
+                            <i class="fa-solid fa-microchip text-muted me-1" style="font-size: 10px;"></i>
+                            @spec.DisplayValue
+                        </div>
+                    }
+                </div>
+            }
             
-            <div class="product-footer mt-auto">
-                @if (Model.StockQuantity > 0)
-                {
-                    <span class="stock-status in-stock">
-                        <i class="fa-solid fa-check-circle"></i> Sẵn hàng
-                    </span>
-                    <button type="button" class="btn btn-sm btn-primary rounded-pill quick-add-btn" 
-                            onclick="event.preventDefault(); quickAddToCart(@Model.Id)" title="Thêm vào giỏ">
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </button>
-                }
-                else
-                {
-                    <span class="stock-status out-of-stock">
-                        <i class="fa-solid fa-times-circle"></i> Hết hàng
-                    </span>
-                }
+            <div class="mt-auto">
+                <div class="product-pricing">
+                    @if (Model.DiscountPrice.HasValue)
+                    {
+                        <div class="price-old text-decoration-line-through">@Model.Price.ToString("N0")₫</div>
+                        <div class="price-new">@Model.DiscountPrice.Value.ToString("N0")₫</div>
+                    }
+                    else
+                    {
+                        <div class="price-new">@Model.Price.ToString("N0")₫</div>
+                    }
+                </div>
+                
+                <div class="product-footer mt-2 border-top pt-2 d-flex justify-content-between align-items-center">
+                    @if (Model.StockQuantity > 0)
+                    {
+                        <span class="stock-status in-stock text-success">
+                            <i class="fa-solid fa-check me-1"></i> Còn hàng
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="stock-status out-of-stock text-danger">
+                            <i class="fa-solid fa-phone me-1"></i> Liên hệ
+                        </span>
+                    }
+                </div>
             </div>
         </div>
     </a>

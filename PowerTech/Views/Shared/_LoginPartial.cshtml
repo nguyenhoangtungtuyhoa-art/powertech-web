@@ -3,33 +3,38 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav align-items-center gap-2">
+<div class="user-action d-flex align-items-center gap-3">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link p-0 text-white" asp-area="Customer" asp-controller="Profile" asp-action="Index" title="Hồ sơ">
-            <i class="fa-regular fa-circle-user me-1"></i> @User.Identity?.Name!
+    <div class="dropdown">
+        <a class="action-item dropdown-toggle no-caret d-flex align-items-center gap-2 text-white text-decoration-none border-0 bg-transparent p-0" 
+           href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-circle-user fs-4"></i>
+            <div class="d-flex flex-column text-start d-none d-lg-flex">
+                <span class="lh-1" style="font-size: 11px;">Xin chào</span>
+                <span class="lh-1 fw-bold text-truncate" style="font-size: 13px; max-width: 100px;">@User.Identity?.Name</span>
+            </div>
         </a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Store" })">
-            <button type="submit" class="nav-link btn btn-link p-0 text-white" style="font-size: 13px;">
-                <i class="fa-solid fa-right-from-bracket ms-2"></i> Đăng xuất
-            </button>
-        </form>
-    </li>
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 mt-3" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item py-2" asp-area="Customer" asp-controller="Profile" asp-action="Index"><i class="fa-solid fa-user me-2"></i> Hồ sơ của tôi</a></li>
+            <li><a class="dropdown-item py-2" asp-area="Customer" asp-controller="Order" asp-action="Index"><i class="fa-solid fa-box-open me-2"></i> Đơn hàng</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Store" })">
+                    <button type="submit" class="dropdown-item py-2 text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</button>
+                </form>
+            </li>
+        </ul>
+    </div>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link p-0 text-white" asp-area="Identity" asp-page="/Account/Login" style="font-size: 13px;">
-            <i class="fa-solid fa-lock me-1"></i> Đăng nhập
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link p-0 text-white" asp-area="Identity" asp-page="/Account/Register" style="font-size: 13px;">
-             Đăng ký
-        </a>
-    </li>
+    <a asp-area="Identity" asp-page="/Account/Login" class="action-item d-flex align-items-center gap-2 text-white text-decoration-none">
+        <i class="fa-regular fa-circle-user fs-4"></i>
+        <div class="d-flex flex-column text-start d-none d-lg-flex">
+            <span class="lh-1" style="font-size: 11px;">Đăng nhập</span>
+            <span class="lh-1 fw-bold" style="font-size: 13px;">Đăng ký</span>
+        </div>
+    </a>
 }
-</ul>
+</div>

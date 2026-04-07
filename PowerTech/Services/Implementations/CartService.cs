@@ -14,16 +14,27 @@ namespace PowerTech.Services.Implementations
             _context = context;
         }
 
-        public async Task<Cart> GetCartAsync(string userId)
+        public async Task<Cart> GetCartAsync(string ownerId)
         {
             var cart = await _context.Carts
                 .Include(c => c.CartItems)
                     .ThenInclude(ci => ci.Product)
-                .FirstOrDefaultAsync(c => c.UserId == userId);
+                .FirstOrDefaultAsync(c => c.UserId == ownerId || c.CookieId == ownerId);
 
             if (cart == null)
             {
-                cart = new Cart { UserId = userId };
+                var isUser = await _context.Users.AnyAsync(u => u.Id == ownerId);
+                cart = new Cart();
+
+                if (isUser)
+                {
+                    cart.UserId = ownerId;
+                }
+                else
+                {
+                    cart.CookieId = ownerId;
+                }
+
                 _context.Carts.Add(cart);
                 await _context.SaveChangesAsync();
             }
@@ -106,11 +117,11 @@ namespace PowerTech.Services.Implementations
             return false;
         }
 
-        public async Task<int> GetCartItemCountAsync(string userId)
+        public async Task<int> GetCartItemCountAsync(string ownerId)
         {
             var cart = await _context.Carts
                 .Include(c => c.CartItems)
-                .FirstOrDefaultAsync(c => c.UserId == userId);
+                .FirstOrDefaultAsync(c => c.UserId == ownerId || c.CookieId == ownerId);
                 
             return cart?.CartItems.Sum(ci => ci.Quantity) ?? 0;
         }
