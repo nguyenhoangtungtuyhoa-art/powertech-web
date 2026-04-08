@@ -69,8 +69,8 @@
                             <td class="small text-muted">@o.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
                             <td class="fw-bold">@o.TotalAmount.ToString("N0")₫</td>
                             <td>
-                                <span class="badge @GetStatusBadge(o.OrderStatus) rounded-pill px-3">
-                                    @o.OrderStatus
+                                <span class="badge @OrderHelper.GetStatusBadgeClass(o.OrderStatus) rounded-pill px-3">
+                                    @OrderHelper.GetStatusDisplayName(o.OrderStatus)
                                 </span>
                             </td>
                             <td>
@@ -96,17 +96,4 @@
     </div>
 </div>
 
-@functions {
-    string GetStatusBadge(string status)
-    {
-        return status switch
-        {
-            "Pending" => "bg-soft-warning text-warning",
-            "Processing" => "bg-soft-info text-info",
-            "Shipped" => "bg-soft-primary text-primary",
-            "Delivered" => "bg-success text-white",
-            "Cancelled" => "bg-soft-danger text-danger",
-            _ => "bg-soft-secondary text-secondary"
-        };
-    }
-}
+

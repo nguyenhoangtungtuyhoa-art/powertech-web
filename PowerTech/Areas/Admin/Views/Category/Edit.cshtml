@@ -18,7 +18,7 @@
     <div class="col-lg-8">
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="card-body p-4 p-md-5">
-                <form asp-action="Edit" method="post">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" />
                     <input type="hidden" asp-for="CreatedAt" />
                     <div asp-validation-summary="ModelOnly" class="text-danger small mb-4"></div>
@@ -64,6 +64,32 @@
                         </div>
 
                         <div class="col-12">
+                            <label class="form-label fw-bold">Tải lên Ảnh/Icon mới</label>
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="flex-grow-1">
+                                    <input type="file" name="imageFile" class="form-control" accept="image/*" onchange="previewImage(this)" />
+                                    <p class="text-muted small mt-1">Gợi ý: Nếu không tải lên, hệ thống sẽ giữ ảnh cũ hoặc tìm theo Slug.</p>
+                                </div>
+                                <div id="imagePreview" class="border rounded p-1 text-center" style="width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
+                                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                                    {
+                                        <img src="@Model.ImageUrl" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-image text-muted fa-2x"></i>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="ImageUrl" class="form-label fw-bold">Hoặc nhập Đường dẫn ảnh (URL)</label>
+                            <input asp-for="ImageUrl" class="form-control" placeholder="/uploads/categories/ten-anh.png hoặc URL ảnh online" />
+                            <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12">
                             <label asp-for="Description" class="form-label fw-bold">Mô tả danh mục</label>
                             <textarea asp-for="Description" class="form-control" rows="3" placeholder="Thông tin tóm tắt về sản phẩm thuộc danh mục này..."></textarea>
                             <span asp-validation-for="Description" class="text-danger small"></span>
@@ -94,6 +120,17 @@
                 .replace(/-+/g, "-")
                 .replace(/^-+|-+$/g, "");
             document.getElementById('inputSlug').value = slug;
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var preview = document.getElementById('imagePreview');
+                    preview.innerHTML = '<img src="' + e.target.result + '" style="max-width: 100%; max-height: 100%; object-fit: contain;" />';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 }

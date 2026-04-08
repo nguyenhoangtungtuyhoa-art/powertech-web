@@ -11,7 +11,7 @@ namespace PowerTech.Models.ViewModels.Store
         // Filter values
         public string? Query { get; set; }
         public int? CategoryId { get; set; }
-        public int? BrandId { get; set; }
+        public List<int> BrandIds { get; set; } = new List<int>();
         public decimal? MinPrice { get; set; }
         public decimal? MaxPrice { get; set; }
         public string? SortOrder { get; set; }

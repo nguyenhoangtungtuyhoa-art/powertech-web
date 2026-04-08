@@ -51,30 +51,9 @@ else
                         <td class="text-muted small">@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
                         <td class="text-end fw-bold text-danger">@order.TotalAmount.ToString("N0")₫</td>
                         <td class="text-center">
-                            @{
-                                var badgeClass = order.OrderStatus switch
-                                {
-                                    "Pending" => "bg-warning",
-                                    "Processing" => "bg-info",
-                                    "Shipping" => "bg-primary",
-                                    "Completed" => "bg-success",
-                                    "Cancelled" => "bg-danger",
-                                    "Returned" => "bg-dark",
-                                    _ => "bg-secondary"
-                                };
-
-                                var statusText = order.OrderStatus switch
-                                {
-                                    "Pending" => "Chờ xác nhận",
-                                    "Processing" => "Đang xử lý",
-                                    "Shipping" => "Đang giao hàng",
-                                    "Completed" => "Hoàn tất",
-                                    "Cancelled" => "Đã hủy",
-                                    "Returned" => "Trả hàng",
-                                    _ => order.OrderStatus
-                                };
-                            }
-                            <span class="badge @badgeClass rounded-pill px-3 py-2 fw-normal">@statusText</span>
+                            <span class="badge @OrderHelper.GetStatusBadgeClass(order.OrderStatus) rounded-pill px-3 py-2 fw-normal">
+                                @OrderHelper.GetStatusDisplayName(order.OrderStatus)
+                            </span>
                         </td>
                         <td class="text-end">
                             <a asp-action="Detail" asp-route-id="@order.Id" class="btn btn-sm btn-outline-secondary px-3 py-1 fw-bold">

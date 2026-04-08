@@ -48,7 +48,7 @@ dotnet restore
 dotnet build
 dotnet run
 dotnet watch run
-dotnet clean
+dotnet clean && dotnet restore && dotnet build
 
 🔑 Thông tin Đăng nhập Admin (Mặc định):
 Tài khoản: admin@powertech.com

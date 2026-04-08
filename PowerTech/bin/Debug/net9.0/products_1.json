@@ -1,0 +1,610 @@
+{
+  "entity": "dbo_Products",
+  "result": {
+    "value": [
+      {
+        "Id": 1,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD Intel Core Ultra 5 245K",
+        "ThumbnailUrl": "/uploads/products/cpu/intel-core-ultra-5-245k/thumb.jpg",
+        "SKU": "CPU-INTEL-CU5-245K"
+      },
+      {
+        "Id": 2,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD Intel Core Ultra 7 265K",
+        "ThumbnailUrl": "/uploads/products/cpu/intel-core-ultra-7-265k/thumb.jpg",
+        "SKU": "CPU-INTEL-CU7-265K"
+      },
+      {
+        "Id": 3,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD Intel Core Ultra 9 285K",
+        "ThumbnailUrl": "/uploads/products/cpu/intel-core-ultra-9-285k/thumb.jpg",
+        "SKU": "CPU-INTEL-CU9-285K"
+      },
+      {
+        "Id": 4,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD Intel Core i3 14100",
+        "ThumbnailUrl": "/uploads/products/cpu/intel-core-i3-14100/thumb.jpg",
+        "SKU": "CPU-INTEL-I3-14100"
+      },
+      {
+        "Id": 5,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Ryzen 3 4300G",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-ryzen-3-4300g/thumb.jpg",
+        "SKU": "CPU-AMD-R3-4300G"
+      },
+      {
+        "Id": 6,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Ryzen 5 7600",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-ryzen-5-7600/thumb.jpg",
+        "SKU": "CPU-AMD-R5-7600"
+      },
+      {
+        "Id": 7,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Ryzen 7 9700X",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-ryzen-7-9700x/thumb.jpg",
+        "SKU": "CPU-AMD-R7-9700X"
+      },
+      {
+        "Id": 8,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Ryzen 9 9950X",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-ryzen-9-9950x/thumb.jpg",
+        "SKU": "CPU-AMD-R9-9950X"
+      },
+      {
+        "Id": 9,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Athlon 3000G",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-athlon-3000g/thumb.jpg",
+        "SKU": "CPU-AMD-ATHLON-3000G"
+      },
+      {
+        "Id": 10,
+        "Name": "B\u1ED9 vi x\u1EED l\u00FD AMD Ryzen 9 9950X TRAY",
+        "ThumbnailUrl": "/uploads/products/cpu/amd-ryzen-9-9950x-tray/thumb.jpg",
+        "SKU": "CPU-AMD-R9-9950X-TRAY"
+      },
+      {
+        "Id": 11,
+        "Name": "Intel Core i5-14400F",
+        "ThumbnailUrl": null,
+        "SKU": "CPU-INTEL-I5-14400F"
+      },
+      {
+        "Id": 12,
+        "Name": "RAM Corsair Vengeance LPX 8GB (1x8GB) 3200 DDR4 Black (CMK8GX4M1E3200C16)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-vengeance-lpx-8gb-3200-cmk8gx4m1e3200c16/thumb.jpg",
+        "SKU": "CMK8GX4M1E3200C16"
+      },
+      {
+        "Id": 13,
+        "Name": "RAM Kingston Fury Beast 8GB 3200 DDR4 RGB Black (KF432C16BBA/8)",
+        "ThumbnailUrl": "/uploads/products/ram/kingston-fury-beast-8gb-3200-kf432c16bba-8/thumb.jpg",
+        "SKU": "KF432C16BBA/8"
+      },
+      {
+        "Id": 14,
+        "Name": "RAM Corsair Dominator Titanium Black 32GB (2x16GB) RGB 6000 DDR5 (CMP32GX5M2B6000C30)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-dominator-titanium-black-32gb-6000-cmp32gx5m2b6000c30/thumb.jpg",
+        "SKU": "CMP32GX5M2B6000C30"
+      },
+      {
+        "Id": 15,
+        "Name": "RAM Corsair Vengeance RGB White 32GB (2x16GB) 5600 DDR5 (CMH32GX5M2B5600C40W)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-vengeance-rgb-white-32gb-5600-cmh32gx5m2b5600c40w/thumb.jpg",
+        "SKU": "CMH32GX5M2B5600C40W"
+      },
+      {
+        "Id": 16,
+        "Name": "RAM Corsair Dominator Titanium White 64GB (2x32GB) RGB 6000 DDR5 (CMP64GX5M2B6000C30W)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-dominator-titanium-white-64gb-6000-cmp64gx5m2b6000c30w/thumb.jpg",
+        "SKU": "CMP64GX5M2B6000C30W"
+      },
+      {
+        "Id": 17,
+        "Name": "RAM TeamGroup T-Force Delta RGB Black 16GB (1x16GB) 3600 DDR4",
+        "ThumbnailUrl": "/uploads/products/ram/teamgroup-tforce-delta-black-16gb-3600/thumb.jpg",
+        "SKU": "RAM-TEAMGROUP-TFORCE-DELTA-16G-3600-BLACK"
+      },
+      {
+        "Id": 18,
+        "Name": "RAM G.Skill Trident Z5 RGB 32GB (2x16GB) 5600 DDR5 Silver CL40 (F5-5600J4040C16GX2-TZ5RS)",
+        "ThumbnailUrl": "/uploads/products/ram/gskill-trident-z5-rgb-32gb-5600-f5-5600j4040c16gx2-tz5rs/thumb.jpg",
+        "SKU": "F5-5600J4040C16GX2-TZ5RS"
+      },
+      {
+        "Id": 19,
+        "Name": "RAM G.Skill Trident Z5 RGB 64GB (2x32GB) 6000 DDR5 Silver (F5-6000J3040G32GX2-TZ5RS)",
+        "ThumbnailUrl": "/uploads/products/ram/gskill-trident-z5-rgb-64gb-6000-f5-6000j3040g32gx2-tz5rs/thumb.jpg",
+        "SKU": "F5-6000J3040G32GX2-TZ5RS"
+      },
+      {
+        "Id": 20,
+        "Name": "RAM Corsair Vengeance RGB 96GB (2x48GB) 5600 DDR5 Black (CMH96GX5M2B5600C40)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-vengeance-rgb-96gb-5600-cmh96gx5m2b5600c40/thumb.jpg",
+        "SKU": "CMH96GX5M2B5600C40"
+      },
+      {
+        "Id": 21,
+        "Name": "RAM Corsair Dominator Titanium Black 96GB (2x48GB) RGB 6600 DDR5 (CMP96GX5M2B6600C32)",
+        "ThumbnailUrl": "/uploads/products/ram/corsair-dominator-titanium-black-96gb-6600-cmp96gx5m2b6600c32/thumb.jpg",
+        "SKU": "CMP96GX5M2B6600C32"
+      },
+      {
+        "Id": 22,
+        "Name": "ASUS ROG Matrix GeForce RTX 4090 24GB GDDR6X",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-rog-matrix-rtx4090-24g/thumb.jpg",
+        "SKU": "GPU-ASUS-ROGMATRIX-RTX4090-24G"
+      },
+      {
+        "Id": 23,
+        "Name": "ASUS GeForce RTX 4070 SUPER 12GB GDDR6X",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-rtx4070-super-12g/thumb.jpg",
+        "SKU": "GPU-ASUS-RTX4070SUPER-12G"
+      },
+      {
+        "Id": 24,
+        "Name": "ASUS TUF Gaming GeForce RTX 5070 Ti 16GB GDDR7",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-tuf-rtx5070ti-16g/thumb.jpg",
+        "SKU": "GPU-ASUS-TUF-RTX5070TI-16G"
+      },
+      {
+        "Id": 25,
+        "Name": "ASUS ROG GeForce RTX 5080 16GB GDDR7",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-rog-rtx5080-16g/thumb.jpg",
+        "SKU": "GPU-ASUS-ROG-RTX5080-16G"
+      },
+      {
+        "Id": 26,
+        "Name": "ASUS TUF Gaming GeForce RTX 5090 32GB GDDR7",
+        "ThumbnailUrl": "/uploads/products/gpu/asus-tuf-rtx5090-32g/thumb.jpg",
+        "SKU": "GPU-ASUS-TUF-RTX5090-32G"
+      },
+      {
+        "Id": 27,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 ASUS ROG MAXIMUS Z890 HERO (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/asus-rog-maximus-z890-hero/thumb.jpg",
+        "SKU": "MB-ASUS-ROG-Z890-HERO"
+      },
+      {
+        "Id": 28,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 ASUS ProArt Z890-CREATOR WIFI (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/asus-proart-z890-creator-wifi/thumb.jpg",
+        "SKU": "MB-ASUS-PROART-Z890-CREATOR-WIFI"
+      },
+      {
+        "Id": 29,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 ASUS ROG MAXIMUS Z890 APEX (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/asus-rog-maximus-z890-apex/thumb.jpg",
+        "SKU": "MB-ASUS-ROG-Z890-APEX"
+      },
+      {
+        "Id": 30,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 GIGABYTE Z890 AORUS ELITE WIFI7 (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/gigabyte-z890-aorus-elite-wifi7/thumb.jpg",
+        "SKU": "MB-GIGABYTE-Z890-AORUS-ELITE-WIFI7"
+      },
+      {
+        "Id": 31,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 GIGABYTE Z890 EAGLE WIFI7 (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/gigabyte-z890-eagle-wifi7/thumb.jpg",
+        "SKU": "MB-GIGABYTE-Z890-EAGLE-WIFI7"
+      },
+      {
+        "Id": 32,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 ASUS ROG MAXIMUS Z890 EXTREME (DDR5)",
+        "ThumbnailUrl": "/uploads/products/mainboard/asus-rog-maximus-z890-extreme/thumb.jpg",
+        "SKU": "MB-ASUS-ROG-Z890-EXTREME"
+      },
+      {
+        "Id": 33,
+        "Name": "Bo m\u1EA1ch ch\u1EE7 GIGABYTE H610M-H V3 (DDR4)",
+        "ThumbnailUrl": "/uploads/products/mainboard/gigabyte-h610m-h-v3-ddr4/thumb.jpg",
+        "SKU": "MB-GIGABYTE-H610M-H-V3-DDR4"
+      },
+      {
+        "Id": 34,
+        "Name": "\u1ED4 c\u1EE9ng SSD Samsung 9100 PRO NVMe M.2 1TB Gen5",
+        "ThumbnailUrl": "/uploads/products/storage/samsung-9100-pro-1tb/thumb.jpg",
+        "SKU": "SSD-SAMSUNG-9100PRO-1TB"
+      },
+      {
+        "Id": 35,
+        "Name": "\u1ED4 c\u1EE9ng SSD Samsung 990 PRO 2TB M.2 PCIe Gen4 NVMe",
+        "ThumbnailUrl": "/uploads/products/storage/samsung-990-pro-2tb/thumb.jpg",
+        "SKU": "SSD-SAMSUNG-990PRO-2TB"
+      },
+      {
+        "Id": 36,
+        "Name": "\u1ED4 c\u1EE9ng SSD Kingston NV3 500GB M.2 PCIe NVMe Gen4",
+        "ThumbnailUrl": "/uploads/products/storage/kingston-nv3-500gb/thumb.jpg",
+        "SKU": "SSD-KINGSTON-NV3-500GB"
+      },
+      {
+        "Id": 37,
+        "Name": "\u1ED4 c\u1EE9ng SSD Kingston NV3 1TB M.2 PCIe NVMe Gen4",
+        "ThumbnailUrl": "/uploads/products/storage/kingston-nv3-1tb/thumb.jpg",
+        "SKU": "SSD-KINGSTON-NV3-1TB"
+      },
+      {
+        "Id": 38,
+        "Name": "\u1ED4 c\u1EE9ng SSD Kingston NV3 2TB M.2 PCIe NVMe Gen4",
+        "ThumbnailUrl": "/uploads/products/storage/kingston-nv3-2tb/thumb.jpg",
+        "SKU": "SSD-KINGSTON-NV3-2TB"
+      },
+      {
+        "Id": 39,
+        "Name": "\u1ED4 c\u1EE9ng HDD Seagate Barracuda 2TB",
+        "ThumbnailUrl": "/uploads/products/storage/seagate-barracuda-2tb/thumb.jpg",
+        "SKU": "HDD-SEAGATE-BARRACUDA-2TB"
+      },
+      {
+        "Id": 40,
+        "Name": "\u1ED4 c\u1EE9ng HDD WD Blue 6TB 5400RPM",
+        "ThumbnailUrl": "/uploads/products/storage/wd-blue-6tb-5400rpm/thumb.jpg",
+        "SKU": "HDD-WD-BLUE-6TB"
+      },
+      {
+        "Id": 41,
+        "Name": "\u1ED4 c\u1EE9ng HDD WD Blue 4TB",
+        "ThumbnailUrl": "/uploads/products/storage/wd-blue-4tb/thumb.jpg",
+        "SKU": "HDD-WD-BLUE-4TB"
+      },
+      {
+        "Id": 42,
+        "Name": "\u1ED4 c\u1EE9ng HDD WD Blue 2TB 7200RPM",
+        "ThumbnailUrl": "/uploads/products/storage/wd-blue-2tb-7200rpm/thumb.jpg",
+        "SKU": "HDD-WD-BLUE-2TB-7200"
+      },
+      {
+        "Id": 43,
+        "Name": "\u1ED4 c\u1EE9ng HDD WD Blue 1TB",
+        "ThumbnailUrl": "/uploads/products/storage/wd-blue-1tb/thumb.jpg",
+        "SKU": "HDD-WD-BLUE-1TB"
+      },
+      {
+        "Id": 44,
+        "Name": "Ngu\u1ED3n m\u00E1y t\u00EDnh ASUS ROG Thor 850P 80 Plus Platinum Full Modular 850W",
+        "ThumbnailUrl": "/uploads/products/psu/asus-rog-thor-850p/thumb.jpg",
+        "SKU": "PSU-ASUS-ROG-THOR-850P"
+      },
+      {
+        "Id": 45,
+        "Name": "Ngu\u1ED3n m\u00E1y t\u00EDnh ASUS ROG Thor 1200P2 80 Plus Platinum Full Modular 1200W",
+        "ThumbnailUrl": "/uploads/products/psu/asus-rog-thor-1200p2/thumb.jpg",
+        "SKU": "PSU-ASUS-ROG-THOR-1200P2"
+      },
+      {
+        "Id": 46,
+        "Name": "Ngu\u1ED3n m\u00E1y t\u00EDnh ASUS ROG Strix 1000W AURA Edition 80 Plus Gold Full Modular",
+        "ThumbnailUrl": "/uploads/products/psu/asus-rog-strix-1000w-aura/thumb.jpg",
+        "SKU": "PSU-ASUS-ROG-STRIX-1000-AURA"
+      },
+      {
+        "Id": 47,
+        "Name": "Ngu\u1ED3n m\u00E1y t\u00EDnh GIGABYTE UD850GM PG5 80 Plus Gold Full Modular 850W",
+        "ThumbnailUrl": "/uploads/products/psu/gigabyte-ud850gm-pg5/thumb.jpg",
+        "SKU": "PSU-GIGABYTE-UD850GM-PG5"
+      },
+      {
+        "Id": 48,
+        "Name": "Ngu\u1ED3n m\u00E1y t\u00EDnh ASUS ROG Thor 1600T3 ATX 3.1 PCIe 5.0 80 Plus Titanium Full Modular 1600W",
+        "ThumbnailUrl": "/uploads/products/psu/asus-rog-thor-1600t3/thumb.jpg",
+        "SKU": "PSU-ASUS-ROG-THOR-1600T3"
+      },
+      {
+        "Id": 49,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Corsair 6500X TG Mid-Tower White (CC-9011258-WW)",
+        "ThumbnailUrl": "/uploads/products/case/corsair-6500x-white/thumb.jpg",
+        "SKU": "CASE-CORSAIR-6500X-WHITE"
+      },
+      {
+        "Id": 50,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Jonsbo Z20 White",
+        "ThumbnailUrl": "/uploads/products/case/jonsbo-z20-white/thumb.jpg",
+        "SKU": "CASE-JONSBO-Z20-WHITE"
+      },
+      {
+        "Id": 51,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Jonsbo Z20 Pink",
+        "ThumbnailUrl": "/uploads/products/case/jonsbo-z20-pink/thumb.jpg",
+        "SKU": "CASE-JONSBO-Z20-PINK"
+      },
+      {
+        "Id": 52,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Cooler Master MASTERBOX TD500 MESH V2 CHUN-LI",
+        "ThumbnailUrl": "/uploads/products/case/cooler-master-td500-v2-chunli/thumb.jpg",
+        "SKU": "CASE-COOLERMASTER-TD500-V2-CHUNLI"
+      },
+      {
+        "Id": 53,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh NZXT H9 Elite White",
+        "ThumbnailUrl": "/uploads/products/case/nzxt-h9-elite-white/thumb.jpg",
+        "SKU": "CASE-NZXT-H9-ELITE-WHITE"
+      },
+      {
+        "Id": 54,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh TRYX Luca L70 Mid Tower Black",
+        "ThumbnailUrl": "/uploads/products/case/tryx-luca-l70-black/thumb.jpg",
+        "SKU": "CASE-TRYX-LUCA-L70-BLACK"
+      },
+      {
+        "Id": 55,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Jonsbo D300 Black",
+        "ThumbnailUrl": "/uploads/products/case/jonsbo-d300-black/thumb.jpg",
+        "SKU": "CASE-JONSBO-D300-BLACK"
+      },
+      {
+        "Id": 56,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Corsair 6500X TG Mid-Tower Black (CC-9011257-WW)",
+        "ThumbnailUrl": "/uploads/products/case/corsair-6500x-black/thumb.jpg",
+        "SKU": "CASE-CORSAIR-6500X-BLACK"
+      },
+      {
+        "Id": 57,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh ASUS ROG Hyperion GR701",
+        "ThumbnailUrl": "/uploads/products/case/asus-rog-hyperion-gr701/thumb.jpg",
+        "SKU": "CASE-ASUS-ROG-HYPERION-GR701"
+      },
+      {
+        "Id": 58,
+        "Name": "V\u1ECF m\u00E1y t\u00EDnh Jonsbo TK3 White",
+        "ThumbnailUrl": "/uploads/products/case/jonsbo-tk3-white/thumb.jpg",
+        "SKU": "CASE-JONSBO-TK3-WHITE"
+      },
+      {
+        "Id": 59,
+        "Name": "M\u00E0n h\u00ECnh Samsung 27Q180 IPS Gaming 27 inch 2K 180Hz",
+        "ThumbnailUrl": "/uploads/products/monitor/samsung-27q180-ips-gaming/thumb.jpg",
+        "SKU": "MON-SAMSUNG-27Q180-IPS"
+      },
+      {
+        "Id": 60,
+        "Name": "M\u00E0n h\u00ECnh MSI 32U QD-OLED Gaming 32 inch 4K",
+        "ThumbnailUrl": "/uploads/products/monitor/msi-32u-qdoled-gaming/thumb.jpg",
+        "SKU": "MON-MSI-32U-QDOLED"
+      },
+      {
+        "Id": 61,
+        "Name": "M\u00E0n h\u00ECnh HKC MB27S9U 27 inch 4K IPS",
+        "ThumbnailUrl": "/uploads/products/monitor/hkc-mb27s9u/thumb.jpg",
+        "SKU": "HKC-MB27S9U"
+      },
+      {
+        "Id": 62,
+        "Name": "M\u00E0n h\u00ECnh Acer 27Q IPS Gaming 27 inch 2K",
+        "ThumbnailUrl": "/uploads/products/monitor/acer-27q-ips-gaming/thumb.jpg",
+        "SKU": "MON-ACER-27Q-IPS"
+      },
+      {
+        "Id": 63,
+        "Name": "M\u00E0n h\u00ECnh AOC 27Q Fast IPS Gaming 27 inch 2K",
+        "ThumbnailUrl": "/uploads/products/monitor/aoc-27q-fastips-gaming/thumb.jpg",
+        "SKU": "MON-AOC-27Q-FASTIPS"
+      },
+      {
+        "Id": 64,
+        "Name": "M\u00E0n h\u00ECnh Gigabyte 32U OLED Gaming 32 inch 4K",
+        "ThumbnailUrl": "/uploads/products/monitor/gigabyte-32u-oled-gaming/thumb.jpg",
+        "SKU": "MON-GIGABYTE-32U-OLED"
+      },
+      {
+        "Id": 65,
+        "Name": "M\u00E0n h\u00ECnh Dell 43U IPS Black 43 inch 4K",
+        "ThumbnailUrl": "/uploads/products/monitor/dell-43u-ips-black-4k/thumb.jpg",
+        "SKU": "MON-DELL-43U-IPSBLACK"
+      },
+      {
+        "Id": 66,
+        "Name": "M\u00E0n h\u00ECnh ViewSonic 27Q Color USB-C 90W 27 inch 2K",
+        "ThumbnailUrl": "/uploads/products/monitor/viewsonic-27q-color-usbc-90w/thumb.jpg",
+        "SKU": "MON-VIEWSONIC-27Q-COLOR-90W"
+      },
+      {
+        "Id": 67,
+        "Name": "M\u00E0n h\u00ECnh ASUS 32U WOLED Dual Mode 32 inch 4K 240Hz",
+        "ThumbnailUrl": "/uploads/products/monitor/asus-32u-woled-dual-mode/thumb.jpg",
+        "SKU": "MON-ASUS-32U-WOLED-DUAL"
+      },
+      {
+        "Id": 68,
+        "Name": "M\u00E0n h\u00ECnh LG 27U Nano IPS Dual Mode 27 inch 4K 240Hz",
+        "ThumbnailUrl": "/uploads/products/monitor/lg-27u-nanoips-dual-mode/thumb.jpg",
+        "SKU": "MON-LG-27U-NANOIPS-DUAL"
+      },
+      {
+        "Id": 69,
+        "Name": "B\u00E0n ph\u00EDm AKKO 5075B Plus Black World Tour VIET NAM",
+        "ThumbnailUrl": "/uploads/products/keyboard/akko-5075b-plus-black-world-tour-viet-nam/thumb.jpg",
+        "SKU": "KB-AKKO-5075B-PLUS-BWTVN"
+      },
+      {
+        "Id": 70,
+        "Name": "B\u00E0n ph\u00EDm AULA F75 c\u00F3 d\u00E2y (Tr\u1EAFng Red switch) F7512",
+        "ThumbnailUrl": "/uploads/products/keyboard/aula-f75-co-day-trang-red-switch-f7512/thumb.jpg",
+        "SKU": "KB-AULA-F75-WHITE-RED"
+      },
+      {
+        "Id": 71,
+        "Name": "B\u00E0n ph\u00EDm c\u01A1 DareU EK75 Rapid Trigger Black",
+        "ThumbnailUrl": "/uploads/products/keyboard/dareu-ek75-rapid-trigger-black/thumb.jpg",
+        "SKU": "KB-DAREU-EK75-RT-BLACK"
+      },
+      {
+        "Id": 72,
+        "Name": "B\u00E0n ph\u00EDm c\u01A1 kh\u00F4ng d\u00E2y Durgod Cavalry 87 Black Kailh Turbo Silent Red Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/durgod-cavalry-87-black-kailh-turbo-silent-red-switch/thumb.jpg",
+        "SKU": "KB-DURGOD-CAVALRY-87-BLACK"
+      },
+      {
+        "Id": 73,
+        "Name": "B\u00E0n ph\u00EDm Corsair K70 PRO Red Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/corsair-k70-pro-red-switch/thumb.jpg",
+        "SKU": "KB-CORSAIR-K70-PRO-RED"
+      },
+      {
+        "Id": 74,
+        "Name": "B\u00E0n ph\u00EDm E-Dra EK3104L Beta Brown Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/e-dra-ek3104l-beta-brown-switch/thumb.jpg",
+        "SKU": "KB-E-DRA-EK3104L-BETA-BROWN"
+      },
+      {
+        "Id": 75,
+        "Name": "B\u00E0n ph\u00EDm Asus ROG Strix Scope II 96 Wireless ROG NX Snow Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/asus-rog-strix-scope-ii-96-wireless-rog-nx-snow-switch/thumb.jpg",
+        "SKU": "KB-ASUS-ROG-SCOPE-II-96-WL-SNOW"
+      },
+      {
+        "Id": 76,
+        "Name": "B\u00E0n ph\u00EDm Logitech G913 TKL Lightspeed Wireless Clicky",
+        "ThumbnailUrl": "/uploads/products/keyboard/logitech-g913-tkl-lightspeed-wireless-clicky/thumb.jpg",
+        "SKU": "KB-LOGITECH-G913-TKL-CLICKY"
+      },
+      {
+        "Id": 77,
+        "Name": "B\u00E0n ph\u00EDm c\u01A1 Razer BlackWidow V4 Pro Green Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/razer-blackwidow-v4-pro-green-switch/thumb.jpg",
+        "SKU": "KB-RAZER-BLACKWIDOW-V4-PRO-GREEN"
+      },
+      {
+        "Id": 78,
+        "Name": "B\u00E0n ph\u00EDm Rapoo V700-A8 Dark Grey Blue Switch",
+        "ThumbnailUrl": "/uploads/products/keyboard/rapoo-v700-a8-dark-grey-blue-switch/thumb.jpg",
+        "SKU": "KB-RAPOO-V700-A8-DARKGREY-BLUE"
+      },
+      {
+        "Id": 79,
+        "Name": "Chu\u1ED9t Logitech G502 HERO Black",
+        "ThumbnailUrl": "/uploads/products/mouse/logitech-g502-hero-black/thumb.jpg",
+        "SKU": "MOU-LOGITECH-G502-HERO-BLACK"
+      },
+      {
+        "Id": 80,
+        "Name": "Chu\u1ED9t Logitech G502 X Plus White",
+        "ThumbnailUrl": "/uploads/products/mouse/logitech-g502x-plus-white/thumb.jpg",
+        "SKU": "MOU-LOGITECH-G502X-PLUS-WHITE"
+      },
+      {
+        "Id": 81,
+        "Name": "Chu\u1ED9t ATK PAW3950 Wireless White",
+        "ThumbnailUrl": "/uploads/products/mouse/atk-paw3950-wireless-white/thumb.jpg",
+        "SKU": "MOU-ATK-PAW3950-WHITE"
+      },
+      {
+        "Id": 82,
+        "Name": "Chu\u1ED9t HyperX 26K Wireless White",
+        "ThumbnailUrl": "/uploads/products/mouse/hyperx-26k-wireless-white/thumb.jpg",
+        "SKU": "MOU-HYPERX-26K-WIRELESS-WHITE"
+      },
+      {
+        "Id": 83,
+        "Name": "Chu\u1ED9t Rapoo 26K Wireless White",
+        "ThumbnailUrl": "/uploads/products/mouse/rapoo-26k-wireless-white/thumb.jpg",
+        "SKU": "MOU-RAPOO-26K-WIRELESS-WHITE"
+      },
+      {
+        "Id": 84,
+        "Name": "Chu\u1ED9t Glorious Wired Black",
+        "ThumbnailUrl": "/uploads/products/mouse/glorious-wired-black/thumb.jpg",
+        "SKU": "MOU-GLORIOUS-WIRED-BLACK"
+      },
+      {
+        "Id": 85,
+        "Name": "Chu\u1ED9t ASUS ROG AimPoint Pro Wireless Black",
+        "ThumbnailUrl": "/uploads/products/mouse/asus-rog-aimpoint-pro-wireless-black/thumb.jpg",
+        "SKU": "MOU-ASUS-ROG-AIMPOINT-PRO-BLACK"
+      },
+      {
+        "Id": 86,
+        "Name": "Chu\u1ED9t DareU BRAVO Wireless Black",
+        "ThumbnailUrl": "/uploads/products/mouse/dareu-bravo-wireless-black/thumb.jpg",
+        "SKU": "MOU-DAREU-BRAVO-WIRELESS-BLACK"
+      },
+      {
+        "Id": 87,
+        "Name": "Chu\u1ED9t Corsair Wireless Black",
+        "ThumbnailUrl": "/uploads/products/mouse/corsair-wireless-black/thumb.jpg",
+        "SKU": "MOU-CORSAIR-WIRELESS-BLACK"
+      },
+      {
+        "Id": 88,
+        "Name": "Chu\u1ED9t Razer Wireless Black",
+        "ThumbnailUrl": "/uploads/products/mouse/razer-wireless-black/thumb.jpg",
+        "SKU": "MOU-RAZER-WIRELESS-BLACK"
+      },
+      {
+        "Id": 89,
+        "Name": "Tai nghe ASUS ROG Pelta WL RGB Black",
+        "ThumbnailUrl": "/uploads/products/headset/asus-rog-pelta-wl-rgb-black/thumb.jpg",
+        "SKU": "HS-ASUS-ROG-PELTA-WL-RGB-BLACK"
+      },
+      {
+        "Id": 90,
+        "Name": "Tai nghe Edifier W830NB Black",
+        "ThumbnailUrl": "/uploads/products/headset/edifier-w830nb-black/thumb.jpg",
+        "SKU": "HS-EDIFIER-W830NB-BLACK"
+      },
+      {
+        "Id": 91,
+        "Name": "Tai nghe Logitech G435 Lightspeed Wireless White",
+        "ThumbnailUrl": "/uploads/products/headset/logitech-g435-lightspeed-wireless-white/thumb.jpg",
+        "SKU": "HS-LOGITECH-G435-LIGHTSPEED-WHITE"
+      },
+      {
+        "Id": 92,
+        "Name": "Tai nghe Rapoo Gaming VH600",
+        "ThumbnailUrl": "/uploads/products/headset/rapoo-gaming-vh600/thumb.jpg",
+        "SKU": "HS-RAPOO-VH600"
+      },
+      {
+        "Id": 93,
+        "Name": "Tai nghe Onikuma Tai M\u00E8o B5 RGB Tri Mode Tr\u1EAFng",
+        "ThumbnailUrl": "/uploads/products/headset/onikuma-b5-tri-mode-white/thumb.jpg",
+        "SKU": "HS-ONIKUMA-B5-TRIMODE-WHITE"
+      },
+      {
+        "Id": 94,
+        "Name": "Tai nghe Razer Blackshark V3 Pro Counter-Strike 2 Edition",
+        "ThumbnailUrl": "/uploads/products/headset/razer-blackshark-v3-pro-cs2-edition/thumb.jpg",
+        "SKU": "HS-RAZER-BLACKSHARK-V3PRO-CS2"
+      },
+      {
+        "Id": 95,
+        "Name": "Tai nghe Corsair Virtuoso RGB Wireless SE Espresso",
+        "ThumbnailUrl": "/uploads/products/headset/corsair-virtuoso-rgb-wireless-se-espresso/thumb.jpg",
+        "SKU": "HS-CORSAIR-VIRTUOSO-SE-ESPRESSO"
+      },
+      {
+        "Id": 96,
+        "Name": "Tai nghe HyperX Cloud Stinger Core II",
+        "ThumbnailUrl": "/uploads/products/headset/hyperx-cloud-stinger-core-ii/thumb.jpg",
+        "SKU": "HS-HYPERX-CLOUD-STINGER-CORE-II"
+      },
+      {
+        "Id": 97,
+        "Name": "B\u1ED9 \u0111\u1ECBnh tuy\u1EBFn WiFi 5 ASUS RT-AC1500UHP Chu\u1EA9n AC1500 (Xuy\u00EAn t\u01B0\u1EDDng)",
+        "ThumbnailUrl": "/uploads/products/network/asus-rt-ac1500uhp/thumb.jpg",
+        "SKU": "NET-ASUS-RT-AC1500UHP"
+      },
+      {
+        "Id": 98,
+        "Name": "Thi\u1EBFt b\u1ECB \u0111\u1ECBnh tuy\u1EBFn m\u1EA1ng kh\u00F4ng d\u00E2y Asus XT8 (W-2-PK)",
+        "ThumbnailUrl": "/uploads/products/network/asus-xt8-w-2-pk/thumb.jpg",
+        "SKU": "NET-ASUS-XT8-W2PK"
+      },
+      {
+        "Id": 99,
+        "Name": "Thi\u1EBFt b\u1ECB m\u1EA1ng AiMesh AX6100 WiFi System (RT-AX92U 2 Pack)",
+        "ThumbnailUrl": "/uploads/products/network/asus-rt-ax92u-2-pack/thumb.jpg",
+        "SKU": "NET-ASUS-RT-AX92U-2PACK"
+      },
+      {
+        "Id": 100,
+        "Name": "Thi\u1EBFt b\u1ECB m\u1EA1ng kh\u00F4ng d\u00E2y ASUS RT-AC1300UHP",
+        "ThumbnailUrl": "/uploads/products/network/asus-rt-ac1300uhp/thumb.jpg",
+        "SKU": "NET-ASUS-RT-AC1300UHP"
+      }
+    ],
+    "after": "W3siRW50aXR5TmFtZSI6ImRib19Qcm9kdWN0cyIsIkZpZWxkTmFtZSI6IklkIiwiRmllbGRWYWx1ZSI6MTAwLCJEaXJlY3Rpb24iOjB9XQ=="
+  },
+  "message": "Successfully read records for entity \u0027dbo_Products\u0027",
+  "status": "success"
+}

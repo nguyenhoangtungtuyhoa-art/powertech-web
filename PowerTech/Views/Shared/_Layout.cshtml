@@ -76,17 +76,46 @@
                         </div>
                     </a>
 
-                    <!-- Cart -->
-                    <a asp-area="Store" asp-controller="Cart" asp-action="Index" class="header-action-item d-flex align-items-center gap-2 text-decoration-none text-white">
-                        <div class="position-relative">
-                            <i class="fa-solid fa-cart-shopping fs-4"></i>
-                            <span class="badge position-absolute top-0 start-100 translate-middle bg-warning text-dark border border-white rounded-circle fw-bold cart-count" style="font-size: 10px; padding: 2px 5px;">0</span>
-                        </div>
-                        <div class="d-flex flex-column text-start d-none d-sm-flex">
-                            <span class="lh-1" style="font-size: 11px;">Giỏ</span>
-                            <span class="lh-1 fw-bold" style="font-size: 13px;">hàng</span>
-                        </div>
-                    </a>
+@inject PowerTech.Services.Interfaces.ICartService CartService
+@inject Microsoft.AspNetCore.Identity.UserManager<PowerTech.Models.Entities.ApplicationUser> UserManager
+@{
+    // Ưu tiên lấy từ Cookie để đạt tốc độ hiển thị tối đa (không chớp)
+    var cartCountStr = Context.Request.Cookies["PT_CartCount"];
+    int initialCartCount = 0;
+    
+    if (!string.IsNullOrEmpty(cartCountStr) && int.TryParse(cartCountStr, out int c))
+    {
+        initialCartCount = c;
+    }
+    else
+    {
+        // Fallback nếu chưa có cookie (lần đầu truy cập)
+        var userId = UserManager.GetUserId(User);
+        var guestId = Context.Request.Cookies["PT_GuestCartId"];
+        var ownerId = userId ?? guestId;
+        if (!string.IsNullOrEmpty(ownerId))
+        {
+            initialCartCount = CartService.GetCartItemCountAsync(ownerId).GetAwaiter().GetResult();
+        }
+    }
+}
+<a asp-area="Store" asp-controller="Cart" asp-action="Index" class="header-action-item d-flex align-items-center gap-2 text-decoration-none text-white">
+    <div class="position-relative">
+        <i class="fa-solid fa-cart-shopping fs-4"></i>
+        <span class="badge position-absolute top-0 start-100 translate-middle bg-warning text-dark border border-white rounded-circle fw-bold cart-count" id="headerCartCount" style="font-size: 10px; padding: 2px 5px;">@initialCartCount</span>
+        <script>
+            // Script bảo hiểm - chạy ngay lập tức khi trình duyệt đọc đến đây
+            (function() {
+                var c = ("; "+document.cookie).split("; PT_CartCount=").pop().split(";").shift();
+                if(c !== "") document.getElementById('headerCartCount').innerText = c;
+            })();
+        </script>
+    </div>
+    <div class="d-flex flex-column text-start d-none d-sm-flex">
+        <span class="lh-1" style="font-size: 11px;">Giỏ</span>
+        <span class="lh-1 fw-bold" style="font-size: 13px;">hàng</span>
+    </div>
+</a>
 
                     <!-- User Account / Login -->
                     <div class="user-action ps-2">
@@ -262,13 +291,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        $(document).ready(function() {
-            $.get('/Store/Cart/GetCartCount', function(count) {
-                $('.badge-count').text(count);
-            });
-        });
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

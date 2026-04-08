@@ -8,6 +8,7 @@ namespace PowerTech.Areas.Store.Controllers
 {
     [Area("Store")]
     [AllowAnonymous]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,13 +21,13 @@ namespace PowerTech.Areas.Store.Controllers
         public async Task<IActionResult> Index(
             string? q, 
             int? categoryId, 
-            int? brandId, 
+            List<int>? brandIds, 
             decimal? minPrice, 
             decimal? maxPrice, 
             string? sortOrder, 
             int page = 1)
         {
-            int pageSize = 12;
+            int pageSize = 15; // Adjusted for 5-per-row grid
             
             var query = _context.Products
                 .Include(p => p.Brand)
@@ -43,9 +44,9 @@ namespace PowerTech.Areas.Store.Controllers
             {
                 query = query.Where(p => p.CategoryId == categoryId);
             }
-            if (brandId.HasValue)
+            if (brandIds != null && brandIds.Any())
             {
-                query = query.Where(p => p.BrandId == brandId);
+                query = query.Where(p => brandIds.Contains(p.BrandId));
             }
             if (minPrice.HasValue)
             {
@@ -74,15 +75,26 @@ namespace PowerTech.Areas.Store.Controllers
                 .Take(pageSize)
                 .ToListAsync();
 
+            // Get relevant brands: brands that have active products in the selected category
+            var brandQuery = _context.Brands.Where(b => b.IsActive);
+            if (categoryId.HasValue) {
+                var brandIdsInCategory = await _context.Products
+                    .Where(p => p.CategoryId == categoryId && p.IsActive)
+                    .Select(p => p.BrandId)
+                    .Distinct()
+                    .ToListAsync();
+                brandQuery = brandQuery.Where(b => brandIdsInCategory.Contains(b.Id));
+            }
+
             var viewModel = new ProductListViewModel
             {
                 Products = products,
                 Categories = await _context.Categories.Where(c => c.IsActive && c.ParentCategoryId == null).ToListAsync(),
-                Brands = await _context.Brands.Where(b => b.IsActive).ToListAsync(),
+                Brands = await brandQuery.ToListAsync(),
                 
                 Query = q,
                 CategoryId = categoryId,
-                BrandId = brandId,
+                BrandIds = brandIds ?? new List<int>(),
                 MinPrice = minPrice,
                 MaxPrice = maxPrice,
                 SortOrder = sortOrder,

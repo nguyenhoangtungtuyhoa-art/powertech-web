@@ -191,19 +191,25 @@
                 },
                 success: function(res) {
                     if (res.success) {
-                        $('.badge-count').text(res.count);
+                        // Cập nhật số lượng đồng bộ
+                        var $CartBadge = $('.cart-count');
+                        $CartBadge.text(res.count);
+                        
+                        // Hiệu ứng "pop"
+                        $CartBadge.addClass('animate-pop');
+                        setTimeout(function() {
+                            $CartBadge.removeClass('animate-pop');
+                        }, 300);
+
                         Swal.fire({
                             title: 'Thành công!',
                             text: res.message,
                             icon: 'success',
-                            showCancelButton: true,
-                            confirmButtonText: 'Đến giỏ hàng',
-                            cancelButtonText: 'Tiếp tục mua sắm',
-                            confirmButtonColor: '#D7262E'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = '/Store/Cart';
-                            }
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true
                         });
                     } else {
                         Swal.fire({

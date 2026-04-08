@@ -14,13 +14,9 @@
                         <h4 class="fw-bold mb-1 text-primary">Đơn hàng #@Model.OrderCode</h4>
                         <p class="text-muted small">Ngày tạo: @Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
                     </div>
-                    <span class="badge rounded-pill bg-@(Model.OrderStatus switch {
-                        "Pending" => "warning text-dark",
-                        "Processing" => "primary",
-                        "Shipping" => "info",
-                        "Completed" => "success",
-                        _ => "danger"
-                    }) px-3 py-2 fs-6">@Model.OrderStatus</span>
+                    <span class="badge rounded-pill @OrderHelper.GetStatusBadgeClass(Model.OrderStatus) px-3 py-2 fs-6">
+                        @OrderHelper.GetStatusDisplayName(Model.OrderStatus)
+                    </span>
                 </div>
 
                 <!-- Progress Stepper -->

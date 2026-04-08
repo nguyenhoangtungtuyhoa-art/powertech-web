@@ -242,7 +242,16 @@
                 success: function(res) {
                     if (res.success) {
                         $('#cart-grand-total').text(res.total);
-                        updateHeaderCartCount();
+                        
+                        // Cập nhật Header và Cookie đồng bộ
+                        var $CartBadge = $('.cart-count');
+                        $CartBadge.text(res.count);
+                        if (typeof setCartCookie === "function") {
+                            setCartCookie(res.count);
+                        }
+                        
+                        $CartBadge.addClass('animate-pop');
+                        setTimeout(() => $CartBadge.removeClass('animate-pop'), 300);
                     }
                 }
             });
@@ -260,6 +269,22 @@
                 cancelButtonText: 'Hủy'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Optimistic Update: Trừ số lượng của mặt hàng này ngay lập tức
+                    var $itemQtyInput = $('#qty-' + productId);
+                    var itemQty = parseInt($itemQtyInput.val()) || 0;
+                    
+                    var $CartBadge = $('.cart-count');
+                    var currentTotal = parseInt($CartBadge.text()) || 0;
+                    var newTotal = Math.max(0, currentTotal - itemQty);
+                    
+                    $CartBadge.text(newTotal);
+                    if (typeof setCartCookie === "function") {
+                        setCartCookie(newTotal);
+                    }
+                    
+                    // Hiệu ứng pop
+                    $CartBadge.addClass('animate-pop');
+
                     $.ajax({
                         url: '/Store/Cart/Remove',
                         type: 'POST',
@@ -269,17 +294,21 @@
                         },
                         success: function(res) {
                             if (res.success) {
+                                // Đồng bộ lại số lượng chuẩn từ server
+                                if (typeof setCartCookie === "function") {
+                                    setCartCookie(res.count);
+                                }
+                                location.reload();
+                            } else {
+                                // Nếu lỗi, reload để khôi phục trạng thái đúng
                                 location.reload();
                             }
+                        },
+                        error: function() {
+                            location.reload();
                         }
                     });
                 }
-            });
-        }
-        
-        function updateHeaderCartCount() {
-            $.get('/Store/Cart/GetCartCount', function(count) {
-                $('.cart-count').text(count);
             });
         }
     </script>

@@ -140,9 +140,9 @@
                         <label class="form-label fw-bold">Trạng thái vận chuyển</label>
                         <select name="status" class="form-select @GetStatusColor(Model.OrderStatus)">
                             <option value="Pending" selected="@(Model.OrderStatus == "Pending")">Chờ xử lý (Pending)</option>
-                            <option value="Processing" selected="@(Model.OrderStatus == "Processing")">Đang đóng gói (Processing)</option>
-                            <option value="Shipped" selected="@(Model.OrderStatus == "Shipped")">Đang giao hàng (Shipped)</option>
-                            <option value="Delivered" selected="@(Model.OrderStatus == "Delivered")">Đã giao hàng (Delivered)</option>
+                            <option value="Processing" selected="@(Model.OrderStatus == "Processing")">Đang xử lý (Processing)</option>
+                            <option value="Shipped" selected="@(Model.OrderStatus == "Shipped" || Model.OrderStatus == "Shipping")">Đang giao hàng (Shipped)</option>
+                            <option value="Delivered" selected="@(Model.OrderStatus == "Delivered" || Model.OrderStatus == "Completed")">Hoàn tất (Delivered/Completed)</option>
                             <option value="Cancelled" selected="@(Model.OrderStatus == "Cancelled")">Đã hủy (Cancelled)</option>
                         </select>
                     </div>
@@ -197,9 +197,9 @@
         return status switch
         {
             "Pending" => "border-warning text-warning",
-            "Processing" => "border-info text-info",
-            "Shipped" => "border-primary text-primary",
-            "Delivered" => "border-success text-success",
+            "Processing" or "Confirmed" => "border-primary text-primary",
+            "Shipped" or "Shipping" => "border-info text-info",
+            "Delivered" or "Completed" => "border-success text-success",
             "Cancelled" => "border-danger text-danger",
             _ => ""
         };

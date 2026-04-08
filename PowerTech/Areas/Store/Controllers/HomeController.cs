@@ -8,6 +8,7 @@ namespace PowerTech.Areas.Store.Controllers
 {
     [Area("Store")]
     [AllowAnonymous]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;

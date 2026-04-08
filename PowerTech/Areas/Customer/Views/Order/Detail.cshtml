@@ -33,7 +33,9 @@
         <div class="col-md-4">
             <div class="text-uppercase small fw-bold text-muted mb-2">Trạng thái vận chuyển</div>
             <h5 class="fw-bold mb-1">
-                <span class="badge bg-primary rounded-pill px-3 py-2 fw-normal">@Model.OrderStatus</span>
+                <span class="badge @OrderHelper.GetStatusBadgeClass(Model.OrderStatus) rounded-pill px-3 py-2 fw-normal">
+                    @OrderHelper.GetStatusDisplayName(Model.OrderStatus)
+                </span>
             </h5>
         </div>
     </div>

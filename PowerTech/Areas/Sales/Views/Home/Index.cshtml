@@ -87,17 +87,13 @@
                                     <td>@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
                                     <td class="fw-bold text-dark">@order.TotalAmount.ToString("N0")₫</td>
                                     <td>
-                                        <span class="badge rounded-pill bg-@(order.OrderStatus switch {
-                                            "Pending" => "warning text-dark",
-                                            "Processing" or "Confirmed" => "primary",
-                                            "Shipped" => "info",
-                                            "Delivered" => "success",
-                                            _ => "danger"
-                                        })">@order.OrderStatus</span>
+                                        <span class="badge rounded-pill @OrderHelper.GetStatusBadgeClass(order.OrderStatus)">
+                                            @OrderHelper.GetStatusDisplayName(order.OrderStatus)
+                                        </span>
                                     </td>
                                     <td class="pe-4 text-end">
-                                        <a asp-controller="Order" asp-action="Details" asp-route-id="@order.Id" class="btn btn-light btn-sm rounded-circle p-2">
-                                            <i class="bi bi-chevron-right px-1"></i>
+                                        <a asp-controller="Order" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-white border rounded-pill shadow-sm px-3 text-primary fw-medium transition-all hover-elevate">
+                                            <i class="bi bi-eye me-1"></i> Chi tiết
                                         </a>
                                     </td>
                                 </tr>
@@ -137,3 +133,29 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <style>
+        .hover-elevate {
+            transition: all 0.2s ease-in-out;
+        }
+        .hover-elevate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            background-color: #f8f9fa;
+        }
+        .table-hover tbody tr {
+            transition: background-color 0.2s;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(13, 110, 253, 0.02) !important;
+        }
+        .btn-white {
+            background-color: #fff;
+            color: #333;
+        }
+        .btn-white:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+}

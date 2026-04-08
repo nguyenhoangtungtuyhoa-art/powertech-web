@@ -8,14 +8,16 @@ using PowerTech.Models.Entities;
 namespace PowerTech.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.WarehouseStaff)]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CategoryController(ApplicationDbContext context)
+        public CategoryController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<IActionResult> Index()
@@ -36,10 +38,15 @@ namespace PowerTech.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category category)
+        public async Task<IActionResult> Create(Category category, IFormFile? imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    category.ImageUrl = await SaveImage(imageFile);
+                }
+
                 category.CreatedAt = DateTime.UtcNow;
                 _context.Add(category);
                 await _context.SaveChangesAsync();
@@ -62,12 +69,17 @@ namespace PowerTech.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Category category)
+        public async Task<IActionResult> Edit(int id, Category category, IFormFile? imageFile)
         {
             if (id != category.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    category.ImageUrl = await SaveImage(imageFile);
+                }
+
                 category.UpdatedAt = DateTime.UtcNow;
                 _context.Update(category);
                 await _context.SaveChangesAsync();
@@ -77,6 +89,25 @@ namespace PowerTech.Areas.Admin.Controllers
                 .Where(c => c.ParentCategoryId == null && c.Id != id)
                 .ToListAsync();
             return View(category);
+        }
+
+        private async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string uploadDir = Path.Combine(_hostEnvironment.WebRootPath, "uploads/categories");
+            if (!Directory.Exists(uploadDir))
+            {
+                Directory.CreateDirectory(uploadDir);
+            }
+
+            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            string filePath = Path.Combine(uploadDir, fileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+
+            return "/uploads/categories/" + fileName;
         }
 
         [HttpPost]

@@ -76,7 +76,7 @@
                                 <th>Khách hàng</th>
                                 <th>Thành tiền</th>
                                 <th>Trạng thái</th>
-                                <th class="text-end pe-4">Thao tác</th>
+                                <th class="text-end pe-4">Chi tiết</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,12 +90,14 @@
                                     </td>
                                     <td class="fw-bold">@order.TotalAmount.ToString("N0")₫</td>
                                     <td>
-                                        <span class="badge @(order.OrderStatus == "Pending" ? "bg-warning" : "bg-success") rounded-pill p-1 px-3">
-                                            @order.OrderStatus
+                                        <span class="badge rounded-pill @OrderHelper.GetStatusBadgeClass(order.OrderStatus)">
+                                            @OrderHelper.GetStatusDisplayName(order.OrderStatus)
                                         </span>
                                     </td>
                                     <td class="text-end pe-4">
-                                        <button class="btn btn-sm btn-outline-info rounded-circle"><i class="fa-solid fa-eye"></i></button>
+                                        <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-white border rounded-pill px-3 text-info fw-medium shadow-sm transition-all hover-elevate">
+                                            <i class="fa-solid fa-eye me-1"></i> Xem
+                                        </a>
                                     </td>
                                 </tr>
                             }
@@ -126,3 +128,28 @@
         </div>
     </div>
 </div>
+
+<style>
+    .hover-elevate {
+        transition: all 0.2s ease-in-out;
+    }
+    .hover-elevate:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+        background-color: #f8f9fa;
+    }
+    .table-hover tbody tr {
+        transition: background-color 0.2s;
+    }
+    .table-hover tbody tr:hover {
+        background-color: rgba(13, 110, 253, 0.02) !important;
+    }
+    .btn-white {
+        background-color: #fff;
+        color: #333;
+    }
+    .btn-white:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+

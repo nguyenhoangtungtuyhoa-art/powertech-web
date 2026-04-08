@@ -56,6 +56,15 @@ namespace PowerTech.Areas.Store.Controllers
         {
             var cartOwnerId = await GetCartOwnerIdAsync();
             var count = await _cartService.AddToCartAsync(cartOwnerId, productId, quantity);
+            
+            // Lưu vào Cookie để Layout đọc tức thì
+            Response.Cookies.Append("PT_CartCount", count.ToString(), new CookieOptions { 
+                Expires = DateTime.Now.AddDays(30), 
+                HttpOnly = false, // Cho phép JS đọc
+                IsEssential = true,
+                Path = "/"
+            });
+
             return Json(new { success = true, count = count, message = "Đã thêm vào giỏ hàng thành công!" });
         }
 
@@ -66,8 +75,18 @@ namespace PowerTech.Areas.Store.Controllers
             var success = await _cartService.UpdateQuantityAsync(cartOwnerId, productId, quantity);
             var cart = await _cartService.GetCartAsync(cartOwnerId);
             
+            // Cập nhật Cookie số lượng mới
+            var newCount = cart.CartItems.Sum(ci => ci.Quantity);
+            Response.Cookies.Append("PT_CartCount", newCount.ToString(), new CookieOptions { 
+                Expires = DateTime.Now.AddDays(30), 
+                HttpOnly = false,
+                IsEssential = true,
+                Path = "/"
+            });
+
             return Json(new { 
                 success = success, 
+                count = newCount,
                 total = cart.CartItems.Sum(ci => ci.Quantity * ci.UnitPrice).ToString("N0") + "₫",
                 itemTotal = cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId)?.Quantity * cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId)?.UnitPrice
             });
@@ -78,7 +97,17 @@ namespace PowerTech.Areas.Store.Controllers
         {
             var cartOwnerId = await GetCartOwnerIdAsync();
             var success = await _cartService.RemoveFromCartAsync(cartOwnerId, productId);
-            return Json(new { success = success });
+            
+            // Lấy lại số lượng mới sau khi xóa
+            var count = await _cartService.GetCartItemCountAsync(cartOwnerId);
+            Response.Cookies.Append("PT_CartCount", count.ToString(), new CookieOptions { 
+                Expires = DateTime.Now.AddDays(30), 
+                HttpOnly = false,
+                IsEssential = true,
+                Path = "/"
+            });
+
+            return Json(new { success = success, count = count });
         }
 
         [HttpGet]
@@ -86,6 +115,15 @@ namespace PowerTech.Areas.Store.Controllers
         {
             var cartOwnerId = await GetCartOwnerIdAsync();
             var count = await _cartService.GetCartItemCountAsync(cartOwnerId);
+            
+            // Lưu vào Cookie để Layout đọc tức thì
+            Response.Cookies.Append("PT_CartCount", count.ToString(), new CookieOptions { 
+                Expires = DateTime.Now.AddDays(30), 
+                HttpOnly = false,
+                IsEssential = true,
+                Path = "/"
+            });
+
             return Json(count);
         }
     }
