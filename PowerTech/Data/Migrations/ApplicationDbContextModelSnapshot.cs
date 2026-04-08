@@ -226,6 +226,10 @@ namespace PowerTech.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<decimal>("WalletBalance")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -408,6 +412,9 @@ namespace PowerTech.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DeliveryFailCount")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("DiscountAmount")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -491,6 +498,47 @@ namespace PowerTech.Migrations
 
                             t.HasCheckConstraint("CK_Order_TotalAmount", "[TotalAmount] >= 0");
                         });
+                });
+
+            modelBuilder.Entity("PowerTech.Models.Entities.OrderHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PerformedBy")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderHistory");
                 });
 
             modelBuilder.Entity("PowerTech.Models.Entities.OrderItem", b =>
@@ -1150,6 +1198,17 @@ namespace PowerTech.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("PowerTech.Models.Entities.OrderHistory", b =>
+                {
+                    b.HasOne("PowerTech.Models.Entities.Order", "Order")
+                        .WithMany("OrderHistories")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("PowerTech.Models.Entities.OrderItem", b =>
                 {
                     b.HasOne("PowerTech.Models.Entities.Order", "Order")
@@ -1350,6 +1409,8 @@ namespace PowerTech.Migrations
 
             modelBuilder.Entity("PowerTech.Models.Entities.Order", b =>
                 {
+                    b.Navigation("OrderHistories");
+
                     b.Navigation("OrderItems");
 
                     b.Navigation("Payments");

@@ -16,6 +16,7 @@ namespace PowerTech.Models.Entities
         public DateTime? UpdatedAt { get; set; }
 
         public string? CreatedByUserId { get; set; }
+        public decimal WalletBalance { get; set; } = 0;
 
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 

@@ -32,7 +32,7 @@
                     <a asp-action="Index" asp-route-status="" asp-route-searchTerm="@ViewBag.SearchTerm" class="btn btn-sm btn-@(string.IsNullOrEmpty(ViewBag.CurrentStatus) ? "primary" : "outline-primary border-0") px-3">Tất cả</a>
                     <a asp-action="Index" asp-route-status="Pending" asp-route-searchTerm="@ViewBag.SearchTerm" class="btn btn-sm btn-@(ViewBag.CurrentStatus == "Pending" ? "primary" : "outline-primary border-0") px-3">Mới</a>
                     <a asp-action="Index" asp-route-status="Processing" asp-route-searchTerm="@ViewBag.SearchTerm" class="btn btn-sm btn-@(ViewBag.CurrentStatus == "Processing" ? "primary" : "outline-primary border-0") px-3">Đang xử lý</a>
-                    <a asp-action="Index" asp-route-status="Delivered" asp-route-searchTerm="@ViewBag.SearchTerm" class="btn btn-sm btn-@(ViewBag.CurrentStatus == "Delivered" ? "primary" : "outline-primary border-0") px-3">Hoàn tất</a>
+                    <a asp-action="Index" asp-route-status="Completed" asp-route-searchTerm="@ViewBag.SearchTerm" class="btn btn-sm btn-@(ViewBag.CurrentStatus == "Completed" ? "primary" : "outline-primary border-0") px-3">Hoàn tất</a>
                 </div>
             </div>
         </div>

@@ -6,6 +6,14 @@
 
 <div class="bg-light min-vh-100 py-4">
     <div class="container overflow-hidden">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show rounded-4 border-0 shadow-sm mb-4" role="alert">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i> @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <!-- Stepper -->
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8">
@@ -63,16 +71,34 @@
         {
             <div class="row g-4">
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-                        <div class="card-header bg-white py-3 ps-4 border-0">
+                    <!-- Cart Header with Select All -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 overflow-hidden">
+                        <div class="card-body py-3 px-4 d-flex align-items-center justify-content-between">
+                            <div class="form-check d-flex align-items-center mb-0">
+                                <input class="form-check-input custom-checkbox me-2" type="checkbox" id="selectAllItems">
+                                <label class="form-check-label fw-bold text-dark mb-0" for="selectAllItems" id="selectAllLabel" style="cursor:pointer;">
+                                    CHỌN TẤT CẢ (@Model.CartItems.Count sản phẩm)
+                                </label>
+                            </div>
                             <a asp-area="Store" asp-controller="Home" asp-action="Index" class="text-decoration-none small fw-bold text-primary">
-                                <i class="fa-solid fa-angle-left me-1"></i> Mua thêm sản phẩm khác
+                                <i class="fa-solid fa-angle-left me-1"></i> Tiếp tục mua hàng
                             </a>
                         </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
                         <div class="p-0">
                             @foreach (var item in Model.CartItems)
                             {
-                                <div id="row-@item.ProductId" class="cart-item py-4 px-4 border-top border-light d-flex gap-3 position-relative">
+                                <div id="row-@item.ProductId" class="cart-item py-4 px-4 border-bottom border-light d-flex gap-3 position-relative align-items-center">
+                                    <!-- Checkbox for each item -->
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input custom-checkbox item-checkbox" type="checkbox" 
+                                               data-id="@item.ProductId" 
+                                               data-price="@item.UnitPrice" 
+                                               data-qty="@item.Quantity">
+                                    </div>
+
                                     <div class="item-img rounded-3 border border-light p-1 bg-white overflow-hidden flex-shrink-0" style="width: 100px; height: 100px;">
                                         <img src="@(string.IsNullOrEmpty(item.Product.ThumbnailUrl) ? "/images/no-image.png" : item.Product.ThumbnailUrl)" class="w-100 h-100 object-fit-contain" alt="@item.Product.Name">
                                     </div>
@@ -114,9 +140,14 @@
 
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm rounded-4 p-4 sticky-top" style="top: 100px;">
+                        <h5 class="fw-bold mb-4 border-bottom pb-2">Thông tin thanh toán</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Tạm tính (<span id="selected-count">0</span> SP):</span>
+                            <span class="fw-bold text-dark" id="cart-temp-total">0₫</span>
+                        </div>
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <span class="h6 mb-0 text-muted">Tổng tiền:</span>
-                            <span class="h4 mb-0 fw-bold text-danger" id="cart-grand-total">@totalAmount.ToString("N0")₫</span>
+                            <span class="h6 mb-0 text-muted">TỔNG TIỀN:</span>
+                            <span class="h4 mb-0 fw-bold text-danger" id="cart-grand-total">0₫</span>
                         </div>
                         <button onclick="handleCheckout()" class="btn btn-danger w-100 py-3 rounded-3 fw-bold btn-checkout shadow-sm">
                             ĐẶT HÀNG NGAY <i class="fa-solid fa-arrow-right ms-2 animate-pulse"></i>
@@ -203,11 +234,28 @@
         50% { transform: translateX(5px); }
         100% { transform: translateX(0); }
     }
-    .btn-checkout:hover { background: #c20015; transform: scale(1.02); }
+    .btn-checkout:hover { background: #c20015; transform: scale(1.01); }
     .fs-7 { font-size: 0.85rem; }
     .fs-8 { font-size: 0.75rem; }
     .border-soft { border-color: #f0f2f5 !important; }
     .shadow-inner { box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+
+    /* Custom Checkbox */
+    .custom-checkbox {
+        width: 20px !important;
+        height: 20px !important;
+        cursor: pointer;
+        border: 2px solid #dee2e6 !important;
+    }
+    .custom-checkbox:checked {
+        background-color: #e30019 !important;
+        border-color: #e30019 !important;
+    }
+    .custom-checkbox:focus {
+        box-shadow: 0 0 0 0.25rem rgba(227, 0, 25, 0.1) !important;
+    }
+    .cart-item { transition: background-color 0.3s; }
+    .cart-item:hover { background-color: #fafafa; }
 </style>
 
 @section Scripts {
@@ -215,21 +263,101 @@
     <script>
         const isAuthenticated = @(User.Identity?.IsAuthenticated == true ? "true" : "false");
 
-        function handleCheckout() {
-            if (isAuthenticated) {
-                window.location.href = '@Url.Action("Index", "Checkout", new { area = "Store" })';
+        $(document).ready(function() {
+            // Select All logic
+            $('#selectAllItems').on('change', function() {
+                const isChecked = $(this).is(':checked');
+                $('.item-checkbox').prop('checked', isChecked);
+                updateSelectAllLabel(isChecked);
+                calculateTotal();
+            });
+
+            // Individual checkbox logic
+            $('.item-checkbox').on('change', function() {
+                const checkedCount = $('.item-checkbox:checked').length;
+                const totalCount = $('.item-checkbox').length;
+                const allChecked = checkedCount === totalCount;
+                
+                $('#selectAllItems').prop('checked', allChecked);
+                updateSelectAllLabel(allChecked);
+                calculateTotal();
+            });
+
+            // Initial calculation
+            calculateTotal();
+        });
+
+        function updateSelectAllLabel(isAllChecked) {
+            const totalCount = $('.item-checkbox').length;
+            if (isAllChecked) {
+                $('#selectAllLabel').text(`BỎ CHỌN TẤT CẢ (${totalCount} sản phẩm)`);
             } else {
+                $('#selectAllLabel').text(`CHỌN TẤT CẢ (${totalCount} sản phẩm)`);
+            }
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            let count = 0;
+            const selectedIds = [];
+
+            $('.item-checkbox:checked').each(function() {
+                const id = $(this).data('id');
+                const price = parseFloat($(this).data('price'));
+                const qty = parseInt($('#qty-' + id).val());
+                
+                total += price * qty;
+                count++;
+                selectedIds.push(id);
+            });
+
+            $('#cart-grand-total').text(total.toLocaleString('vi-VN') + '₫');
+            $('#cart-temp-total').text(total.toLocaleString('vi-VN') + '₫');
+            $('#selected-count').text(count);
+
+            // Cập nhật trạng thái nút checkout
+            if (count === 0) {
+                $('.btn-checkout').addClass('disabled').addClass('opacity-50');
+            } else {
+                $('.btn-checkout').removeClass('disabled').removeClass('opacity-50');
+            }
+
+            return selectedIds;
+        }
+
+        function handleCheckout() {
+            const selectedIds = calculateTotal();
+            if (selectedIds.length === 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Chưa chọn sản phẩm',
+                    text: 'Vui lòng chọn ít nhất một sản phẩm để đặt hàng!',
+                    confirmButtonColor: '#e30019'
+                });
+                return;
+            }
+
+            if (!isAuthenticated) {
                 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
                 loginModal.show();
+                return;
             }
+
+            // Redirect to checkout with selected IDs
+            const url = '@Url.Action("Index", "Checkout", new { area = "Store" })' + '?productIds=' + selectedIds.join(',');
+            window.location.href = url;
         }
 
         function updateQty(productId, delta) {
             const input = document.getElementById('qty-' + productId);
-            let newVal = parseInt(input.value) + delta;
+            let oldVal = parseInt(input.value);
+            let newVal = oldVal + delta;
             if (newVal < 1) return;
             
             input.value = newVal;
+            
+            // Cập nhật data-qty của checkbox tương ứng để tính tiền chính xác
+            $(`.item-checkbox[data-id="${productId}"]`).data('qty', newVal);
 
             $.ajax({
                 url: '/Store/Cart/UpdateQuantity',
@@ -241,7 +369,7 @@
                 },
                 success: function(res) {
                     if (res.success) {
-                        $('#cart-grand-total').text(res.total);
+                        calculateTotal();
                         
                         // Cập nhật Header và Cookie đồng bộ
                         var $CartBadge = $('.cart-count');
@@ -252,7 +380,26 @@
                         
                         $CartBadge.addClass('animate-pop');
                         setTimeout(() => $CartBadge.removeClass('animate-pop'), 300);
+                    } else {
+                        // Revert quantity if error (e.g. out of stock)
+                        input.value = oldVal;
+                        $(`.item-checkbox[data-id="${productId}"]`).data('qty', oldVal);
+                        
+                        Swal.fire({
+                            title: 'Thông báo',
+                            text: res.message || 'Số lượng vượt quá sản phẩm hiện có trong kho!',
+                            icon: 'warning',
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
                     }
+                },
+                error: function() {
+                    input.value = oldVal;
+                    $(`.item-checkbox[data-id="${productId}"]`).data('qty', oldVal);
+                    Swal.fire('Lỗi', 'Đã có lỗi xảy ra!', 'error');
                 }
             });
         }
@@ -269,22 +416,6 @@
                 cancelButtonText: 'Hủy'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Optimistic Update: Trừ số lượng của mặt hàng này ngay lập tức
-                    var $itemQtyInput = $('#qty-' + productId);
-                    var itemQty = parseInt($itemQtyInput.val()) || 0;
-                    
-                    var $CartBadge = $('.cart-count');
-                    var currentTotal = parseInt($CartBadge.text()) || 0;
-                    var newTotal = Math.max(0, currentTotal - itemQty);
-                    
-                    $CartBadge.text(newTotal);
-                    if (typeof setCartCookie === "function") {
-                        setCartCookie(newTotal);
-                    }
-                    
-                    // Hiệu ứng pop
-                    $CartBadge.addClass('animate-pop');
-
                     $.ajax({
                         url: '/Store/Cart/Remove',
                         type: 'POST',
@@ -294,13 +425,11 @@
                         },
                         success: function(res) {
                             if (res.success) {
-                                // Đồng bộ lại số lượng chuẩn từ server
                                 if (typeof setCartCookie === "function") {
                                     setCartCookie(res.count);
                                 }
                                 location.reload();
                             } else {
-                                // Nếu lỗi, reload để khôi phục trạng thái đúng
                                 location.reload();
                             }
                         },

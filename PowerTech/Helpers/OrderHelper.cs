@@ -9,7 +9,7 @@ namespace PowerTech.Helpers
                 "Pending" => "bg-warning text-dark",
                 "Processing" or "Confirmed" => "bg-primary text-white",
                 "Shipped" or "Shipping" => "bg-info text-white",
-                "Delivered" or "Completed" => "bg-success text-white",
+                "Completed" => "bg-success text-white",
                 "Cancelled" => "bg-danger text-white",
                 _ => "bg-secondary text-white"
             };
@@ -23,8 +23,7 @@ namespace PowerTech.Helpers
                 "Processing" => "Đang xử lý",
                 "Confirmed" => "Đã xác nhận",
                 "Shipped" or "Shipping" => "Đang giao hàng",
-                "Delivered" => "Đã giao hàng",
-                "Completed" => "Hoàn tất",
+                "Completed" => "Đã hoàn tất",
                 "Cancelled" => "Đã hủy",
                 _ => status
             };

@@ -56,6 +56,7 @@ namespace PowerTech.Models.Entities
 
         [StringLength(1000)]
         public string? InternalNote { get; set; }
+        public int DeliveryFailCount { get; set; } = 0;
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -67,6 +68,7 @@ namespace PowerTech.Models.Entities
         public virtual ApplicationUser User { get; set; } = null!;
 
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public virtual ICollection<OrderHistory> OrderHistories { get; set; } = new List<OrderHistory>();
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
         public virtual ICollection<SupportTicket> SupportTickets { get; set; } = new List<SupportTicket>();
     }

@@ -14,6 +14,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<ProductSpecification> ProductSpecifications { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
+    public DbSet<OrderHistory> OrderHistories { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<UserAddress> UserAddresses { get; set; }
     public DbSet<Cart> Carts { get; set; }
@@ -165,6 +166,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 t.HasCheckConstraint("CK_Order_DiscountAmount", "[DiscountAmount] >= 0");
                 t.HasCheckConstraint("CK_Order_TotalAmount", "[TotalAmount] >= 0");
             });
+        });
+
+        // ApplicationUser configuration
+        builder.Entity<ApplicationUser>(entity =>
+        {
+            entity.Property(e => e.WalletBalance).HasPrecision(18, 2);
         });
 
         // 8. OrderItem Configuration

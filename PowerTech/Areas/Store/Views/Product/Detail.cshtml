@@ -172,11 +172,40 @@
 
         function changeQty(delta) {
             const input = document.getElementById('productQuantity');
+            const max = parseInt(input.getAttribute('max'));
             let val = parseInt(input.value) + delta;
-            if (val >= 1 && val <= parseInt(input.getAttribute('max'))) {
+            if (val >= 1 && val <= max) {
                 input.value = val;
+            } else if (val > max) {
+                Swal.fire({
+                    title: 'Thông báo',
+                    text: 'Số lượng yêu cầu vượt quá số lượng trong kho!',
+                    icon: 'warning',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
             }
         }
+
+        // Validate manual input
+        document.getElementById('productQuantity').addEventListener('change', function() {
+            const max = parseInt(this.getAttribute('max'));
+            if (this.value > max) {
+                this.value = max;
+                Swal.fire({
+                    title: 'Thông báo',
+                    text: 'Số lượng tối đa bạn có thể mua là ' + max,
+                    icon: 'warning',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+            if (this.value < 1) this.value = 1;
+        });
 
         function addToCart(productId) {
             const qty = document.getElementById('productQuantity').value;
@@ -242,7 +271,17 @@
                 if (res.success) {
                     window.location.href = '/Store/Cart';
                 } else {
-                    window.location.href = '/Identity/Account/Login?returnUrl=' + encodeURIComponent(window.location.pathname);
+                    // Nếu lỗi do tồn kho thì hiện thông báo, nếu do chưa login thì redirect
+                    if (res.message && res.message.includes("kho")) {
+                        Swal.fire({
+                            title: 'Thông báo',
+                            text: res.message,
+                            icon: 'warning',
+                            confirmButtonColor: '#D7262E'
+                        });
+                    } else {
+                        window.location.href = '/Identity/Account/Login?returnUrl=' + encodeURIComponent(window.location.pathname);
+                    }
                 }
             });
         }

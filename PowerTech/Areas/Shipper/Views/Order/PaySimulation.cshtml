@@ -1,0 +1,73 @@
+@model PowerTech.Models.Entities.Order
+@{
+    Layout = null; // Giao diện đơn giản cho di động
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán đơn hàng @Model.OrderCode</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f4f7fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .payment-card { border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: none; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; padding: 40px 20px; text-align: center; }
+        .amount { font-size: 2.5rem; font-weight: 800; color: #2563eb; }
+        .btn-confirm { border-radius: 50px; padding: 15px 30px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s; }
+        .btn-confirm:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-sm-12">
+                <div class="card payment-card">
+                    <div class="header">
+                        <i class="fa-solid fa-shield-check mb-3" style="font-size: 3rem;"></i>
+                        <h4 class="mb-0">XÁC NHẬN THANH TOÁN</h4>
+                        <div class="opacity-75 small mt-2">Cổng thanh toán giả lập PowerTech</div>
+                    </div>
+                    <div class="card-body p-4 text-center">
+                        <div class="text-muted small text-uppercase fw-bold mb-1">Số tiền đơn hàng</div>
+                        <div class="amount mb-4">@Model.TotalAmount.ToString("N0")₫</div>
+
+                        <div class="bg-light p-3 rounded-3 mb-4 text-start">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted small">Mã đơn hàng:</span>
+                                <span class="fw-bold">@Model.OrderCode</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted small">Khách hàng:</span>
+                                <span class="fw-bold">@Model.ReceiverName</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted small">Sản phẩm:</span>
+                                <span class="fw-bold">@Model.OrderItems.Count món</span>
+                            </div>
+                        </div>
+
+                        <form asp-action="ConfirmPaySimulation" method="post">
+                            <input type="hidden" name="orderId" value="@Model.Id" />
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-primary w-100 btn-confirm mb-3">
+                                <i class="fa-solid fa-wallet me-2"></i>XÁC NHẬN CHUYỂN TIỀN
+                            </button>
+                        </form>
+                        
+                        <p class="text-muted x-small mt-3 mb-0" style="font-size: 0.8rem;">
+                            <i class="fa-solid fa-lock me-1"></i> Giao dịch bảo mật bởi SSL tầng cao
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <img src="/img/logo.png" alt="PowerTech" style="height: 30px; opacity: 0.5;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

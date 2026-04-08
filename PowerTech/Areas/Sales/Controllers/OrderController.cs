@@ -109,7 +109,9 @@ namespace PowerTech.Areas.Sales.Controllers
             if (string.IsNullOrEmpty(term)) return Json(new List<object>());
 
             var users = await _context.Users
-                .Where(u => u.Email.Contains(term) || u.PhoneNumber.Contains(term) || u.FullName.Contains(term))
+                .Where(u => (u.Email != null && u.Email.Contains(term)) || 
+                            (u.PhoneNumber != null && u.PhoneNumber.Contains(term)) || 
+                            (u.FullName != null && u.FullName.Contains(term)))
                 .Take(5)
                 .Select(u => new {
                     u.Id,
@@ -150,7 +152,8 @@ namespace PowerTech.Areas.Sales.Controllers
                 else
                 {
                     // Fallback to current admin if guest not found
-                    var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+                    var currentUserName = User.Identity?.Name;
+                    var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == currentUserName);
                     userId = currentUser?.Id ?? throw new Exception("Owner user not found");
                 }
             }
@@ -192,7 +195,7 @@ namespace PowerTech.Areas.Sales.Controllers
                 ReceiverName = receiverName,
                 PhoneNumber = phoneNumber,
                 ShippingAddress = string.IsNullOrEmpty(shippingAddress) ? "Tại quầy" : shippingAddress,
-                OrderStatus = "Delivered", // POS orders are typically delivered immediately
+                OrderStatus = "Completed", // POS orders are typically delivered immediately
                 PaymentStatus = "Paid",     // POS orders are typically paid immediately
                 PaymentMethod = paymentMethod,
                 Subtotal = totalAmount,

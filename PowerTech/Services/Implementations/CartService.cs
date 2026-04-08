@@ -47,9 +47,16 @@ namespace PowerTech.Services.Implementations
             var cart = await GetCartAsync(userId);
             var product = await _context.Products.FindAsync(productId);
 
-            if (product == null) return 0;
+            if (product == null) return -1; // Product not found
 
             var cartItem = cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId);
+            var currentInCart = cartItem?.Quantity ?? 0;
+
+            if (currentInCart + quantity > product.StockQuantity)
+            {
+                // Cannot add more than available stock
+                return -2; // Insufficient stock
+            }
 
             if (cartItem != null)
             {
@@ -93,9 +100,12 @@ namespace PowerTech.Services.Implementations
 
             var cart = await GetCartAsync(userId);
             var cartItem = cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId);
+            var product = await _context.Products.FindAsync(productId);
 
-            if (cartItem != null)
+            if (cartItem != null && product != null)
             {
+                if (quantity > product.StockQuantity) return false; // Stock limit exceeded
+
                 cartItem.Quantity = quantity;
                 _context.Entry(cartItem).State = EntityState.Modified;
                 await _context.SaveChangesAsync();

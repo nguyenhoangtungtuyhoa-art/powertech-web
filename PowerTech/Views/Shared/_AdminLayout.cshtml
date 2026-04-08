@@ -23,8 +23,8 @@
 <body class="admin-body">
     <aside class="admin-sidebar" id="sidebar">
         <div class="admin-sidebar-logo">
-            <a asp-area="Store" asp-controller="Home" asp-action="Index">
-                <img src="/images/logo.png" alt="PowerTech Logo" onerror="this.src='/images/no-image.png"/>
+            <a asp-area="Store" asp-controller="Home" asp-action="Index" class="text-decoration-none">
+                <span class="text-white fw-800 fs-4">Power<span class="text-primary">Tech</span></span>
             </a>
         </div>
         
@@ -33,79 +33,85 @@
                 <li class="menu-header">Hệ thống</li>
                 <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active" : "")">
                     <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
-                        <i class="fa-solid fa-chart-line"></i> Dashboard
+                        <i class="fa-solid fa-grid-2"></i> Dashboard
                     </a>
                 </li>
                 
                 <li class="menu-header">Cửa hàng</li>
                 <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Product" ? "active" : "")">
                     <a asp-area="Admin" asp-controller="Product" asp-action="Index">
-                        <i class="fa-solid fa-box"></i> Sản phẩm
+                        <i class="fa-solid fa-box-open"></i> Sản phẩm
                     </a>
                 </li>
                 <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Category" ? "active" : "")">
                     <a asp-area="Admin" asp-controller="Category" asp-action="Index">
-                        <i class="fa-solid fa-tags"></i> Danh mục
+                        <i class="fa-solid fa-layer-group"></i> Danh mục
                     </a>
                 </li>
                 <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Brand" ? "active" : "")">
                     <a asp-area="Admin" asp-controller="Brand" asp-action="Index">
-                        <i class="fa-solid fa-award"></i> Thương hiệu
-                    </a>
-                </li>
-                
-                <li class="menu-header">Hệ thống</li>
-                <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Order" ? "active" : "")">
-                    <a asp-area="Admin" asp-controller="Order" asp-action="Index">
-                        <i class="fa-solid fa-cart-shopping"></i> Đơn hàng
-                    </a>
-                </li>
-                <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "User" ? "active" : "")">
-                    <a asp-area="Admin" asp-controller="User" asp-action="Index">
-                        <i class="fa-solid fa-users"></i> Người dùng
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#">
-                        <i class="fa-solid fa-ticket"></i> Voucher
+                        <i class="fa-solid fa-copyright"></i> Thương hiệu
                     </a>
                 </li>
                 
                 <li class="menu-header">Nghiệp vụ</li>
-                <li class="menu-item @(ViewContext.RouteData.Values["area"]?.ToString() == "Sales" ? "active" : "")">
-                    <a asp-area="Sales" asp-controller="Home" asp-action="Index">
-                        <i class="fa-solid fa-headset"></i> Bộ phận Sales
+                <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Order" ? "active" : "")">
+                    <a asp-area="Admin" asp-controller="Order" asp-action="Index">
+                        <i class="fa-solid fa-receipt"></i> Đơn hàng
                     </a>
                 </li>
+
+                <li class="menu-header">Kho vận</li>
                 <li class="menu-item @(ViewContext.RouteData.Values["area"]?.ToString() == "Warehouse" ? "active" : "")">
                     <a asp-area="Warehouse" asp-controller="Home" asp-action="Index">
-                        <i class="fa-solid fa-warehouse"></i> Bộ phận Kho
+                        <i class="fa-solid fa-warehouse"></i> Quản lý kho
                     </a>
                 </li>
+                
+                <li class="menu-header">Logistics</li>
+                <li class="menu-item @(ViewContext.RouteData.Values["area"]?.ToString() == "Shipper" ? "active" : "")">
+                    <a asp-area="Shipper" asp-controller="Order" asp-action="Index">
+                        <i class="fa-solid fa-truck-fast"></i> Giao nhận (Shipper)
+                    </a>
+                </li>
+
+                <li class="menu-header">Kinh doanh</li>
+                <li class="menu-item @(ViewContext.RouteData.Values["area"]?.ToString() == "Sales" ? "active" : "")">
+                    <a asp-area="Sales" asp-controller="Home" asp-action="Index">
+                        <i class="fa-solid fa-chart-line"></i> Bán hàng (Sales)
+                    </a>
+                </li>
+
+                <li class="menu-header">Hỗ trợ</li>
                 <li class="menu-item @(ViewContext.RouteData.Values["area"]?.ToString() == "Support" ? "active" : "")">
                     <a asp-area="Support" asp-controller="Home" asp-action="Index">
-                        <i class="fa-solid fa-headset"></i> Bộ phận Support
+                        <i class="fa-solid fa-headset"></i> Chăm sóc khách hàng
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <i class="fa-solid fa-circle-exclamation"></i> Khiếu nại (Tickets)
                     </a>
                 </li>
                 
                 <li class="menu-header">Người dùng</li>
+                <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "User" ? "active" : "")">
+                    <a asp-area="Admin" asp-controller="User" asp-action="Index">
+                        <i class="fa-solid fa-user-gear"></i> Nhân viên
+                    </a>
+                </li>
                 <li class="menu-item">
                     <a href="#">
                         <i class="fa-solid fa-users"></i> Khách hàng
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="User" asp-action="Index">
-                        <i class="fa-solid fa-user-shield"></i> Nhân viên
-                    </a>
-                </li>
             </ul>
         </nav>
         
-        <div class="admin-sidebar-footer p-3 border-top border-secondary">
+        <div class="admin-sidebar-footer p-3">
              <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Store" })">
-                <button type="submit" class="btn btn-sm btn-outline-danger w-100">
-                    <i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất
+                <button type="submit" class="btn btn-link text-danger text-decoration-none w-100 text-start p-2 small fw-bold">
+                    <i class="fa-solid fa-power-off me-2"></i> Đăng xuất
                 </button>
             </form>
         </div>
@@ -113,28 +119,31 @@
 
     <div class="admin-wrapper">
         <header class="admin-header">
-            <button class="btn btn-link d-lg-none" onclick="toggleSidebar()">
-                <i class="fa-solid fa-bars fs-4"></i>
-            </button>
-            
-            <div class="header-search d-none d-md-block">
-                <input type="text" placeholder="Tìm kiếm đơn hàng, khách hàng..."/>
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light d-lg-none" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+                <div class="header-search d-none d-md-block">
+                    <div class="position-relative">
+                        <i class="fa-solid fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style="font-size: 12px;"></i>
+                        <input type="text" class="ps-5" placeholder="Tìm kiếm nhanh..."/>
+                    </div>
+                </div>
             </div>
             
             <div class="header-right">
-                <a href="#" class="btn btn-link link-secondary position-relative">
-                    <i class="fa-regular fa-bell fs-5"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 8px;">
-                        3
-                    </span>
-                </a>
+                <div class="d-flex align-items-center gap-2 border-end pe-3 me-1">
+                    <a href="#" class="btn btn-icon btn-light rounded-circle" style="width: 38px; height: 38px;">
+                        <i class="fa-regular fa-bell"></i>
+                    </a>
+                </div>
                 
                 <div class="admin-profile-btn">
-                    <img src="https://ui-avatars.com/api/?name=@(user?.FullName ?? "Admin")&background=D7262E&color=fff" />
-                    <div class="d-none d-md-block">
-                        <div class="fw-bold fs-7">@(user?.FullName ?? "Administrator")</div>
-                        <div class="text-muted small" style="font-size: 11px;">Quản trị viên</div>
+                    <div class="text-end d-none d-md-block">
+                        <div class="fw-bold fs-7 lh-1 text-dark">@(user?.FullName ?? "Administrator")</div>
+                        <div class="text-muted" style="font-size: 10px;">Quản trị viên</div>
                     </div>
+                    <img src="https://ui-avatars.com/api/?name=@(user?.FullName ?? "Admin")&background=1e293b&color=fff&rounded=true" />
                 </div>
             </div>
         </header>
@@ -143,17 +152,44 @@
             @RenderBody()
         </main>
         
-        <footer class="p-4 border-top bg-white mt-auto small text-muted text-center">
-            &copy; 2026 PowerTech Retail-Tech System. Bản quyền thuộc về Google Deepmind Team.
+        <footer class="p-4 bg-white mt-auto py-3 border-top text-center">
+            <span class="text-muted small">© 2026 <span class="fw-bold text-dark">PowerTech</span> Dashboard. Designed by Deepmind.</span>
         </footer>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('mobile-open');
         }
+
+        // Global SignalR Notification Listener
+        const globalConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/orderHub")
+            .build();
+
+        globalConnection.on("ReceiveAdminNotification", function (title, message, type) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true
+            });
+            Toast.fire({
+                icon: type,
+                title: title,
+                text: message
+            });
+            
+            // Có thể thêm âm thanh thông báo nếu muốn xịn hơn nữa
+            // new Audio('/sounds/notification.mp3').play();
+        });
+
+        globalConnection.start().catch(err => console.log("SignalR Error: " + err));
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,0 +1,331 @@
+@model PowerTech.Models.Entities.Order
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-shipper border-0 mb-4 bg-navy text-white" style="background: #0f172a;">
+            <div class="card-body p-4 text-center">
+                <div class="small fw-bold text-uppercase opacity-75 mb-1">Tiền cần thu (COD)</div>
+                <div class="display-5 fw-800 text-primary mb-2">@Model.TotalAmount.ToString("N0")₫</div>
+                <div class="small">
+                    <i class="fa-solid fa-credit-card me-1 opacity-50"></i> 
+                    Phương thức: <span class="fw-bold">@Model.PaymentMethod</span>
+                </div>
+                @if (Model.PaymentStatus == "Paid")
+                {
+                    <div class="mt-2 text-success small fw-bold">
+                        <i class="fa-solid fa-circle-check"></i> ĐƠN ĐÃ THANH TOÁN TRƯỚC
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="card card-shipper border-0 mb-3">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                        @(string.IsNullOrEmpty(Model.ReceiverName) ? "K" : Model.ReceiverName.Substring(0, 1).ToUpper())
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-800 text-dark fs-5">@Model.ReceiverName</div>
+                        <div class="text-primary fw-bold">@Model.PhoneNumber</div>
+                    </div>
+                    <a href="tel:@Model.PhoneNumber" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-phone fs-4"></i>
+                    </a>
+                </div>
+
+                <div class="address-box bg-light p-3 rounded-4 mb-3 position-relative">
+                    <div class="text-muted small fw-bold text-uppercase mb-1"><i class="fa-solid fa-location-arrow me-1"></i> Địa chỉ giao hàng</div>
+                    <div class="text-dark fw-bold pe-5">@Model.ShippingAddress</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(Model.ShippingAddress)" target="_blank" 
+                       class="position-absolute top-50 end-0 translate-middle-y me-3 btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 40px; height: 40px;">
+                        <i class="fa-solid fa-route"></i>
+                    </a>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.Note))
+                {
+                    <div class="bg-warning bg-opacity-10 border-start border-warning border-4 p-3 rounded-2">
+                        <div class="text-warning small fw-bold text-uppercase mb-1">Ghi chú của khách</div>
+                        <div class="text-dark small fw-medium italic">"@Model.Note"</div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Note) && Model.Note.Contains("[GIAO THẤT BẠI]"))
+        {
+            <div class="card card-shipper border-0 mb-3 bg-danger bg-opacity-10 border border-danger border-opacity-25">
+                <div class="card-body p-3">
+                    @{
+                        int attempts = Model.Note.Split(new[] { "[GIAO THẤT BẠI]" }, StringSplitOptions.None).Length - 1;
+                    }
+                    <div class="text-danger fw-bold small text-uppercase mb-1">
+                        <i class="fa-solid fa-triangle-exclamation me-1"></i> Cảnh báo: Đã giao thất bại @attempts lần
+                    </div>
+                    <div class="text-dark small">Lưu ý: Nếu báo lỗi đủ 3 lần, đơn hàng sẽ tự động <b>HỦY</b>.</div>
+                </div>
+            </div>
+        }
+
+        <div class="card card-shipper border-0 mb-4">
+            <div class="card-header bg-transparent border-0 pt-3 ps-4 pb-0">
+                <h6 class="fw-800 mb-0">SẢN PHẨM (@Model.OrderItems.Count)</h6>
+            </div>
+            <div class="card-body p-4">
+                @foreach (var item in Model.OrderItems)
+                {
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="text-dark fw-medium small">
+                            <span class="text-primary fw-bold">@item.Quantity x</span> @item.ProductNameSnapshot
+                        </div>
+                        <div class="text-muted small">@item.UnitPrice.ToString("N0")₫</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom p-3 bg-white border-top d-flex gap-2 shadow-lg" style="bottom: 60px; z-index: 1040; max-width: 500px; margin: 0 auto; border-radius: 20px 20px 0 0;">
+    <button class="btn btn-outline-danger fw-bold rounded-3 flex-fill py-2 shadow-sm" onclick="reportIssue()" style="font-size: 13px; height: 50px;">BÁO LỖI</button>
+    
+    @if (Model.PaymentStatus != "Paid")
+    {
+        <button class="btn btn-primary rounded-3 py-2 px-3 shadow-sm" style="height: 50px;" onclick="showQRPayment()" title="Thanh toán QR">
+            <i class="fa-solid fa-qrcode fs-4"></i>
+        </button>
+        
+        <form asp-action="ConfirmDelivery" method="post" class="flex-fill">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-success fw-bold rounded-3 w-100 py-2 shadow-sm" style="font-size: 13px; height: 50px;">XÁC NHẬN GIAO</button>
+        </form>
+    }
+    else
+    {
+         <form asp-action="ConfirmDelivery" method="post" class="flex-fill">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-success fw-bold rounded-3 w-100 py-2 shadow-sm" style="font-size: 13px; height: 50px;">HOÀN TẤT ĐƠN</button>
+        </form>
+    }
+</div>
+
+<!-- History Timeline Section -->
+<div class="card border-0 rounded-4 shadow-sm mb-4">
+    <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+        <h6 class="fw-800 mb-0 text-dark font-primary"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i>LỊCH SỬ ĐƠN HÀNG</h6>
+    </div>
+    <div class="card-body p-4">
+        <div class="timeline-modern">
+            @if (!Model.OrderHistories.Any())
+            {
+                <div class="text-center py-3 text-muted small">Chưa có lịch sử ghi lại cho đơn hàng này.</div>
+            }
+            else
+            {
+                @foreach (var entry in Model.OrderHistories)
+                {
+                    <div class="timeline-item-modern @(entry == Model.OrderHistories.First() ? "active" : "")">
+                        <div class="timeline-time">@entry.CreatedAt.ToString("HH:mm - dd/MM/yyyy")</div>
+                        <div class="timeline-desc fw-bold text-dark" style="font-size: 13px;">@entry.Action</div>
+                        <div class="text-muted" style="font-size: 12px; line-height: 1.4;">@entry.Note</div>
+                        <div class="x-small text-primary fw-bold mt-1" style="font-size: 10px;">Bởi: @entry.PerformedBy</div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        body { padding-bottom: 150px !important; }
+
+        /* Timeline Styles from Admin */
+        .timeline-modern {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline-item-modern {
+            position: relative;
+            padding-bottom: 1.5rem;
+            padding-left: 20px;
+            border-left: 2px solid #e2e8f0;
+        }
+        .timeline-item-modern:last-child {
+            padding-bottom: 0;
+            border-left: 2px solid transparent;
+        }
+        .timeline-item-modern::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item-modern.active::before {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .timeline-time {
+            font-size: 10px;
+            font-weight: 800;
+            color: #64748b;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .x-small { font-size: 0.75rem; }
+    </style>
+}
+
+<!-- Modal QR Code -->
+<div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+            <div class="modal-header border-0 pb-0 position-absolute end-0 top-0" style="z-index: 10;">
+                <button type="button" class="btn-close m-2 shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-4 pt-5">
+                <div class="mb-4">
+                    <i class="fa-solid fa-qrcode text-primary opacity-25" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="fw-800 mb-2 text-dark">QUÉT QR THANH TOÁN</h5>
+                <p class="text-muted small mb-4">Mã thanh toán cho đơn hàng <b>#@Model.OrderCode</b></p>
+                
+                <div class="bg-white p-3 rounded-4 d-inline-block shadow-sm border border-light">
+                    @{
+                        var payUrl = $"{Context.Request.Scheme}://{Context.Request.Host}/Shipper/Order/PaySimulation/{Model.Id}";
+                        var qrApi = $"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={Uri.EscapeDataString(payUrl)}";
+                    }
+                    <img src="@qrApi" alt="QR Code Payment" class="img-fluid" style="width: 250px; height: 250px;" />
+                </div>
+                
+                <div class="mt-3 mb-4">
+                    <a href="@payUrl" target="_blank" class="btn btn-link text-primary text-decoration-none fw-bold small">
+                        <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Link thanh toán đơn hàng
+                    </a>
+                </div>
+                
+                <div class="p-3 rounded-4 bg-light">
+                    <div class="h3 fw-800 text-primary mb-1">@Model.TotalAmount.ToString("N0")₫</div>
+                    <div class="x-small text-muted mb-0">Hệ thống đang chờ xác nhận của khách...</div>
+                </div>
+                
+                <div class="mt-4 pt-3">
+                    <div class="d-flex align-items-center justify-content-center gap-3 text-success fw-bold">
+                        <div class="spinner-grow spinner-grow-sm" role="status"></div>
+                        <span class="small text-uppercase" style="letter-spacing: 1px;">Đang chờ thanh toán</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #qrModal .modal-content {
+        animation: modalFadeIn 0.3s ease-out;
+    }
+    @@keyframes modalFadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .modal-backdrop.show {
+        opacity: 0.8 !important;
+        background-color: #0f172a !important;
+    }
+</style>
+
+<form id="antiForgeryForm">
+    @Html.AntiForgeryToken()
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+<script>
+    // SignalR Connection
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/orderHub")
+        .build();
+
+    connection.on("ReceiveOrderPaid", function (orderId) {
+        if (orderId == '@Model.Id') {
+            $('#qrModal').modal('hide');
+            Swal.fire({
+                title: 'ĐÃ NHẬN TIỀN!',
+                text: 'Khách hàng đã thanh toán thành công qua QR.',
+                icon: 'success',
+                confirmButtonText: 'Đóng & Cập nhật'
+            }).then(() => {
+                location.reload();
+            });
+        }
+    });
+
+    connection.start().catch(err => console.error(err.toString()));
+
+    function showQRPayment() {
+        $('#qrModal').modal('show');
+    }
+
+    function reportIssue() {
+        Swal.fire({
+            title: 'Lý do giao thất bại',
+            input: 'select',
+            inputOptions: {
+                'Khách không nghe máy': 'Khách không nghe máy',
+                'Khách hẹn ngày khác': 'Khách hẹn ngày khác',
+                'Địa chỉ không tìm thấy': 'Địa chỉ không tìm thấy',
+                'Khách từ chối nhận hàng': 'Khách từ chối nhận hàng',
+                'Khác': 'Lý do khác'
+            },
+            inputPlaceholder: 'Chọn lý do',
+            showCancelButton: true,
+            confirmButtonText: 'Gửi báo cáo',
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '@Url.Action("ReportIssue")';
+                
+                // Add Anti-Forgery Token
+                const token = document.querySelector('#antiForgeryForm input[name="__RequestVerificationToken"]').value;
+                const tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = '__RequestVerificationToken';
+                tokenInput.value = token;
+                form.appendChild(tokenInput);
+
+                const idInput = document.createElement('input');
+                idInput.type = 'hidden';
+                idInput.name = 'id';
+                idInput.value = '@Model.Id';
+                
+                const reasonInput = document.createElement('input');
+                reasonInput.type = 'hidden';
+                reasonInput.name = 'reason';
+                reasonInput.value = result.value;
+                
+                form.appendChild(idInput);
+                form.appendChild(reasonInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
+</script>
+
+<style>
+    .flex-grow-2 { flex-grow: 2; }
+    .bg-navy { background: #0f172a; }
+    .fw-800 { font-weight: 800; }
+</style>

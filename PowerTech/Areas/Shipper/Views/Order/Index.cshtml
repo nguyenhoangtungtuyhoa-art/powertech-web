@@ -1,0 +1,70 @@
+@model IEnumerable<PowerTech.Models.Entities.Order>
+@{
+    ViewData["Title"] = "Đơn hàng cần giao";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Đang gán (@Model.Count())</h5>
+            <button class="btn btn-sm btn-light border rounded-pill"><i class="fa-solid fa-filter"></i> Lọc</button>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <i class="fa-solid fa-box-open fs-1 text-muted mb-3 d-block"></i>
+                <p class="text-muted">Bạn chưa có đơn hàng nào cần giao.</p>
+            </div>
+        }
+
+        @foreach (var item in Model)
+        {
+            <div class="card card-shipper border-0 mb-3 clickable" onclick="location.href='@Url.Action("Details", new { id = item.Id })'">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge @(item.OrderStatus == "Shipping" ? "bg-primary" : "bg-warning text-dark") rounded-pill">
+                            @item.OrderStatus
+                        </span>
+                        <div class="text-end">
+                            <div class="fw-800 text-primary">@item.TotalAmount.ToString("N0")₫</div>
+                            <div class="small text-muted">@item.PaymentMethod</div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3 align-items-center mb-3">
+                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; flex-shrink: 0;">
+                            <i class="fa-solid fa-location-dot text-danger"></i>
+                        </div>
+                        <div class="small lh-sm fw-medium text-dark truncate-2">
+                            @item.ShippingAddress
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                        <div class="small text-muted">
+                            <i class="fa-solid fa-clock me-1"></i> @item.CreatedAt.ToString("HH:mm dd/MM")
+                        </div>
+                        <div class="text-dark fw-bold small">
+                            @item.ReceiverName <i class="fa-solid fa-chevron-right ms-1 opacity-50" style="font-size: 10px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .card-shipper:active {
+        background-color: #f8fafc;
+        transform: scale(0.98);
+    }
+    .clickable { cursor: pointer; }
+</style>

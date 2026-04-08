@@ -1,0 +1,95 @@
+@model IEnumerable<PowerTech.Models.Entities.Order>
+@{
+    ViewData["Title"] = "Ví tiền Shipper";
+}
+
+<h4 class="fw-800 mb-4 text-dark">VÍ TIỀN</h4>
+
+<!-- Wallet Balance Card -->
+<div class="card border-0 mb-4 bg-primary text-white shadow-lg overflow-hidden" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); border-radius: 24px;">
+    <div class="card-body p-4 position-relative">
+        <div class="opacity-75 small fw-bold text-uppercase mb-1">Số dư khả dụng</div>
+        <div class="display-5 fw-800 mb-4">@(((decimal)ViewBag.Balance).ToString("N0"))₫</div>
+        
+        <div class="d-flex gap-2">
+            <button class="btn btn-light btn-sm flex-fill fw-bold rounded-pill py-2"><i class="fa-solid fa-download me-2"></i>Rút tiền</button>
+            <button class="btn btn-primary btn-sm flex-fill border-white fw-bold rounded-pill py-2" style="background: rgba(255,255,255,0.1);"><i class="fa-solid fa-plus me-2"></i>Nạp tiền</button>
+        </div>
+
+        <!-- Decorative background icon -->
+        <i class="fa-solid fa-wallet position-absolute opacity-10" style="font-size: 150px; right: -20px; top: 10px;"></i>
+    </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="row g-3 mb-4">
+    <div class="col-6">
+        <div class="card border-0 p-3 rounded-4 bg-white shadow-sm overflow-hidden">
+            <div class="small text-muted fw-bold mb-1">Hôm nay</div>
+            <div class="text-success fw-800 fs-5">+@(((decimal)ViewBag.DailyIncome).ToString("N0"))₫</div>
+            <div class="x-small text-muted">@ViewBag.DailyCount đơn thành công</div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card border-0 p-3 rounded-4 bg-white shadow-sm overflow-hidden">
+            <div class="small text-muted fw-bold mb-1">Tiền COD</div>
+            <div class="text-danger fw-800 fs-5">@(((int)ViewBag.CashInHand).ToString("N0"))₫</div>
+            <div class="x-small text-muted">Cần nộp về kho</div>
+        </div>
+    </div>
+</div>
+
+<!-- Transaction History -->
+<h6 class="fw-800 mb-3 px-2 text-dark text-uppercase" style="letter-spacing: 0.5px;">GIAO DỊCH GẦN ĐÂY</h6>
+<div class="card border-0 rounded-4 overflow-hidden mb-4 shadow-sm">
+    <div class="list-group list-group-flush">
+        @if (!Model.Any())
+        {
+            <div class="list-group-item text-center py-5 text-muted">
+                <i class="fa-solid fa-receipt fs-1 opacity-25 mb-3 d-block"></i>
+                Chưa có giao dịch nào được ghi nhận
+            </div>
+        }
+        else
+        {
+            @foreach (var order in Model)
+            {
+                <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-success bg-opacity-10 text-success p-2 rounded-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fa-solid fa-plus-circle"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold small text-dark">Thu nhập đơn #@order.OrderCode</div>
+                            <div class="x-small text-muted">@order.UpdatedAt?.ToString("dd/MM/yyyy HH:mm")</div>
+                        </div>
+                    </div>
+                    <div class="text-success fw-800">+@order.TotalAmount.ToString("N0")₫</div>
+                </div>
+            }
+        }
+        
+        <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-danger bg-opacity-10 text-danger p-2 rounded-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-minus-circle"></i>
+                </div>
+                <div>
+                    <div class="fw-bold small text-dark">Rút tiền về MB Bank</div>
+                    <div class="x-small text-muted">Hôm qua, 18:30</div>
+                </div>
+            </div>
+            <div class="text-danger fw-800">-500.000₫</div>
+        </div>
+
+        <div class="list-group-item d-flex justify-content-between align-items-center p-3 text-center bg-light">
+            <a href="#" class="small fw-bold text-primary text-decoration-none w-100">Xem tất cả lịch sử</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-white { background: white; color: #2563eb; }
+    .btn-white:hover { background: #f8fafc; color: #1d4ed8; }
+    .x-small { font-size: 11px; }
+</style>

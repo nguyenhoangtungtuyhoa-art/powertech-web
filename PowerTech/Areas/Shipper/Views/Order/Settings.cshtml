@@ -1,0 +1,94 @@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<PowerTech.Models.Entities.ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Cài đặt";
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<h4 class="fw-800 mb-4">CÀI ĐẶT</h4>
+
+<!-- Profile Header -->
+<div class="card border-0 rounded-4 mb-4 shadow-sm overflow-hidden">
+    <div class="card-body p-4 text-center">
+        <div class="position-relative d-inline-block mb-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-800" style="width: 80px; height: 80px; font-size: 2rem; border: 4px solid #f1f5f9;">
+                @(user?.FullName?.Substring(0, 1).ToUpper() ?? "S")
+            </div>
+            <span class="position-absolute bottom-0 end-0 bg-success border border-white border-2 rounded-circle" style="width: 18px; height: 18px;"></span>
+        </div>
+        <h5 class="fw-800 text-dark mb-1">@user?.FullName</h5>
+        <p class="text-muted small mb-0">Đối tác giao hàng #S-@(user?.Id.Substring(0, 4).ToUpper())</p>
+    </div>
+</div>
+
+<!-- Status Control -->
+<div class="card border-0 rounded-4 mb-4 shadow-sm">
+    <div class="card-body p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-success bg-opacity-10 text-success p-2 rounded-3"><i class="fa-solid fa-signal"></i></div>
+                <div>
+                    <div class="fw-bold small">Trạng thái hoạt động</div>
+                    <div class="x-small text-muted">Bật để nhận đơn mới</div>
+                </div>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="onlineSwitch" checked style="width: 45px; height: 24px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings List -->
+<h6 class="fw-800 mb-3 px-2">TÀI KHOẢN</h6>
+<div class="card border-0 rounded-4 overflow-hidden mb-4 shadow-sm">
+    <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <i class="fa-solid fa-user text-muted"></i>
+                <span class="small fw-medium">Thông tin cá nhân</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-muted x-small"></i>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-muted"></i>
+                <span class="small fw-medium">Bảo mật & Mật khẩu</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-muted x-small"></i>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <i class="fa-solid fa-bell text-muted"></i>
+                <span class="small fw-medium">Thông báo</span>
+            </div>
+            <span class="badge bg-danger rounded-pill x-small">2</span>
+        </a>
+    </div>
+</div>
+
+<h6 class="fw-800 mb-3 px-2">HỆ THỐNG</h6>
+<div class="card border-0 rounded-4 overflow-hidden mb-4 shadow-sm">
+    <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <i class="fa-solid fa-circle-info text-muted"></i>
+                <span class="small fw-medium">Về PowerTech Driver</span>
+            </div>
+            <span class="x-small text-muted">v2.4.0</span>
+        </a>
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+            <button type="submit" class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center text-danger border-0 w-100 text-start bg-transparent">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="small fw-bold">Đăng xuất</span>
+                </div>
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .x-small { font-size: 11px; }
+    .form-check-input:checked { background-color: #22c55e; border-color: #22c55e; }
+</style>

@@ -31,6 +31,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 // Register Custom Services
 builder.Services.AddScoped<ICartService, CartService>();
@@ -101,6 +102,7 @@ app.MapControllerRoute(
     pattern: "{area=Store}/{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapHub<PowerTech.Hubs.OrderHub>("/orderHub");
 app.MapRazorPages();
 
 app.Run();

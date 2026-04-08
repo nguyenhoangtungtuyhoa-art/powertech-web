@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PowerTech")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb6e434a3c0317f86ee333f108a4ad2f0d4b5610")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2ed4e836f1a4e3b5596f011e6e25ba5357f089c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PowerTech")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PowerTech")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

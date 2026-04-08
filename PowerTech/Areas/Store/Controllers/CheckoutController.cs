@@ -23,7 +23,7 @@ namespace PowerTech.Areas.Store.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? productIds)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
@@ -32,6 +32,21 @@ namespace PowerTech.Areas.Store.Controllers
             if (cart.CartItems == null || !cart.CartItems.Any())
             {
                 return RedirectToAction("Index", "Cart");
+            }
+
+            // Nếu có productIds, lọc giỏ hàng
+            if (!string.IsNullOrEmpty(productIds))
+            {
+                var idList = productIds.Split(',').Select(int.Parse).ToList();
+                cart.CartItems = cart.CartItems.Where(ci => idList.Contains(ci.ProductId)).ToList();
+                TempData["CheckoutProductIds"] = productIds;
+            }
+            else
+            {
+                // Nếu không có productIds (truy cập trực tiếp), mặc định dọn đường về giỏ hàng hoặc chọn tất cả
+                // Ở đây ta chọn tất cả IDs hiện có trong cart
+                var allIds = string.Join(",", cart.CartItems.Select(ci => ci.ProductId));
+                TempData["CheckoutProductIds"] = allIds;
             }
 
             var addresses = await _context.UserAddresses
@@ -45,7 +60,6 @@ namespace PowerTech.Areas.Store.Controllers
         [HttpPost]
         public IActionResult UpdateAddress(int addressId)
         {
-            // Placeholder: logic to select an address for this checkout session (e.g. TempData or separate Checkout entity)
             TempData["SelectedAddressId"] = addressId;
             return RedirectToAction("Payment");
         }
@@ -56,6 +70,13 @@ namespace PowerTech.Areas.Store.Controllers
             if (user == null) return Unauthorized();
             var cart = await _cartService.GetCartAsync(user.Id);
             
+            var productIds = TempData.Peek("CheckoutProductIds") as string;
+            if (!string.IsNullOrEmpty(productIds))
+            {
+                var idList = productIds.Split(',').Select(int.Parse).ToList();
+                cart.CartItems = cart.CartItems.Where(ci => idList.Contains(ci.ProductId)).ToList();
+            }
+
             var addressId = TempData.Peek("SelectedAddressId");
             if (addressId == null) return RedirectToAction("Index");
             
@@ -71,14 +92,30 @@ namespace PowerTech.Areas.Store.Controllers
             if (user == null) return Unauthorized();
             var cart = await _cartService.GetCartAsync(user.Id);
             var addressId = (int?)TempData["SelectedAddressId"];
+            var productIdsStr = TempData["CheckoutProductIds"] as string;
 
-            if (addressId == null || cart.CartItems == null || !cart.CartItems.Any()) 
+            if (addressId == null || cart.CartItems == null || !cart.CartItems.Any() || string.IsNullOrEmpty(productIdsStr)) 
                 return RedirectToAction("Index");
+
+            var selectedIdList = productIdsStr.Split(',').Select(int.Parse).ToList();
+            var selectedItems = cart.CartItems.Where(ci => selectedIdList.Contains(ci.ProductId)).ToList();
+
+            if (!selectedItems.Any()) return RedirectToAction("Index");
 
             var address = await _context.UserAddresses.FindAsync(addressId);
             if (address == null) return RedirectToAction("Index");
 
-            var totalAmount = cart.CartItems.Sum(ci => ci.Quantity * ci.UnitPrice);
+            // 1. Verify stock for all items
+            foreach (var item in selectedItems)
+            {
+                var product = await _context.Products.FindAsync(item.ProductId);
+                if (product == null || product.StockQuantity < item.Quantity)
+                {
+                    TempData["Error"] = $"Sản phẩm {product?.Name ?? "đã chọn"} không còn đủ hàng trong kho!";
+                    return RedirectToAction("Index", "Cart");
+                }
+            }
+            var totalAmount = selectedItems.Sum(item => item.Quantity * item.UnitPrice);
 
             // Create Order
             var order = new Order
@@ -92,7 +129,7 @@ namespace PowerTech.Areas.Store.Controllers
                 PaymentStatus = "Unpaid",
                 PaymentMethod = paymentMethod ?? "COD",
                 Subtotal = totalAmount,
-                ShippingFee = 0, // Placeholder
+                ShippingFee = 0,
                 DiscountAmount = 0,
                 TotalAmount = totalAmount,
                 Note = note,
@@ -102,7 +139,20 @@ namespace PowerTech.Areas.Store.Controllers
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            foreach (var item in cart.CartItems)
+            // Lưu lịch sử lần đầu: Đơn hàng được khởi tạo
+            var initialHistory = new OrderHistory
+            {
+                OrderId = order.Id,
+                Status = "Pending",
+                Action = "Khách hàng tạo đơn hàng",
+                Note = "Đơn hàng được khởi tạo thành công qua website.",
+                PerformedBy = "Customer: " + user.FullName,
+                CreatedAt = DateTime.Now
+            };
+            _context.OrderHistories.Add(initialHistory);
+            await _context.SaveChangesAsync();
+
+            foreach (var item in selectedItems)
             {
                 var orderItem = new OrderItem
                 {
@@ -116,11 +166,25 @@ namespace PowerTech.Areas.Store.Controllers
                     ProductImageSnapshot = item.Product.ThumbnailUrl
                 };
                 _context.OrderItems.Add(orderItem);
+                
+                // Decrement stock and increment sold count
+                var product = await _context.Products.FindAsync(item.ProductId);
+                if (product != null)
+                {
+                    product.StockQuantity -= item.Quantity;
+                    product.SoldQuantity += item.Quantity;
+                    _context.Entry(product).State = EntityState.Modified;
+                }
+
+                // Xóa sản phẩm đã mua khỏi giỏ hàng
+                await _cartService.RemoveFromCartAsync(user.Id, item.ProductId);
             }
 
-            // Clear Cart
-            await _cartService.ClearCartAsync(user.Id);
             await _context.SaveChangesAsync();
+
+            // Cập nhật Cookie số lượng giỏ hàng sau khi đã xóa các món đã mua
+            var newCount = await _cartService.GetCartItemCountAsync(user.Id);
+            Response.Cookies.Append("PT_CartCount", newCount.ToString(), new CookieOptions { Expires = DateTimeOffset.Now.AddDays(7) });
 
             return RedirectToAction("Confirmation", new { orderId = order.Id });
         }

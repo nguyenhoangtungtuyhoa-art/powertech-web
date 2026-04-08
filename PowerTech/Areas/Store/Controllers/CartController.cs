@@ -55,17 +55,20 @@ namespace PowerTech.Areas.Store.Controllers
         public async Task<IActionResult> Add(int productId, int quantity = 1)
         {
             var cartOwnerId = await GetCartOwnerIdAsync();
-            var count = await _cartService.AddToCartAsync(cartOwnerId, productId, quantity);
+            var result = await _cartService.AddToCartAsync(cartOwnerId, productId, quantity);
             
+            if (result == -1) return Json(new { success = false, message = "Sản phẩm không tồn tại!" });
+            if (result == -2) return Json(new { success = false, message = "Số lượng vượt quá sản phẩm hiện có trong kho!" });
+
             // Lưu vào Cookie để Layout đọc tức thì
-            Response.Cookies.Append("PT_CartCount", count.ToString(), new CookieOptions { 
+            Response.Cookies.Append("PT_CartCount", result.ToString(), new CookieOptions { 
                 Expires = DateTime.Now.AddDays(30), 
                 HttpOnly = false, // Cho phép JS đọc
                 IsEssential = true,
                 Path = "/"
             });
 
-            return Json(new { success = true, count = count, message = "Đã thêm vào giỏ hàng thành công!" });
+            return Json(new { success = true, count = result, message = "Đã thêm vào giỏ hàng thành công!" });
         }
 
         [HttpPost]
@@ -73,6 +76,12 @@ namespace PowerTech.Areas.Store.Controllers
         {
             var cartOwnerId = await GetCartOwnerIdAsync();
             var success = await _cartService.UpdateQuantityAsync(cartOwnerId, productId, quantity);
+            
+            if (!success)
+            {
+                return Json(new { success = false, message = "Số lượng vượt quá tồn kho!" });
+            }
+
             var cart = await _cartService.GetCartAsync(cartOwnerId);
             
             // Cập nhật Cookie số lượng mới
@@ -85,7 +94,7 @@ namespace PowerTech.Areas.Store.Controllers
             });
 
             return Json(new { 
-                success = success, 
+                success = true, 
                 count = newCount,
                 total = cart.CartItems.Sum(ci => ci.Quantity * ci.UnitPrice).ToString("N0") + "₫",
                 itemTotal = cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId)?.Quantity * cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId)?.UnitPrice

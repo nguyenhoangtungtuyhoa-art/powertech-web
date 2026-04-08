@@ -1,0 +1,42 @@
+@model PowerTech.Models.Entities.Order
+@{
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán thành công</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f4f7fa; }
+        .success-card { border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: none; padding: 50px 20px; text-align: center; background: white; }
+        .check-icon { width: 100px; height: 100px; background: #22c55e; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; margin: 0 auto 30px; animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @@keyframes scaleUp { from { transform: scale(0); } to { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="container py-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="success-card">
+                    <div class="check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h2 class="fw-bold mb-3">THANH TOÁN XONG!</h2>
+                    <p class="text-muted mb-4">Mã đơn hàng: <strong>#@Model.OrderCode</strong><br>Tiền đã được gửi đi thành công.</p>
+                    
+                    <div class="alert alert-success border-0 rounded-4">
+                        <i class="fa-solid fa-bell me-2"></i> Shipper đã nhận được thông báo của bạn.
+                    </div>
+                    
+                    <button class="btn btn-outline-secondary rounded-pill px-4 mt-4" onclick="window.close()">ĐÓNG TRANG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
