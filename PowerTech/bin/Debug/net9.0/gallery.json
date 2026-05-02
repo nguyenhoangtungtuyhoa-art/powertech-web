@@ -1,0 +1,910 @@
+{
+  "entity": "dbo_ProductImages",
+  "result": {
+    "value": [
+      {
+        "Id": 1,
+        "ProductId": 102,
+        "ImageUrl": "/uploads/products/accessories/apple-smart-keyboard-folio-ipad-pro-129-4th-gen/thumb.jpg",
+        "AltText": "Apple Smart Keyboard Folio for iPad Pro 12.9 inch (4th generation) - US English thumbnail",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 2,
+        "ProductId": 106,
+        "ImageUrl": "/uploads/products/accessories/mazer-alu-usb-c-to-vga-1080p-adapter-m-usbcal351-gy/thumb.jpg",
+        "AltText": "B\u1ED9 chuy\u1EC3n \u0111\u1ED5i Mazer ALU USB-C to VGA 1080P Adapter M-USBCAL351-GY thumbnail",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 3,
+        "ProductId": 105,
+        "ImageUrl": "/uploads/products/accessories/ugreen-gan-100w-cd226-40747/thumb.jpg",
+        "AltText": "C\u1EE7 s\u1EA1c Ugreen GaN 100W CD226 40747 thumbnail",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 4,
+        "ProductId": 104,
+        "ImageUrl": "/uploads/products/accessories/ugreen-usb-c-hub-5-in-1-cm136-50209/thumb.jpg",
+        "AltText": "C\u1ED5ng chuy\u1EC3n \u0111\u1ED5i USB C Ugreen 5 in 1 CM136 50209 thumbnail",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 5,
+        "ProductId": 103,
+        "ImageUrl": "/uploads/products/accessories/ugreen-nexode-200w-cd271-40913/thumb.jpg",
+        "AltText": "B\u1ED9 s\u1EA1c nhanh GaN Nexode 200W Ugreen CD271 40913 thumbnail",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 6,
+        "ProductId": 57,
+        "ImageUrl": "/uploads/products/case/asus-rog-hyperion-gr701/gallery-1.jpg",
+        "AltText": "ASUS ROG Hyperion GR701 gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 7,
+        "ProductId": 57,
+        "ImageUrl": "/uploads/products/case/asus-rog-hyperion-gr701/gallery-2.jpg",
+        "AltText": "ASUS ROG Hyperion GR701 gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 8,
+        "ProductId": 57,
+        "ImageUrl": "/uploads/products/case/asus-rog-hyperion-gr701/gallery-3.jpg",
+        "AltText": "ASUS ROG Hyperion GR701 gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 9,
+        "ProductId": 52,
+        "ImageUrl": "/uploads/products/case/cooler-master-td500-v2-chunli/gallery-1.jpg",
+        "AltText": "Cooler Master TD500 Mesh V2 CHUN-LI gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 10,
+        "ProductId": 52,
+        "ImageUrl": "/uploads/products/case/cooler-master-td500-v2-chunli/gallery-2.jpg",
+        "AltText": "Cooler Master TD500 Mesh V2 CHUN-LI gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 11,
+        "ProductId": 52,
+        "ImageUrl": "/uploads/products/case/cooler-master-td500-v2-chunli/gallery-3.jpg",
+        "AltText": "Cooler Master TD500 Mesh V2 CHUN-LI gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 12,
+        "ProductId": 56,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-black/gallery-1.jpg",
+        "AltText": "Corsair 6500X Black gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 13,
+        "ProductId": 56,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-black/gallery-2.jpg",
+        "AltText": "Corsair 6500X Black gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 14,
+        "ProductId": 56,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-black/gallery-3.jpg",
+        "AltText": "Corsair 6500X Black gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 15,
+        "ProductId": 49,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-white/gallery-1.jpg",
+        "AltText": "Corsair 6500X White gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 16,
+        "ProductId": 49,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-white/gallery-2.jpg",
+        "AltText": "Corsair 6500X White gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 17,
+        "ProductId": 49,
+        "ImageUrl": "/uploads/products/case/corsair-6500x-white/gallery-3.jpg",
+        "AltText": "Corsair 6500X White gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 18,
+        "ProductId": 55,
+        "ImageUrl": "/uploads/products/case/jonsbo-d300-black/gallery-1.jpg",
+        "AltText": "Jonsbo D300 Black gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 19,
+        "ProductId": 55,
+        "ImageUrl": "/uploads/products/case/jonsbo-d300-black/gallery-2.jpg",
+        "AltText": "Jonsbo D300 Black gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 20,
+        "ProductId": 55,
+        "ImageUrl": "/uploads/products/case/jonsbo-d300-black/gallery-3.jpg",
+        "AltText": "Jonsbo D300 Black gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 21,
+        "ProductId": 58,
+        "ImageUrl": "/uploads/products/case/jonsbo-tk3-white/gallery-1.jpg",
+        "AltText": "Jonsbo TK3 White gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 22,
+        "ProductId": 58,
+        "ImageUrl": "/uploads/products/case/jonsbo-tk3-white/gallery-2.jpg",
+        "AltText": "Jonsbo TK3 White gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 23,
+        "ProductId": 58,
+        "ImageUrl": "/uploads/products/case/jonsbo-tk3-white/gallery-3.jpg",
+        "AltText": "Jonsbo TK3 White gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 24,
+        "ProductId": 51,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-pink/gallery-1.jpg",
+        "AltText": "Jonsbo Z20 Pink gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 25,
+        "ProductId": 51,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-pink/gallery-2.jpg",
+        "AltText": "Jonsbo Z20 Pink gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 26,
+        "ProductId": 51,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-pink/gallery-3.jpg",
+        "AltText": "Jonsbo Z20 Pink gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 27,
+        "ProductId": 50,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-white/gallery-1.jpg",
+        "AltText": "Jonsbo Z20 White gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 28,
+        "ProductId": 50,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-white/gallery-2.jpg",
+        "AltText": "Jonsbo Z20 White gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 29,
+        "ProductId": 50,
+        "ImageUrl": "/uploads/products/case/jonsbo-z20-white/gallery-3.jpg",
+        "AltText": "Jonsbo Z20 White gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 30,
+        "ProductId": 53,
+        "ImageUrl": "/uploads/products/case/nzxt-h9-elite-white/gallery-1.jpg",
+        "AltText": "NZXT H9 Elite White gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 31,
+        "ProductId": 53,
+        "ImageUrl": "/uploads/products/case/nzxt-h9-elite-white/gallery-2.jpg",
+        "AltText": "NZXT H9 Elite White gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 32,
+        "ProductId": 53,
+        "ImageUrl": "/uploads/products/case/nzxt-h9-elite-white/gallery-3.jpg",
+        "AltText": "NZXT H9 Elite White gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 33,
+        "ProductId": 54,
+        "ImageUrl": "/uploads/products/case/tryx-luca-l70-black/gallery-1.jpg",
+        "AltText": "TRYX Luca L70 Black gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 34,
+        "ProductId": 54,
+        "ImageUrl": "/uploads/products/case/tryx-luca-l70-black/gallery-2.jpg",
+        "AltText": "TRYX Luca L70 Black gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 35,
+        "ProductId": 54,
+        "ImageUrl": "/uploads/products/case/tryx-luca-l70-black/gallery-3.jpg",
+        "AltText": "TRYX Luca L70 Black gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 36,
+        "ProductId": 15,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-white-32gb-5600-cmh32gx5m2b5600c40w/gallery-1.jpg",
+        "AltText": "Corsair Vengeance RGB White 32GB (2x16GB) 5600 DDR5 (CMH32GX5M2B5600C40W) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 37,
+        "ProductId": 15,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-white-32gb-5600-cmh32gx5m2b5600c40w/gallery-2.jpg",
+        "AltText": "Corsair Vengeance RGB White 32GB (2x16GB) 5600 DDR5 (CMH32GX5M2B5600C40W) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 38,
+        "ProductId": 15,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-white-32gb-5600-cmh32gx5m2b5600c40w/gallery-3.jpg",
+        "AltText": "Corsair Vengeance RGB White 32GB (2x16GB) 5600 DDR5 (CMH32GX5M2B5600C40W) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 39,
+        "ProductId": 20,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-96gb-5600-cmh96gx5m2b5600c40/gallery-1.jpg",
+        "AltText": "Corsair Vengeance RGB 96GB (2x48GB) 5600 DDR5 Black (CMH96GX5M2B5600C40) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 40,
+        "ProductId": 20,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-96gb-5600-cmh96gx5m2b5600c40/gallery-2.jpg",
+        "AltText": "Corsair Vengeance RGB 96GB (2x48GB) 5600 DDR5 Black (CMH96GX5M2B5600C40) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 41,
+        "ProductId": 20,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-rgb-96gb-5600-cmh96gx5m2b5600c40/gallery-3.jpg",
+        "AltText": "Corsair Vengeance RGB 96GB (2x48GB) 5600 DDR5 Black (CMH96GX5M2B5600C40) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 42,
+        "ProductId": 12,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-lpx-8gb-3200-cmk8gx4m1e3200c16/gallery-1.jpg",
+        "AltText": "Corsair Vengeance LPX 8GB (1x8GB) 3200 DDR4 Black (CMK8GX4M1E3200C16) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 43,
+        "ProductId": 12,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-lpx-8gb-3200-cmk8gx4m1e3200c16/gallery-2.jpg",
+        "AltText": "Corsair Vengeance LPX 8GB (1x8GB) 3200 DDR4 Black (CMK8GX4M1E3200C16) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 44,
+        "ProductId": 12,
+        "ImageUrl": "/uploads/products/ram/corsair-vengeance-lpx-8gb-3200-cmk8gx4m1e3200c16/gallery-3.jpg",
+        "AltText": "Corsair Vengeance LPX 8GB (1x8GB) 3200 DDR4 Black (CMK8GX4M1E3200C16) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 45,
+        "ProductId": 14,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-32gb-6000-cmp32gx5m2b6000c30/gallery-1.jpg",
+        "AltText": "Corsair Dominator Titanium Black 32GB (2x16GB) RGB 6000 DDR5 (CMP32GX5M2B6000C30) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 46,
+        "ProductId": 14,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-32gb-6000-cmp32gx5m2b6000c30/gallery-2.jpg",
+        "AltText": "Corsair Dominator Titanium Black 32GB (2x16GB) RGB 6000 DDR5 (CMP32GX5M2B6000C30) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 47,
+        "ProductId": 14,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-32gb-6000-cmp32gx5m2b6000c30/gallery-3.jpg",
+        "AltText": "Corsair Dominator Titanium Black 32GB (2x16GB) RGB 6000 DDR5 (CMP32GX5M2B6000C30) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 48,
+        "ProductId": 16,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-white-64gb-6000-cmp64gx5m2b6000c30w/gallery-1.jpg",
+        "AltText": "Corsair Dominator Titanium White 64GB (2x32GB) RGB 6000 DDR5 (CMP64GX5M2B6000C30W) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 49,
+        "ProductId": 16,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-white-64gb-6000-cmp64gx5m2b6000c30w/gallery-2.jpg",
+        "AltText": "Corsair Dominator Titanium White 64GB (2x32GB) RGB 6000 DDR5 (CMP64GX5M2B6000C30W) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 50,
+        "ProductId": 16,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-white-64gb-6000-cmp64gx5m2b6000c30w/gallery-3.jpg",
+        "AltText": "Corsair Dominator Titanium White 64GB (2x32GB) RGB 6000 DDR5 (CMP64GX5M2B6000C30W) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 51,
+        "ProductId": 21,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-96gb-6600-cmp96gx5m2b6600c32/gallery-1.jpg",
+        "AltText": "Corsair Dominator Titanium Black 96GB (2x48GB) RGB 6600 DDR5 (CMP96GX5M2B6600C32) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 52,
+        "ProductId": 21,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-96gb-6600-cmp96gx5m2b6600c32/gallery-2.jpg",
+        "AltText": "Corsair Dominator Titanium Black 96GB (2x48GB) RGB 6600 DDR5 (CMP96GX5M2B6600C32) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 53,
+        "ProductId": 21,
+        "ImageUrl": "/uploads/products/ram/corsair-dominator-titanium-black-96gb-6600-cmp96gx5m2b6600c32/gallery-3.jpg",
+        "AltText": "Corsair Dominator Titanium Black 96GB (2x48GB) RGB 6600 DDR5 (CMP96GX5M2B6600C32) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 54,
+        "ProductId": 9,
+        "ImageUrl": "/uploads/products/cpu/amd-athlon-3000g/gallery-1.jpg",
+        "AltText": "AMD Athlon 3000G gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 55,
+        "ProductId": 9,
+        "ImageUrl": "/uploads/products/cpu/amd-athlon-3000g/gallery-2.jpg",
+        "AltText": "AMD Athlon 3000G gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 56,
+        "ProductId": 9,
+        "ImageUrl": "/uploads/products/cpu/amd-athlon-3000g/gallery-3.jpg",
+        "AltText": "AMD Athlon 3000G gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 57,
+        "ProductId": 5,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-3-4300g/gallery-1.jpg",
+        "AltText": "AMD Ryzen 3 4300G gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 58,
+        "ProductId": 5,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-3-4300g/gallery-2.jpg",
+        "AltText": "AMD Ryzen 3 4300G gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 59,
+        "ProductId": 5,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-3-4300g/gallery-3.jpg",
+        "AltText": "AMD Ryzen 3 4300G gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 60,
+        "ProductId": 6,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-5-7600/gallery-1.jpg",
+        "AltText": "AMD Ryzen 5 7600 gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 61,
+        "ProductId": 6,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-5-7600/gallery-2.jpg",
+        "AltText": "AMD Ryzen 5 7600 gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 62,
+        "ProductId": 6,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-5-7600/gallery-3.jpg",
+        "AltText": "AMD Ryzen 5 7600 gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 63,
+        "ProductId": 7,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-7-9700x/gallery-1.jpg",
+        "AltText": "AMD Ryzen 7 9700X gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 64,
+        "ProductId": 7,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-7-9700x/gallery-2.jpg",
+        "AltText": "AMD Ryzen 7 9700X gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 65,
+        "ProductId": 7,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-7-9700x/gallery-3.jpg",
+        "AltText": "AMD Ryzen 7 9700X gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 66,
+        "ProductId": 8,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x/gallery-1.jpg",
+        "AltText": "AMD Ryzen 9 9950X gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 67,
+        "ProductId": 8,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x/gallery-2.jpg",
+        "AltText": "AMD Ryzen 9 9950X gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 68,
+        "ProductId": 8,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x/gallery-3.jpg",
+        "AltText": "AMD Ryzen 9 9950X gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 69,
+        "ProductId": 10,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x-tray/gallery-1.jpg",
+        "AltText": "AMD Ryzen 9 9950X TRAY gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 70,
+        "ProductId": 10,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x-tray/gallery-2.jpg",
+        "AltText": "AMD Ryzen 9 9950X TRAY gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 71,
+        "ProductId": 10,
+        "ImageUrl": "/uploads/products/cpu/amd-ryzen-9-9950x-tray/gallery-3.jpg",
+        "AltText": "AMD Ryzen 9 9950X TRAY gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 72,
+        "ProductId": 1,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-5-245k/gallery-1.jpg",
+        "AltText": "Intel Core Ultra 5 245K gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 73,
+        "ProductId": 1,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-5-245k/gallery-2.jpg",
+        "AltText": "Intel Core Ultra 5 245K gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 74,
+        "ProductId": 1,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-5-245k/gallery-3.jpg",
+        "AltText": "Intel Core Ultra 5 245K gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 75,
+        "ProductId": 2,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-7-265k/gallery-1.jpg",
+        "AltText": "Intel Core Ultra 7 265K gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 76,
+        "ProductId": 2,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-7-265k/gallery-2.jpg",
+        "AltText": "Intel Core Ultra 7 265K gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 77,
+        "ProductId": 2,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-7-265k/gallery-3.jpg",
+        "AltText": "Intel Core Ultra 7 265K gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 78,
+        "ProductId": 3,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-9-285k/gallery-1.jpg",
+        "AltText": "Intel Core Ultra 9 285K gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 79,
+        "ProductId": 3,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-9-285k/gallery-2.jpg",
+        "AltText": "Intel Core Ultra 9 285K gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 80,
+        "ProductId": 3,
+        "ImageUrl": "/uploads/products/cpu/intel-core-ultra-9-285k/gallery-3.jpg",
+        "AltText": "Intel Core Ultra 9 285K gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 81,
+        "ProductId": 4,
+        "ImageUrl": "/uploads/products/cpu/intel-core-i3-14100/gallery-1.jpg",
+        "AltText": "Intel Core i3 14100 gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 82,
+        "ProductId": 4,
+        "ImageUrl": "/uploads/products/cpu/intel-core-i3-14100/gallery-2.jpg",
+        "AltText": "Intel Core i3 14100 gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 83,
+        "ProductId": 4,
+        "ImageUrl": "/uploads/products/cpu/intel-core-i3-14100/gallery-3.jpg",
+        "AltText": "Intel Core i3 14100 gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 84,
+        "ProductId": 18,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-32gb-5600-f5-5600j4040c16gx2-tz5rs/gallery-1.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 32GB (2x16GB) 5600 DDR5 Silver CL40 (F5-5600J4040C16GX2-TZ5RS) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 85,
+        "ProductId": 18,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-32gb-5600-f5-5600j4040c16gx2-tz5rs/gallery-2.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 32GB (2x16GB) 5600 DDR5 Silver CL40 (F5-5600J4040C16GX2-TZ5RS) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 86,
+        "ProductId": 18,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-32gb-5600-f5-5600j4040c16gx2-tz5rs/gallery-3.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 32GB (2x16GB) 5600 DDR5 Silver CL40 (F5-5600J4040C16GX2-TZ5RS) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 87,
+        "ProductId": 19,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-64gb-6000-f5-6000j3040g32gx2-tz5rs/gallery-1.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 64GB (2x32GB) 6000 DDR5 Silver (F5-6000J3040G32GX2-TZ5RS) gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 88,
+        "ProductId": 19,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-64gb-6000-f5-6000j3040g32gx2-tz5rs/gallery-2.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 64GB (2x32GB) 6000 DDR5 Silver (F5-6000J3040G32GX2-TZ5RS) gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 89,
+        "ProductId": 19,
+        "ImageUrl": "/uploads/products/ram/gskill-trident-z5-rgb-64gb-6000-f5-6000j3040g32gx2-tz5rs/gallery-3.jpg",
+        "AltText": "G.Skill Trident Z5 RGB 64GB (2x32GB) 6000 DDR5 Silver (F5-6000J3040G32GX2-TZ5RS) gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 90,
+        "ProductId": 22,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-matrix-rtx4090-24g/gallery-1.jpg",
+        "AltText": "ASUS ROG Matrix GeForce RTX 4090 24GB GDDR6X gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 91,
+        "ProductId": 22,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-matrix-rtx4090-24g/gallery-2.jpg",
+        "AltText": "ASUS ROG Matrix GeForce RTX 4090 24GB GDDR6X gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 92,
+        "ProductId": 22,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-matrix-rtx4090-24g/gallery-3.jpg",
+        "AltText": "ASUS ROG Matrix GeForce RTX 4090 24GB GDDR6X gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 93,
+        "ProductId": 25,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-rtx5080-16g/gallery-1.jpg",
+        "AltText": "ASUS ROG GeForce RTX 5080 16GB GDDR7 gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 94,
+        "ProductId": 25,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-rtx5080-16g/gallery-2.jpg",
+        "AltText": "ASUS ROG GeForce RTX 5080 16GB GDDR7 gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 95,
+        "ProductId": 25,
+        "ImageUrl": "/uploads/products/gpu/asus-rog-rtx5080-16g/gallery-3.jpg",
+        "AltText": "ASUS ROG GeForce RTX 5080 16GB GDDR7 gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 96,
+        "ProductId": 23,
+        "ImageUrl": "/uploads/products/gpu/asus-rtx4070-super-12g/gallery-1.jpg",
+        "AltText": "ASUS GeForce RTX 4070 SUPER 12GB GDDR6X gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 97,
+        "ProductId": 23,
+        "ImageUrl": "/uploads/products/gpu/asus-rtx4070-super-12g/gallery-2.jpg",
+        "AltText": "ASUS GeForce RTX 4070 SUPER 12GB GDDR6X gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 98,
+        "ProductId": 23,
+        "ImageUrl": "/uploads/products/gpu/asus-rtx4070-super-12g/gallery-3.jpg",
+        "AltText": "ASUS GeForce RTX 4070 SUPER 12GB GDDR6X gallery 3",
+        "IsPrimary": false,
+        "SortOrder": 3,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 99,
+        "ProductId": 24,
+        "ImageUrl": "/uploads/products/gpu/asus-tuf-rtx5070ti-16g/gallery-1.jpg",
+        "AltText": "ASUS TUF Gaming GeForce RTX 5070 Ti 16GB GDDR7 gallery 1",
+        "IsPrimary": true,
+        "SortOrder": 1,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      },
+      {
+        "Id": 100,
+        "ProductId": 24,
+        "ImageUrl": "/uploads/products/gpu/asus-tuf-rtx5070ti-16g/gallery-2.jpg",
+        "AltText": "ASUS TUF Gaming GeForce RTX 5070 Ti 16GB GDDR7 gallery 2",
+        "IsPrimary": false,
+        "SortOrder": 2,
+        "CreatedAt": "2026-04-05T22:10:56.9150531"
+      }
+    ],
+    "after": "W3siRW50aXR5TmFtZSI6ImRib19Qcm9kdWN0SW1hZ2VzIiwiRmllbGROYW1lIjoiSWQiLCJGaWVsZFZhbHVlIjoxMDAsIkRpcmVjdGlvbiI6MH1d"
+  },
+  "message": "Successfully read records for entity \u0027dbo_ProductImages\u0027",
+  "status": "success"
+}

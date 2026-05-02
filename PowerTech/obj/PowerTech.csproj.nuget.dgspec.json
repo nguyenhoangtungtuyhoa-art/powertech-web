@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/twot/Documents/CODE/HTML_CSS_WEB/PowerTech/PowerTech/PowerTech.csproj": {}
+    "C:\\Users\\ASUS\\Downloads\\PowerTech\\PowerTech\\PowerTech.csproj": {}
   },
   "projects": {
-    "/Users/twot/Documents/CODE/HTML_CSS_WEB/PowerTech/PowerTech/PowerTech.csproj": {
+    "C:\\Users\\ASUS\\Downloads\\PowerTech\\PowerTech\\PowerTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/twot/Documents/CODE/HTML_CSS_WEB/PowerTech/PowerTech/PowerTech.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\PowerTech\\PowerTech\\PowerTech.csproj",
         "projectName": "PowerTech",
-        "projectPath": "/Users/twot/Documents/CODE/HTML_CSS_WEB/PowerTech/PowerTech/PowerTech.csproj",
-        "packagesPath": "/Users/twot/.nuget/packages/",
-        "outputPath": "/Users/twot/Documents/CODE/HTML_CSS_WEB/PowerTech/PowerTech/obj/",
+        "projectPath": "C:\\Users\\ASUS\\Downloads\\PowerTech\\PowerTech\\PowerTech.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Downloads\\PowerTech\\PowerTech\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/twot/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
